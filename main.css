@@ -1,0 +1,136 @@
+@import url('https://fonts.googleapis.com/css?family=Bitter:400,700|Faster+One|Londrina+Outline|Major+Mono+Display|Space+Mono:400,700|VT323');
+
+body {
+    font-family: 'Bitter', serif;
+    /* padding: 5em; */
+    margin: 0;
+    padding: 0;
+}
+.container {
+    background-color: RGBA(219, 225, 213, .60);
+    height: auto;
+    margin: 0;
+    padding: 0;
+}
+.links {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-gap: 2em;
+    padding: 5em;
+    
+
+
+}
+
+.link-group {
+    justify-self: center;
+    padding: 1em;
+    /* border: 1px solid white; */
+    border-radius: 10px;
+    transition: all 200ms ease-out;
+    
+
+}
+
+.link-one {
+    /* grid-column: 1/2; */
+    background-color: RGBA(0, 158, 203, .80);
+    /* border-bottom: 2px solid RGBA(0, 158, 203, .90); */
+    
+}
+
+.link-group:hover {
+    transform: translateY(-20px);
+    transform: scale(1.02);
+    /* width: 320px; */
+    padding: 1em;
+    /* border: 1px solid white; */
+    border-radius: 10px;
+    box-shadow: 0px 10px 50px -20px rgba(0,0,0,0.55);
+}
+
+.link-two {
+    /* grid-column: 2/3; */
+    background-color: RGBA(131, 185, 123, .50);
+    background-color: white;
+    /* border-bottom: 2px solid RGBA(131, 185, 123, .70); */
+    max-width: 400px;
+}
+
+
+.link-three {
+    /* grid-column: 3/4; */
+    background-color: RGBA(211, 179, 17, .50);
+    background-color: white;
+    /* border-bottom: 2px solid RGBA(211, 179, 17, .80); */
+    max-width: 400px;
+}
+
+.link-four {
+    /* grid-column: 3/4; */
+    background-color: RGBA(206, 1, 119, .30);
+    background-color: white;
+    /* border-bottom: 2px solid RGBA(206, 1, 119, .40); */
+    max-width: 400px;
+}
+
+.link-five {
+    /* grid-column: 3/4; */
+    background-color: RGBA(195, 26, 29, .30);
+    background-color: white;
+    /* border-bottom: 2px solid RGBA(195, 26, 29, .40); */
+    max-width: 400px;
+}
+
+
+
+
+
+.poster {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    object-position: top center;
+    border-radius: 3px;
+    /* border: solid 1px black; */
+   
+}
+
+.link-group a {
+    text-decoration: none;
+}
+
+.link-group p {
+    padding: .8em 0 .2em 0;
+    font-size: 1.3em;
+    display: block;
+    text-align: center;
+    margin: 0;
+    color:RGBA(33, 42, 49, 1.00);
+
+}
+
+h1 {
+    font-size: 3em;
+    font-family: 'Major Mono Display', monospace;
+    margin: 0 0 .5em 0;
+}
+
+h2 {
+    font-family: 'VT323', monospace;
+    font-weight: 400;
+    font-size: 2em;
+    margin: 0;
+    padding-bottom: .2em;
+}
+
+header {
+    margin: 6em 5em 4em 5em;
+    
+    
+}
+
+.articles {
+    height: 50vh;
+    background-color: RGBA(220, 219, 197, .80);
+}
