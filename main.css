@@ -34,7 +34,7 @@ body {
 
 .link-one {
     /* grid-column: 1/2; */
-    background-color: RGBA(0, 158, 203, .80);
+    background-color: RGBA(0, 158, 203, .50);
     /* border-bottom: 2px solid RGBA(0, 158, 203, .90); */
     
 }
