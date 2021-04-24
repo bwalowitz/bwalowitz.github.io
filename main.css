@@ -12,6 +12,7 @@ background-image: url("img/banner.png");
     background-size: cover;
     background-position: center;
     padding: 6em 5em 4em 5em;
+    background-blend-mode: screen, difference, lighten;
 
 }
 .container {
