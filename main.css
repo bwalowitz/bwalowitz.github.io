@@ -11,6 +11,7 @@ header {
 background-image: url("img/banner.png");
     background-size: cover;
     background-position: center;
+    padding: 6em 5em 4em 5em;
 
 }
 .container {
@@ -190,11 +191,6 @@ h2 {
     padding-bottom: .2em;
 }
 
-header {
-    margin: 6em 5em 4em 5em;
-    
-    
-}
 
 .articles {
     height: 50vh;
