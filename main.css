@@ -82,7 +82,66 @@ body {
     max-width: 400px;
 }
 
+.link-six {
+    /* grid-column: 3/4; */
+    background-color: RGBA(211, 179, 17, .50);
+    background-color: white;
+    /* border-bottom: 2px solid RGBA(211, 179, 17, .80); */
+    max-width: 400px;
+}
 
+.link-seven {
+    /* grid-column: 1/2; */
+    background-color: RGBA(131, 185, 123, .50);
+    background-color: white;
+    /* border-bottom: 2px solid RGBA(131, 185, 123, .70); */
+    max-width: 400px;
+}
+}
+
+.link-eight {
+    /* grid-column: 2/3; */
+    background-color: RGBA(131, 185, 123, .50);
+    background-color: white;
+    /* border-bottom: 2px solid RGBA(131, 185, 123, .70); */
+    max-width: 400px;
+}
+
+
+.link-nine {
+    /* grid-column: 3/4; */
+    background-color: RGBA(211, 179, 17, .50);
+    background-color: white;
+    /* border-bottom: 2px solid RGBA(211, 179, 17, .80); */
+    max-width: 400px;
+}
+
+
+.link-ten {
+    /* grid-column: 1/2; */
+    background-color: RGBA(131, 185, 123, .50);
+    background-color: white;
+    /* border-bottom: 2px solid RGBA(131, 185, 123, .70); */
+    max-width: 400px;
+}
+}
+
+.link-eleven {
+    /* grid-column: 2/3; */
+    background-color: RGBA(131, 185, 123, .50);
+    background-color: white;
+    /* border-bottom: 2px solid RGBA(131, 185, 123, .70); */
+    max-width: 400px;
+}
+
+
+.link-twelve {
+    /* grid-column: 3/4; */
+    background-color: RGBA(211, 179, 17, .50);
+    background-color: white;
+    /* border-bottom: 2px solid RGBA(211, 179, 17, .80); */
+    max-width: 400px;
+}
 
 
 
