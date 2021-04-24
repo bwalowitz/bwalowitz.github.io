@@ -6,6 +6,13 @@ body {
     margin: 0;
     padding: 0;
 }
+
+header {
+background-image: url("img/banner.png");
+    background-size: cover;
+    background-position: center;
+
+}
 .container {
     background-color: RGBA(219, 225, 213, .60);
     height: auto;
