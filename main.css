@@ -13,6 +13,7 @@ header {
 
 .head-align {
     font-family: monospace;
+    text-transform: uppercase;
     margin: 3em 0em 0em 2.5em;
     display: inline-block;
 }
@@ -44,7 +45,7 @@ header {
 
 .link-one {
     /* grid-column: 1/2; */
-    background-color: RGBA(0, 158, 203, .50);
+    background-color: white;
     /* border-bottom: 2px solid RGBA(0, 158, 203, .90); */
     
 }
@@ -161,6 +162,7 @@ header {
     object-fit: cover;
     object-position: top center;
     border-radius: 3px;
+    aspect-ratio: 16 / 9;
     /* border: solid 1px black; */
    
 }
