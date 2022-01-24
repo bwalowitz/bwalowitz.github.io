@@ -11,20 +11,24 @@ header {
     padding: 6em 5em 4em 5em;
 }
 
+.head-align {
+    margin: 3em 0em 0em 2.5em;
+    display: inline-block;
+}
+
+
 .container {
     background-color: RGBA(219, 225, 213, .60);
     height: auto;
     margin: 0;
     padding: 0;
 }
+
 .links {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     grid-gap: 2em;
     padding: 5em;
-    
-
-
 }
 
 .link-group {
