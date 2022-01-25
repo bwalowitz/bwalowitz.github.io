@@ -19,7 +19,7 @@ a:hover {
 }
 
 header {
-    padding: 6em 5em 4em 5em;
+    padding: 4em 5em 4em 5em;
 }
 
 .head-align {
@@ -194,11 +194,11 @@ header {
 }
 
 h1 {
-    font-size: 3em;
+    font-size: 2.5em;
     font-family: 'Major Mono Display', monospace;
-    margin: 0 0 0.5em -5px;
+    margin: 0 0 1em -5px;
     line-height: .9;
-    word-spacing: -10px;
+    word-spacing: -15px;
 }
 
 h2 {
