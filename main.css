@@ -7,6 +7,17 @@ body {
     padding: 0;
 }
 
+a {
+    text-decoration: none;
+    color: cornflowerblue;
+    transition: transform 500ms ease-in-out;
+}
+
+a:hover {
+    transform: scale(1.04);
+    transform-origin: left;
+}
+
 header {
     padding: 6em 5em 4em 5em;
 }
@@ -187,14 +198,15 @@ h1 {
     font-family: 'Major Mono Display', monospace;
     margin: 0 0 0.5em -5px;
     line-height: .9;
+    word-spacing: -10px;
 }
 
 h2 {
     font-family: 'VT323', monospace;
-    font-weight: 400;
-    font-size: 2em;
+    font-weight: 100;
+    font-size: 1.8em;
     margin: 0;
-    padding-bottom: .2em;
+    padding-bottom: 0.2em;
 }
 
 
