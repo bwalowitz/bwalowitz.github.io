@@ -8,14 +8,23 @@ body {
 }
 
 a {
-    text-decoration: none;
-    color: cornflowerblue;
-    transition: transform 500ms ease-in-out;
+  position: relative;
+  display: inline-block;
+  font-size: 2em;
+  font-weight: 800;
+  color: royalblue;
+  overflow: hidden;
+  background: linear-gradient(to right, midnightblue, midnightblue 50%, royalblue 50%);
+    background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-size: 200% 100%;
+  background-position: 100%;
+    transition: background-position 275ms ease;
 }
 
 a:hover {
-    transform: scale(1.04);
-    transform-origin: left;
+    background-position: 0 100%;
 }
 
 header {
