@@ -10,8 +10,9 @@ body {
 a {
   position: relative;
   display: inline-block;
-  font-size: 2em;
-  font-weight: 800;
+  line-height: 1;
+  font-size: 1.8em;
+  font-weight: 100;
   color: royalblue;
   overflow: hidden;
   background: linear-gradient(to right, midnightblue, midnightblue 50%, royalblue 50%);
@@ -20,7 +21,7 @@ a {
   -webkit-text-fill-color: transparent;
   background-size: 200% 100%;
   background-position: 100%;
-    transition: background-position 275ms ease;
+  transition: background-position 275ms ease;
 }
 
 a:hover {
@@ -213,9 +214,8 @@ h1 {
 h2 {
     font-family: 'VT323', monospace;
     font-weight: 100;
-    font-size: 1.8em;
+    font-size: 1em;
     margin: 0;
-    padding-bottom: 0.2em;
 }
 
 
