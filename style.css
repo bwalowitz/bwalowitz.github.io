@@ -1,6 +1,5 @@
 html {
   box-sizing: border-box;
-  overflow-x: hidden;
 }
 
 *, *:before, *:after {
@@ -11,8 +10,7 @@ body {
   max-width: 100%;
   overflow-x: hidden;
   
-  font-family: 'Ro
-  boto', sans-serif;
+  font-family: 'Roboto', sans-serif;
   color: #474747;
   background-color: whitesmoke;
 }
