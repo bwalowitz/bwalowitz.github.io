@@ -56,9 +56,10 @@ header {
 }
 
 h2 {
-  font-size: 40px;
+  font-size: 36px;
   font-weight: 200;
   line-height: 3.5rem;
+  max-width: 50ch;
 }
 
 main p {
@@ -105,6 +106,7 @@ footer {
 
 footer p {
   color: hsl(45.93,79.41%,40%);
+  font-weight: 100;
   letter-spacing: 1px;
   line-height: .5rem;
 }
