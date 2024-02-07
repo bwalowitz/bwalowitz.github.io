@@ -52,6 +52,7 @@ header {
   padding: 10px;
   padding-top: 1em;
   padding-bottom: 1em;
+  border-radius: 5px;
 }
 
 h2 {
