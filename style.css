@@ -7,9 +7,12 @@ html {
   box-sizing: inherit;
 }
 
-
 body {
-  font-family: 'Roboto', sans-serif;
+  max-width: 100%;
+  overflow-x: hidden;
+  
+  font-family: 'Ro
+  boto', sans-serif;
   color: #474747;
   background-color: whitesmoke;
 }
