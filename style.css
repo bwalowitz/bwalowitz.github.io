@@ -7,9 +7,6 @@ html {
 }
 
 body {
-  max-width: 100%;
-  overflow-x: hidden;
-  
   font-family: 'Roboto', sans-serif;
   color: #474747;
   background-color: whitesmoke;
