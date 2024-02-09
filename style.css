@@ -17,7 +17,7 @@ main {
   max-width: 920px;
   margin-inline: auto;
   padding: 20px;
-  margin-top: 40px;
+  margin-top: 20px;
 }
 
 header nav ul {
@@ -48,7 +48,6 @@ nav {
     
 header {
   background-color: hsl(45.93,79.41%,60%);
-  /* margin: -10px; */
   padding: 10px;
   padding-top: 1em;
   padding-bottom: 1em;
@@ -56,15 +55,17 @@ header {
 }
 
 h2 {
-  font-size: 36px;
-  font-weight: 200;
-  line-height: 3.5rem;
+  font-size: 3.5rem;
+  font-weight: 500;
+  color: #c4c7c5;
+  line-height: 4rem;
   max-width: 50ch;
 }
 
 main p {
   line-height: 1.75rem;
-  max-width: 60ch;
+  max-width: 50ch;
+  color:rgb(45, 45, 45);
 }
 
 .main-paragraph {
