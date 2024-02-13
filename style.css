@@ -42,6 +42,13 @@ a {
   text-underline-offset: 5px;
 }
 
+.heading-link {
+  text-decoration: none;
+  color: #474747;
+  letter-spacing: 1.3px;
+
+}
+
 nav { 
   margin: 0;
   padding: 0;}
@@ -110,4 +117,15 @@ footer p {
   font-weight: 100;
   letter-spacing: 1px;
   line-height: .5rem;
+}
+
+.project-image {
+  margin-bottom: 20px;
+}
+
+.youtube-video {
+  width: 100%;
+  aspect-ratio: 16/9;
+  margin-bottom: 20px;
+  border-radius: 8px;
 }
