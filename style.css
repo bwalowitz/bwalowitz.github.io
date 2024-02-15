@@ -103,10 +103,21 @@ main p.about-paragraph {
   margin-bottom: 50px;
 }
 
+.about-first-paragraph {
+  font-size: 1.8rem;
+  margin-bottom: 30px;
+}
+
 @media (max-width: 600px) {
   .main-paragraph {
     font-size: 1.2rem;
     line-height: 2rem;
+  }
+
+  .about-first-paragraph {
+    font-size: 1.7rem;
+    line-height: 2.2rem;
+    margin-bottom: 30px;
   }
 }
 
