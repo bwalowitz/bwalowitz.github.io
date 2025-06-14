@@ -1,0 +1,73 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sector Classifier</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f4f4;
+            padding: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        input, button {
+            padding: 10px;
+            margin-top: 10px;
+            width: 100%;
+            max-width: 400px;
+            display: block;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            background: #fff;
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+    <h1>Coast to Coast Sector Classifier</h1>
+    <input type="text" id="companyInput" placeholder="Enter company name" />
+    <button onclick="classify()">Classify Company</button>
+    <div class="result" id="result"></div>
+
+    <script>
+        async function classify() {
+            const companyName = document.getElementById("companyInput").value;
+            const resultDiv = document.getElementById("result");
+            resultDiv.innerHTML = "Loading...";
+
+            try {
+                const res = await fetch("https://sector-gpt-server.brandonwalowitz.repl.co/classify", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({ companyName })
+                });
+
+                const data = await res.json();
+                if (data.error) {
+                    resultDiv.innerHTML = "<strong>Error:</strong> " + data.error;
+                } else {
+                    resultDiv.innerHTML = `
+                        <strong>Sector:</strong> ${data.sector}<br/>
+                        <strong>City:</strong> ${data.city}<br/>
+                        <strong>State:</strong> ${data.state}<br/>
+                        <strong>Product Focus:</strong> ${data.product_focus}<br/>
+                        <strong>Reasoning:</strong> ${data.reasoning}<br/>
+                        <strong>Confidence:</strong> ${(data.confidence * 100).toFixed(0)}%<br/>
+                        <strong>Formatted:</strong><br/> ${data.formatted_output}
+                    `;
+                }
+            } catch (err) {
+                resultDiv.innerHTML = "<strong>Error:</strong> " + err.message;
+            }
+        }
+    </script>
+</body>
+</html>
