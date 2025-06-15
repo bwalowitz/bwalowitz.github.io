@@ -444,90 +444,51 @@ CRITICAL: You must ONLY output one of these exact sector names. Never use "Oil &
 
 Focus on what the company PRODUCES. Freight Forwarders are ONLY for logistics service providers.`;
         
-        // Classify company using OpenAI API
-        async function classifyCompany(companyName, description = '', cityState = '') {
-            // Parse city and state if provided
-            let city = '', state = '';
-            if (cityState) {
-                const parts = cityState.split(',').map(s => s.trim());
-                city = parts[0] || '';
-                state = parts[1] || '';
-            }
-            
-            // Check exceptions first
-            const exception = checkException(companyName);
-            if (exception) {
-                return {
-                    company_name: companyName,
-                    city: city || 'Unknown',
-                    state: state || 'Unknown',
-                    sector: exception,
-                    confidence: 1.0,
-                    reasoning: 'Pre-assigned sector based on company-specific rules',
-                    product_focus: 'Pre-assigned classification',
-                    formatted_output: `${companyName} based out of ${city || 'Unknown'}, ${state || 'Unknown'} falls into the ${exception} sector.`
-                };
-            }
-            console.log("Sending:", {
-  companyName,
-  description,
-  cityState
-});
 
-            const response = await fetch('https://sector-classifier.onrender.com/classify', {
-    method: 'POST',
-    headers: {
-        'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({
-        companyName,
-        description,
-        cityState: (city && state) ? `${city}, ${state}` : ''
-    })
-});
+        // Classify company using Render backend
+async function classifyCompany(companyName, description = '', cityState = '') {
+    let city = '', state = '';
+    if (cityState) {
+        const parts = cityState.split(',').map(s => s.trim());
+        city = parts[0] || '';
+        state = parts[1] || '';
+    }
 
-if (!response.ok) {
-    const error = await response.json();
-    throw new Error(error.error || 'Classification request failed');
+    const exception = checkException(companyName);
+    if (exception) {
+        return {
+            company_name: companyName,
+            city: city || 'Unknown',
+            state: state || 'Unknown',
+            sector: exception,
+            confidence: 1.0,
+            reasoning: 'Pre-assigned sector based on company-specific rules',
+            product_focus: 'Pre-assigned classification',
+            formatted_output: `${companyName} based out of ${city || 'Unknown'}, ${state || 'Unknown'} falls into the ${exception} sector.`
+        };
+    }
+
+    const response = await fetch('https://sector-classifier.onrender.com/classify', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            companyName,
+            description,
+            cityState: (city && state) ? `${city}, ${state}` : ''
+        })
+    });
+
+    if (!response.ok) {
+        const error = await response.json();
+        throw new Error(error.error || 'Classification request failed');
+    }
+
+    const result = await response.json();
+    return result;
 }
 
-            
-            const data = await response.json();
-            const content = data.choices[0].message.content;
-            
-            // Parse the response
-            const lines = content.split('\n');
-            let sector = '', confidence = 0.8, productFocus = '', reasoning = '';
-            let parsedCity = city, parsedState = state;
-            
-            lines.forEach(line => {
-                if (line.startsWith('Sector:')) sector = line.replace('Sector:', '').trim();
-                if (line.startsWith('City:')) parsedCity = line.replace('City:', '').trim();
-                if (line.startsWith('State:')) parsedState = line.replace('State:', '').trim();
-                if (line.startsWith('Confidence:')) confidence = parseFloat(line.replace('Confidence:', '').trim());
-                if (line.startsWith('Product Focus:')) productFocus = line.replace('Product Focus:', '').trim();
-                if (line.startsWith('Reasoning:')) reasoning = line.replace('Reasoning:', '').trim();
-            });
-            
-            // Validate sector
-            if (!VALID_SECTORS.includes(sector)) {
-                sector = 'Not Applicable';
-                reasoning = `Invalid sector detected. Defaulting to Not Applicable. Original: ${sector}`;
-            }
-            
-            const formattedOutput = `${companyName} based out of ${parsedCity || 'Unknown'}, ${parsedState || 'Unknown'} falls into the ${sector} sector.`;
-            
-            return {
-                company_name: companyName,
-                city: parsedCity,
-                state: parsedState,
-                sector: sector,
-                confidence: confidence,
-                product_focus: productFocus,
-                reasoning: reasoning,
-                formatted_output: formattedOutput
-            };
-        }
         
         // Display result
         function displayResult(result, targetId = 'result') {
