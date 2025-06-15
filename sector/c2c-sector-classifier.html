@@ -468,7 +468,12 @@ Focus on what the company PRODUCES. Freight Forwarders are ONLY for logistics se
                     formatted_output: `${companyName} based out of ${city || 'Unknown'}, ${state || 'Unknown'} falls into the ${exception} sector.`
                 };
             }
-            
+            console.log("Sending:", {
+  companyName,
+  description,
+  cityState
+});
+
             const response = await fetch('https://sector-classifier.onrender.com/classify', {
     method: 'POST',
     headers: {
