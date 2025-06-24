@@ -23,12 +23,18 @@
       font-size: 1.2rem;
       color: #555;
       margin-top: 0;
-      margin-bottom: 2rem;
+      margin-bottom: 1.5rem;
     }
     h3 {
       font-size: 1.1rem;
       margin-top: 2rem;
       margin-bottom: 0.5rem;
+    }
+    h4 {
+      margin-top: 1rem;
+      margin-bottom: 0.3rem;
+      font-weight: normal;
+      color: #444;
     }
     blockquote {
       margin: 0.5rem 0;
@@ -53,38 +59,50 @@
   <h1>AI Usage Principles</h1>
   <h2>How Not to Misuse AI<br><em>A practical guide for people using AI in professional or creative work</em></h2>
 
+  <p>Through each principle, we’ll use a simple example to show how things can go wrong — or right — when building a web app with AI. These aren’t hard rules, just common sense guidelines to keep things grounded and useful.</p>
+
   <h3>⚠️ Principle 1: Know Enough to Know When It’s Wrong</h3>
-  <p>If you can’t tell whether the AI is right or wrong, don’t use it for that task.</p>
-  <blockquote><strong>AI sounds confident even when it’s confidently wrong.</strong><br>
-  Misuse happens when people ask AI for answers in domains they don’t understand.</blockquote>
+  <p>If you can’t tell whether the AI is right or wrong, don’t use it for that task. AI sounds confident even when it’s confidently wrong. Misuse happens when people ask AI for answers in domains they don’t understand.</p>
+  <blockquote><strong>Trust requires judgment.</strong> If you can’t recognize an error, you’re not ready to use the tool for that task.</blockquote>
+  <h4>Example:</h4>
+  <p>If you’re asking AI to build a web app and it picks Django instead of something like React + Node, would you even know the difference? If not, you might be building the wrong type of application entirely.</p>
 
   <h3>🛠️ Principle 2: Experiment Freely — Deploy Carefully</h3>
-  <p>Tinker all you want. Break things. Learn. But when you're building for a team or an organization, what you build might become a foundation.</p>
-  <blockquote><strong>If someone else will depend on your output, you’re responsible for the structure.</strong></blockquote>
+  <p>Play with AI. Try things. Break things. That’s how you learn. But if you’re shipping something into production — especially something others will rely on — you have to own the quality of what you're building.</p>
+  <blockquote><strong>Curiosity is encouraged. Irresponsibility isn’t.</strong></blockquote>
+  <h4>Example:</h4>
+  <p>Using AI to generate a login form is great. But copy-pasting that code into a live app without understanding how authentication or password hashing works? That’s a risk multiplier for your team or users.</p>
 
   <h3>🧠 Principle 3: AI Is Not a Brain — You Are</h3>
-  <p>AI is a tool. You are the thinker. Don’t outsource decisions to autocomplete.</p>
-  <blockquote><strong>There’s no such thing as “AI made me do it.”</strong></blockquote>
+  <p>AI is autocomplete on steroids. It doesn’t reason like a human. You’re the one who brings strategy, ethics, and goals to the table. It follows your direction — even if that direction is flawed.</p>
+  <blockquote><strong>You can’t delegate decisions to a tool that doesn’t understand context.</strong></blockquote>
+  <h4>Example:</h4>
+  <p>If you say “build me a booking system,” AI will start spitting out components. But only you can decide what it actually needs to do: Are there time zones? Are cancellations allowed? That’s your job.</p>
 
   <h3>🧭 Principle 4: Clarity In → Clarity Out</h3>
-  <p>AI mirrors your direction. The clearer your ask, the better your result.</p>
-  <blockquote><strong>Vague prompt = vague output.<br>Specific context = smarter responses.</strong></blockquote>
+  <p>The quality of your results depends entirely on the clarity of your ask. AI mirrors your input. The more context and constraints you provide, the better it performs.</p>
+  <blockquote><strong>Be specific. Be intentional. The prompt is the project.</strong></blockquote>
+  <h4>Example:</h4>
+  <p>“Build me a budgeting app” will get you something vague. But “Build a React app that lets users input income and expenses, save them locally, and export to CSV” will get you something real.</p>
 
   <h3>⏳ Principle 5: Don’t Skip the Thinking</h3>
-  <p>AI is a speed boost, not a shortcut to wisdom.</p>
-  <blockquote><strong>It can’t do your core job — it can only help you do it faster, better, or differently.</strong></blockquote>
+  <p>AI can move fast, but it can’t think for you. If you don’t take the time to define your goals, architecture, and edge cases, you’re just building faster toward confusion.</p>
+  <blockquote><strong>AI can amplify your vision — but it can’t replace it.</strong></blockquote>
+  <h4>Example:</h4>
+  <p>You ask AI for a dashboard. It builds a beautiful UI. But there’s no data validation, no state management, no business logic. Because you never asked for those. You skipped the thinking step.</p>
 
   <h3>🤝 Principle 6: Collaborate With It — Don’t Delegate Blindly</h3>
-  <p>AI is a creative partner, not an employee. You don’t <em>assign</em> it work — you <em>work with it</em>.</p>
-  <blockquote><strong>If you don’t know what needs to be done, AI won’t magically figure it out.</strong></blockquote>
+  <p>Use AI like a creative partner, not a magic worker. It’s incredibly useful when you work *with* it — asking questions, testing ideas, refining outputs.</p>
+  <blockquote><strong>Treat it like a fast assistant, not an expert builder.</strong></blockquote>
+  <h4>Example:</h4>
+  <p>Instead of saying “build this whole app,” try “here’s my file structure, help me design a signup flow that stores user info in localStorage.” That’s collaboration — and it works better every time.</p>
 
- <hr />
+  <hr />
 
   <h3>Final Word</h3>
   <p>This isn’t about rules. It’s about <strong>stewardship</strong>.<br>
   We’re the ones shaping how AI shows up in the world. Let’s do it with clarity, curiosity, and responsibility.</p>
-  
-  <p>WIP by <a href="https://brandonwalowitz.com/">Brandon</a></p>
 
+  <p>WIP by <a href="https://brandonwalowitz.com/">Brandon</a></p>
 </body>
 </html>
