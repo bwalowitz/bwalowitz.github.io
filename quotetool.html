@@ -15,27 +15,20 @@
   <div class="max-w-3xl mx-auto space-y-6">
     <header class="bg-white border rounded-xl p-5 shadow-sm">
       <h1 class="text-2xl font-bold">C2C Margin Calculator</h1>
-      <p class="text-sm text-gray-600 mt-1">Fast quote math based on the formula: <span class="font-mono">Quote = Cost / (1 − Margin%)</span></p>
+      <p class="text-sm text-gray-600 mt-1">Formula: <span class="font-mono">Quote = Cost / (1 − Margin%)</span></p>
     </header>
 
-    <!-- Forward calc: Cost + Target Margin -> Quote -->
+    <!-- Forward calc -->
     <section class="bg-white border rounded-xl p-5 shadow-sm">
       <h2 class="text-xl font-semibold mb-3">Forward mode</h2>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
         <label class="block">
-          <span class="text-sm font-medium">Cost (your cost)</span>
-          <input id="cost" type="number" inputmode="decimal" class="mt-1 w-full rounded-lg border px-3 py-2" placeholder="e.g. 800" value="800" />
+          <span class="text-sm font-medium">Cost</span>
+          <input id="cost" type="number" class="mt-1 w-full rounded-lg border px-3 py-2" value="800" />
         </label>
         <label class="block">
           <span class="text-sm font-medium">Target margin %</span>
-          <div class="flex gap-2 mt-1">
-            <input id="margin" type="number" inputmode="decimal" class="w-full rounded-lg border px-3 py-2" value="20" />
-            <div class="flex gap-1">
-              <button data-preset="20" class="preset btn">20%</button>
-              <button data-preset="25" class="preset btn">25%</button>
-              <button data-preset="30" class="preset btn">30%</button>
-            </div>
-          </div>
+          <input id="margin" type="number" class="mt-1 w-full rounded-lg border px-3 py-2" value="20" />
         </label>
         <label class="block">
           <span class="text-sm font-medium">Round quote</span>
@@ -49,60 +42,50 @@
           </select>
         </label>
         <label class="block">
-          <span class="text-sm font-medium">Optional accessorials</span>
-          <input id="fees" type="number" inputmode="decimal" class="mt-1 w-full rounded-lg border px-3 py-2" placeholder="e.g. 75" value="0" />
-          <span class="text-xs text-gray-500">Add known adders like split, chassis, accessorials. Included in cost for calc.</span>
+          <span class="text-sm font-medium">Accessorials (optional)</span>
+          <input id="fees" type="number" class="mt-1 w-full rounded-lg border px-3 py-2" value="0" />
         </label>
       </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
-        <div class="bg-gray-50 border rounded-lg p-4">
-          <div class="flex justify-between"><span class="text-gray-600">Computed quote</span><strong id="quote">$0</strong></div>
-          <div class="flex justify-between"><span class="text-gray-600">Profit dollars</span><strong id="profit">$0</strong></div>
-          <div class="flex justify-between"><span class="text-gray-600">Margin percent</span><strong id="marginOut">0%</strong></div>
-          <div class="flex justify-between"><span class="text-gray-600">Markup percent on cost</span><strong id="markup">0%</strong></div>
-        </div>
-        <div class="flex items-end gap-2">
-          <button id="copySummary" class="px-4 py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700">Copy summary</button>
-          <span id="copyNote" class="text-sm text-green-700 hidden">Copied</span>
-        </div>
+      <div class="mt-4 flex gap-2">
+        <button id="doCalc" class="px-4 py-2 rounded-lg bg-emerald-600 text-white hover:bg-emerald-700">Calculate</button>
+        <button id="copySummary" class="px-4 py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700">Copy summary</button>
+        <span id="copyNote" class="text-sm text-green-700 hidden">Copied</span>
       </div>
-
-      <p class="text-xs text-gray-500 mt-3">Example: Cost 100 at 20% target gives Quote 125 since 100 is 80% of 125.</p>
+      <div class="bg-gray-50 border rounded-lg p-4 mt-4">
+        <div class="flex justify-between"><span>Quote</span><strong id="quote">$0</strong></div>
+        <div class="flex justify-between"><span>Profit</span><strong id="profit">$0</strong></div>
+        <div class="flex justify-between"><span>Margin %</span><strong id="marginOut">0%</strong></div>
+        <div class="flex justify-between"><span>Markup %</span><strong id="markup">0%</strong></div>
+      </div>
     </section>
 
-    <!-- Reverse calc: Cost + Quote -> Margin -->
+    <!-- Reverse calc -->
     <section class="bg-white border rounded-xl p-5 shadow-sm">
       <h2 class="text-xl font-semibold mb-3">Reverse check</h2>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
         <label class="block">
           <span class="text-sm font-medium">Cost</span>
-          <input id="rcost" type="number" inputmode="decimal" class="mt-1 w-full rounded-lg border px-3 py-2" placeholder="e.g. 1000" value="800" />
+          <input id="rcost" type="number" class="mt-1 w-full rounded-lg border px-3 py-2" value="800" />
         </label>
         <label class="block">
           <span class="text-sm font-medium">Quote</span>
-          <input id="rquote" type="number" inputmode="decimal" class="mt-1 w-full rounded-lg border px-3 py-2" placeholder="e.g. 1000" value="1000" />
+          <input id="rquote" type="number" class="mt-1 w-full rounded-lg border px-3 py-2" value="1000" />
         </label>
         <label class="block">
           <span class="text-sm font-medium">Target margin %</span>
-          <input id="rtarget" type="number" inputmode="decimal" class="mt-1 w-full rounded-lg border px-3 py-2" value="20" />
+          <input id="rtarget" type="number" class="mt-1 w-full rounded-lg border px-3 py-2" value="20" />
         </label>
       </div>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
-        <div class="bg-gray-50 border rounded-lg p-4">
-          <div class="flex justify-between"><span class="text-gray-600">Margin percent</span><strong id="rmargin">0%</strong></div>
-          <div class="flex justify-between"><span class="text-gray-600">Profit dollars</span><strong id="rprofit">$0</strong></div>
-          <div class="flex justify-between"><span class="text-gray-600">Gap vs target</span><strong id="rgap">0%</strong></div>
-        </div>
-        <div class="flex items-end">
-          <p id="rmsg" class="text-sm"></p>
-        </div>
+      <div class="mt-4 flex gap-2">
+        <button id="doRC" class="px-4 py-2 rounded-lg bg-emerald-600 text-white hover:bg-emerald-700">Calculate</button>
       </div>
+      <div class="bg-gray-50 border rounded-lg p-4 mt-4">
+        <div class="flex justify-between"><span>Margin %</span><strong id="rmargin">0%</strong></div>
+        <div class="flex justify-between"><span>Profit</span><strong id="rprofit">$0</strong></div>
+        <div class="flex justify-between"><span>Gap vs target</span><strong id="rgap">0%</strong></div>
+      </div>
+      <p id="rmsg" class="text-sm mt-2"></p>
     </section>
-
-    <footer class="text-xs text-gray-500 text-center">
-      Built for quick quoting. No data stored.
-    </footer>
   </div>
 
   <script>
@@ -135,4 +118,43 @@
 
     function copySummary(){
       const {cost, marginPct, quote, profit, marginOut, markup} = calcForward();
-      const text = `Cost ${money(cost)} at target ${pct(mar
+      const text = `Cost ${money(cost)} at target ${pct(marginPct,1)} -> Quote ${money(quote)} | Profit ${money(profit)} | Margin ${pct(marginOut,1)} | Markup ${pct(markup,1)}`;
+      navigator.clipboard.writeText(text).then(()=>{
+        const note = document.getElementById('copyNote');
+        note.classList.remove('hidden');
+        setTimeout(()=>note.classList.add('hidden'), 1200);
+      });
+    }
+
+    function calcReverse(){
+      const cost = Number(document.getElementById('rcost').value||0);
+      const quote = Number(document.getElementById('rquote').value||0);
+      const target = Number(document.getElementById('rtarget').value||0)/100;
+      const profit = Math.max(quote - cost, 0);
+      const margin = profit/Math.max(quote,1);
+      const gap = margin - target;
+
+      document.getElementById('rmargin').textContent = pct(margin, 1);
+      document.getElementById('rprofit').textContent = money(profit);
+      const gapEl = document.getElementById('rgap');
+      gapEl.textContent = (gap>=0? '+':'') + pct(gap,1);
+      gapEl.className = 'font-bold ' + (gap>=0? 'text-green-700':'text-red-700');
+
+      const msg = document.getElementById('rmsg');
+      if(gap >= 0){
+        msg.textContent = 'You meet or beat the target.';
+        msg.className = 'text-green-700';
+      } else {
+        const need = cost/(1 - target) - quote;
+        msg.textContent = `Short of target. Increase quote by about ${money(Math.ceil(need))}.`;
+        msg.className = 'text-red-700';
+      }
+    }
+
+    // Buttons
+    document.getElementById('doCalc').addEventListener('click', calcForward);
+    document.getElementById('copySummary').addEventListener('click', copySummary);
+    document.getElementById('doRC').addEventListener('click', calcReverse);
+  </script>
+</body>
+</html>
