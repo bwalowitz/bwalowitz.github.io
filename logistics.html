@@ -22,24 +22,13 @@
 
     /* Type wrapping and measures */
     .balance { text-wrap: balance; }
-    .hero-title { line-height: 1.1; letter-spacing: -0.01em; }
-    @media (min-width: 1024px) { .hero-title { line-height: 1.08; } }
+    .hero-title { line-height: 1.12; letter-spacing: -0.01em; }
+    @media (min-width: 1024px) { .hero-title { line-height: 1.1; } }
+    .gradient-text { padding-bottom: 0.08em; } /* avoid clipping descenders like 'g' */
 
-    .narrow-ch { max-width: 26ch; }
-    .narrow-ch-lg { max-width: 30ch; }
-    .copy-ch { max-width: 62ch; }
-    @media (min-width: 768px) {
-      .narrow-ch { max-width: 28ch; }
-      .narrow-ch-lg { max-width: 34ch; }
-    }
-    @media (min-width: 1024px) {
-      .narrow-ch { max-width: 30ch; }
-      .narrow-ch-lg { max-width: 38ch; }
-    }
-
-    /* Refined measures for headings and paragraphs */
     .h-measure { max-width: 22ch; }
-    .p-measure, .copy-ch { max-width: 46ch; }
+    .p-measure { max-width: 46ch; }
+    .copy-ch { max-width: 46ch; }
     @media (min-width: 768px) {
       .h-measure { max-width: 26ch; }
       .p-measure, .copy-ch { max-width: 52ch; }
@@ -91,7 +80,7 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-28 text-center relative">
       <h1 class="hero-title balance text-5xl lg:text-7xl font-bold mb-6 leading-tight mx-auto h-measure">
         AI Sales Coach for
-        <span class="bg-gradient-to-r from-cyan-300 via-purple-300 to-teal-300 bg-clip-text text-transparent align-baseline inline-block">Logistics&nbsp;Teams</span>
+        <span class="gradient-text bg-gradient-to-r from-cyan-300 via-purple-300 to-teal-300 bg-clip-text text-transparent align-baseline">Logistics&nbsp;Teams</span>
       </h1>
       <p class="text-xl lg:text-2xl text-white/80 mb-4 copy-ch mx-auto leading-relaxed balance">
         Hands-on practice for reps, any time. No scheduling. No shadowing.
@@ -232,24 +221,12 @@
     </div>
   </section>
 
-  <!-- Social Proof -->
-  <section class="py-20">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 balance mx-auto h-measure leading-tight">What Sales Leaders Are Saying</h2>
-      <div class="grid gap-6 center-grid md:grid-cols-3 md:place-items-stretch">
-        <figure class="card glass rounded-2xl p-6">
-          <blockquote class="text-white/90">“We cut ramp time and finally have a repeatable way to coach margin decisions.”</blockquote>
-          <figcaption class="text-white/60 text-sm mt-3">VP Sales, 3PL</figcaption>
-        </figure>
-        <figure class="card glass rounded-2xl p-6">
-          <blockquote class="text-white/90">“New reps sound like our top reps by week four. Objection drills made the difference.”</blockquote>
-          <figcaption class="text-white/60 text-sm mt-3">Head of Growth, Brokerage</figcaption>
-        </figure>
-        <figure class="card glass rounded-2xl p-6">
-          <blockquote class="text-white/90">“Quotes are consistent with our guardrails. Managers coach, not debate scripts.”</blockquote>
-          <figcaption class="text-white/60 text-sm mt-3">Director of Sales, Carrier</figcaption>
-        </figure>
-      </div>
+  <!-- Quotes (simple, anonymous) -->
+  <section class="py-16">
+    <div class="max-w-3xl mx-auto px-4 text-center space-y-8">
+      <blockquote class="italic text-white/90">“We cut ramp time and finally have a repeatable way to coach margin decisions.”</blockquote>
+      <blockquote class="italic text-white/90">“New reps sound like our top reps by week four. Objection drills made the difference.”</blockquote>
+      <blockquote class="italic text-white/90">“Quotes align with guardrails. Managers coach instead of debating scripts.”</blockquote>
     </div>
   </section>
 
