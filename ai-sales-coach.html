@@ -19,7 +19,39 @@
       background: rgba(255,255,255,0.06);
       border: 1px solid rgba(255,255,255,0.08);
     }
-  </style>
+  
+    .balance { text-wrap: balance; }
+    .hero-title { line-height: 1.1; letter-spacing: -0.01em; }
+    @media (min-width: 1024px) {
+      .hero-title { line-height: 1.08; }
+    }
+    
+    .narrow-ch { max-width: 26ch; }
+    .narrow-ch-lg { max-width: 30ch; }
+    .copy-ch { max-width: 62ch; }
+    @media (min-width: 768px) {
+      .narrow-ch { max-width: 28ch; }
+      .narrow-ch-lg { max-width: 34ch; }
+    }
+    @media (min-width: 1024px) {
+      .narrow-ch { max-width: 30ch; }
+      .narrow-ch-lg { max-width: 38ch; }
+    }
+    
+    /* Refined measures for balanced, readable centered text */
+    .h-measure { max-width: 22ch; }
+    .p-measure, .copy-ch { max-width: 46ch; } /* shrink default paragraph measure */
+    @media (min-width: 768px) {
+      .h-measure { max-width: 26ch; }
+      .p-measure, .copy-ch { max-width: 52ch; }
+    }
+    @media (min-width: 1024px) {
+      .h-measure { max-width: 30ch; }
+      .p-measure, .copy-ch { max-width: 56ch; }
+    }
+    h1.balance, h2.balance, h3.balance, p.balance { text-wrap: balance; }
+
+    </style>
 </head>
 <body class="bg-[#0b1220] text-white antialiased">
   <!-- Nav -->
@@ -32,7 +64,7 @@
         <a href="#who" class="hover:text-white">Who it's for</a>
         <a href="#contact" class="hover:text-white">Contact</a>
       </nav>
-      <a href="#contact" class="inline-flex items-center rounded-lg bg-cyan-500 px-4 py-2 text-sm font-medium text-black hover:bg-cyan-400">Talk to me</a>
+      <a href="https://calendly.com/walowitz/new-meeting" class="inline-flex items-center rounded-lg bg-cyan-500 px-4 py-2 text-sm font-medium text-black hover:bg-cyan-400">Talk to me</a>
     </div>
   </header>
 
@@ -40,30 +72,30 @@
   <section class="relative hero-bg">
     <div class="absolute inset-0 pointer-events-none"></div>
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-28 text-center relative">
-      <h1 class="text-5xl lg:text-7xl font-bold mb-6 leading-tight">
+      <h1 class="hero-title balance text-5xl lg:text-7xl font-bold mb-6 leading-tight mx-auto h-measure">
         AI Sales Coach for
-        <span class="bg-gradient-to-r from-cyan-300 via-purple-300 to-teal-300 bg-clip-text text-transparent align-middle">Real Estate Teams</span>
+        <span class="bg-gradient-to-r from-cyan-300 via-purple-300 to-teal-300 bg-clip-text text-transparent align-baseline inline-block">Real Estate&nbsp;Teams</span>
       </h1>
-      <p class="text-xl lg:text-2xl text-white/80 mb-4 max-w-4xl mx-auto leading-relaxed">
+      <p class="text-xl lg:text-2xl text-white/80 mb-4 copy-ch mx-auto leading-relaxed balance">
         Hands-on practice for agents, any time. No scheduling. No shadowing.
       </p>
-      <p class="text-lg text-white/60 mb-12 max-w-3xl mx-auto italic">
+      <p class="text-lg text-white/60 mb-12 copy-ch mx-auto italic balance">
         Trained on your scripts and market language.
       </p>
 
       <!-- Bulleted value list -->
-      <div class="grid md:grid-cols-3 gap-4 max-w-5xl mx-auto mb-12">
-        <div class="glass rounded-2xl p-6 text-left">
+      <div class="grid gap-4 max-w-5xl mx-auto mb-12 place-items-center md:grid-cols-3 md:place-items-stretch">
+        <div class="glass rounded-2xl p-6 text-left w-full max-w-[680px] md:max-w-none">
           <div class="text-2xl mb-2">📞</div>
           <h3 class="font-semibold mb-1">Prospecting and follow-up</h3>
           <p class="text-white/70 text-sm">Practice that mirrors your market with realistic objections and scenario prompts.</p>
         </div>
-        <div class="glass rounded-2xl p-6 text-left">
+        <div class="glass rounded-2xl p-6 text-left w-full max-w-[680px] md:max-w-none">
           <div class="text-2xl mb-2">🧠</div>
           <h3 class="font-semibold mb-1">Listing presentations</h3>
           <p class="text-white/70 text-sm">Run simulations and rehearse objection handling until it sticks.</p>
         </div>
-        <div class="glass rounded-2xl p-6 text-left">
+        <div class="glass rounded-2xl p-6 text-left w-full max-w-[680px] md:max-w-none">
           <div class="text-2xl mb-2">✍️</div>
           <h3 class="font-semibold mb-1">Reusable copy blocks</h3>
           <p class="text-white/70 text-sm">Snippets reps can reuse in emails, texts, and DMs.</p>
@@ -71,7 +103,7 @@
       </div>
 
       <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <a href="#contact" class="inline-flex items-center justify-center rounded-xl bg-cyan-500 px-6 py-3 font-semibold text-black hover:bg-cyan-400">Book a 20‑minute walkthrough</a>
+        <a href="https://calendly.com/walowitz/new-meeting" class="inline-flex items-center justify-center rounded-xl bg-cyan-500 px-6 py-3 font-semibold text-black hover:bg-cyan-400">Book a 20‑minute walkthrough</a>
         <a href="#how" class="inline-flex items-center justify-center rounded-xl border border-white/20 px-6 py-3 font-semibold text-white hover:bg-white/10">See how it works</a>
       </div>
 
@@ -82,24 +114,24 @@
   <!-- How It Works -->
   <section id="how" class="py-20 bg-[#0a0f1a]">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">How It Works</h2>
-      <div class="grid md:grid-cols-4 gap-6">
-        <div class="glass rounded-2xl p-6">
+      <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 balance mx-auto h-measure leading-tight">How It Works</h2>
+      <div class="grid gap-6 place-items-center md:grid-cols-4 md:place-items-stretch">
+        <div class="glass rounded-2xl p-6 w-full max-w-[680px] md:max-w-none">
           <div class="text-2xl">📄</div>
           <h3 class="font-semibold mt-2">1. Upload scripts</h3>
           <p class="text-white/70 text-sm">Your buyer and seller scripts, talk tracks, and local language.</p>
         </div>
-        <div class="glass rounded-2xl p-6">
+        <div class="glass rounded-2xl p-6 w-full max-w-[680px] md:max-w-none">
           <div class="text-2xl">🎛️</div>
           <h3 class="font-semibold mt-2">2. Select scenarios</h3>
           <p class="text-white/70 text-sm">Pick prospect types and objections you want reps to master.</p>
         </div>
-        <div class="glass rounded-2xl p-6">
+        <div class="glass rounded-2xl p-6 w-full max-w-[680px] md:max-w-none">
           <div class="text-2xl">🤖</div>
           <h3 class="font-semibold mt-2">3. Practice with AI</h3>
           <p class="text-white/70 text-sm">Agents role‑play any time. Immediate feedback. No calendar juggling.</p>
         </div>
-        <div class="glass rounded-2xl p-6">
+        <div class="glass rounded-2xl p-6 w-full max-w-[680px] md:max-w-none">
           <div class="text-2xl">📈</div>
           <h3 class="font-semibold mt-2">4. Review and improve</h3>
           <p class="text-white/70 text-sm">Track strengths, gaps, and next reps to coach.</p>
@@ -111,19 +143,19 @@
   <!-- Features -->
   <section id="features" class="py-20">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">Why Teams Use This</h2>
-      <div class="grid md:grid-cols-3 gap-6">
-        <div class="glass rounded-2xl p-6">
+      <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 balance mx-auto h-measure leading-tight">Why Teams Use This</h2>
+      <div class="grid gap-6 place-items-center md:grid-cols-3 md:place-items-stretch">
+        <div class="glass rounded-2xl p-6 w-full max-w-[680px] md:max-w-none">
           <div class="text-2xl">⚡</div>
           <h3 class="font-semibold mt-2">Faster ramp</h3>
           <p class="text-white/70 text-sm">New reps practice day one. Less shadowing. Less babysitting.</p>
         </div>
-        <div class="glass rounded-2xl p-6">
+        <div class="glass rounded-2xl p-6 w-full max-w-[680px] md:max-w-none">
           <div class="text-2xl">🛡️</div>
           <h3 class="font-semibold mt-2">Consistent messaging</h3>
           <p class="text-white/70 text-sm">Your scripts and brand voice loaded into every simulation.</p>
         </div>
-        <div class="glass rounded-2xl p-6">
+        <div class="glass rounded-2xl p-6 w-full max-w-[680px] md:max-w-none">
           <div class="text-2xl">🧩</div>
           <h3 class="font-semibold mt-2">Modular and private</h3>
           <p class="text-white/70 text-sm">Bring your data, keep your data. Simple setup.</p>
@@ -135,15 +167,18 @@
   <!-- Who It's For -->
   <section id="who" class="py-20 bg-[#0a0f1a]">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
       <div class="text-center mb-12">
-        <h2 class="text-3xl md:text-4xl font-bold">Built For Sales Teams That</h2>
-        <p class="text-2xl font-extrabold bg-gradient-to-r from-white to-white/50 bg-clip-text text-transparent">Move Fast</p>
-        <p class="text-white/70 max-w-2xl mx-auto mt-4">Whether you're scaling fast, hiring constantly, or struggling with inconsistent performance, this fits.</p>
+        <h2 class="balance mx-auto font-bold text-3xl md:text-4xl narrow-ch-lg leading-tight">
+          Built For Sales Teams That <span class="bg-gradient-to-r from-white to-white/50 bg-clip-text text-transparent whitespace-nowrap">Move&nbsp;Fast</span>
+        </h2>
+        <p class="text-white/70 copy-ch mx-auto mt-4 balance">Whether you're scaling fast, hiring constantly, or struggling with inconsistent performance, this fits.</p>
       </div>
-      <div class="grid md:grid-cols-2 gap-8">
+
+      <div class="grid gap-8 place-items-center md:grid-cols-2 md:place-items-stretch">
         <!-- Real Estate -->
-        <div class="glass rounded-2xl p-6">
-          <div class="flex items-center gap-3 mb-4 text-lg"><span>🏠</span><span class="font-semibold">Real Estate Teams</span></div>
+        <div class="glass rounded-2xl p-6 w-full max-w-[680px] md:max-w-none">
+          <div class="flex items-center gap-3 mb-4 text-lg"><span>🏠</span><span class="font-semibold">Real Estate&nbsp;Teams</span></div>
           <div class="grid md:grid-cols-2 gap-4">
             <div>
               <p class="text-xs uppercase tracking-wide text-white/60">The challenge</p>
@@ -156,7 +191,7 @@
           </div>
         </div>
         <!-- Logistics -->
-        <div class="glass rounded-2xl p-6">
+        <div class="glass rounded-2xl p-6 w-full max-w-[680px] md:max-w-none">
           <div class="flex items-center gap-3 mb-4 text-lg"><span>🚚</span><span class="font-semibold">Logistics & Freight</span></div>
           <div class="grid md:grid-cols-2 gap-4">
             <div>
@@ -172,10 +207,10 @@
       </div>
 
       <div class="mt-12 text-center">
-        <h3 class="text-2xl font-semibold mb-2">Hiring, Onboarding, or Scaling?</h3>
-        <p class="text-white/70 max-w-2xl mx-auto">If you're bringing on new reps or trying to standardize performance without babysitting your team, this was built for you.</p>
+        <h3 class="text-2xl font-semibold mb-2 balance mx-auto h-measure">Hiring, Onboarding, or Scaling?</h3>
+        <p class="text-white/70 mx-auto p-measure balance">If you're bringing on new reps or trying to standardize performance without babysitting your team, this was built for you.</p>
         <div class="mt-6">
-          <a href="#contact" class="inline-flex items-center justify-center rounded-xl bg-white text-black px-6 py-3 font-semibold hover:bg-white/90">Perfect fit for growing teams</a>
+          <a href="https://calendly.com/walowitz/new-meeting" class="inline-flex items-center justify-center rounded-xl bg-white text-black px-6 py-3 font-semibold hover:bg-white/90">Perfect fit for growing teams</a>
         </div>
       </div>
     </div>
@@ -184,17 +219,17 @@
   <!-- Social Proof -->
   <section class="py-20">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">What Sales Leaders Are Saying</h2>
-      <div class="grid md:grid-cols-3 gap-6">
-        <figure class="glass rounded-2xl p-6">
+      <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 balance mx-auto h-measure leading-tight">What Sales Leaders Are Saying</h2>
+      <div class="grid gap-6 place-items-center md:grid-cols-3 md:place-items-stretch">
+        <figure class="glass rounded-2xl p-6 w-full max-w-[680px] md:max-w-none">
           <blockquote class="text-white/90">“This cut our ramp time in half and gave managers a repeatable way to coach.”</blockquote>
           <figcaption class="text-white/60 text-sm mt-3">VP Sales, SaaS</figcaption>
         </figure>
-        <figure class="glass rounded-2xl p-6">
+        <figure class="glass rounded-2xl p-6 w-full max-w-[680px] md:max-w-none">
           <blockquote class="text-white/90">“Our team sounds the same on day 30 as our top reps. That has never happened.”</blockquote>
           <figcaption class="text-white/60 text-sm mt-3">Head of Growth, Real Estate</figcaption>
         </figure>
-        <figure class="glass rounded-2xl p-6">
+        <figure class="glass rounded-2xl p-6 w-full max-w-[680px] md:max-w-none">
           <blockquote class="text-white/90">“We finally stopped arguing about scripts. We practice instead.”</blockquote>
           <figcaption class="text-white/60 text-sm mt-3">Director of Sales, Logistics</figcaption>
         </figure>
@@ -205,9 +240,9 @@
   <!-- About -->
   <section class="py-20 bg-[#0a0f1a]">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <h2 class="text-3xl md:text-4xl font-bold mb-4">About Me</h2>
-      <p class="text-white/80">I'm Brandon, a strategist, designer, and builder who helps businesses grow using story, systems, and AI.</p>
-      <p class="text-white/60 mt-4">These tools came directly from client needs and have helped real sales teams ramp faster and sell with more confidence.</p>
+      <h2 class="text-3xl md:text-4xl font-bold mb-4 balance mx-auto h-measure leading-tight">About Me</h2>
+      <p class="text-white/80 copy-ch mx-auto balance">I'm Brandon, a strategist, designer, and builder who helps businesses grow using story, systems, and AI.</p>
+      <p class="text-white/60 mt-4 copy-ch mx-auto balance">These tools came directly from client needs and have helped real sales teams ramp faster and sell with more confidence.</p>
     </div>
   </section>
 
@@ -215,10 +250,10 @@
   <section id="contact" class="py-20">
     <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
       <h2 class="text-3xl md:text-4xl font-bold mb-4">Want to talk it through?</h2>
-      <p class="text-white/70 mb-8">I can show you exactly how this would plug into your team and your market.</p>
+      <p class="text-white/70 mb-8 copy-ch mx-auto balance">I can show you exactly how this would plug into your team and your market.</p>
       <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <a href="mailto:bwalowitz@gmail.com?subject=AI%20Sales%20Coach%20Inquiry" class="inline-flex items-center justify-center rounded-xl bg-cyan-500 px-6 py-3 font-semibold text-black hover:bg-cyan-400">Email Brandon</a>
-        <a href="https://cal.com/" class="inline-flex items-center justify-center rounded-xl border border-white/20 px-6 py-3 font-semibold text-white hover:bg-white/10">Grab time on my calendar</a>
+        <a href="mailto:b@brandonwalowitz.com" class="inline-flex items-center justify-center rounded-xl bg-cyan-500 px-6 py-3 font-semibold text-black hover:bg-cyan-400">Email Brandon</a>
+        <a href="https://calendly.com/walowitz/new-meeting" class="inline-flex items-center justify-center rounded-xl border border-white/20 px-6 py-3 font-semibold text-white hover:bg-white/10">Grab time on my calendar</a>
       </div>
     </div>
   </section>
