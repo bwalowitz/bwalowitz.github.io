@@ -24,7 +24,7 @@
     .balance { text-wrap: balance; }
     .hero-title { line-height: 1.12; letter-spacing: -0.01em; }
     @media (min-width: 1024px) { .hero-title { line-height: 1.1; } }
-    .gradient-text { padding-bottom: 0.08em; } /* avoid clipping descenders like g */
+    .gradient-text { padding-bottom: 0.08em; } /* avoid clipped descenders like g */
 
     .h-measure { max-width: 22ch; }
     .p-measure { max-width: 46ch; }
@@ -53,6 +53,9 @@
     }
     .card .flex { justify-content: center; }
     @media (min-width: 768px) { .card .flex { justify-content: flex-start; } }
+
+    /* Extra comfort so anchor jumps never hide under the sticky header */
+    #how, #features, #who, #contact { scroll-margin-top: 84px; }
 
     /* Fallback if justify-items is not supported */
     @supports not (justify-items: center) {
@@ -246,5 +249,44 @@
     © <span id="y"></span> Brandon Walowitz
     <script>document.getElementById('y').textContent = new Date().getFullYear()</script>
   </footer>
+
+  <!-- Smooth scroll with easing and sticky-header offset -->
+  <script>
+    (function() {
+      const easeInOutCubic = t => t < 0.5
+        ? 4 * t * t * t
+        : 1 - Math.pow(-2 * t + 2, 3) / 2;
+
+      function smoothScrollTo(targetY, duration) {
+        const startY = window.scrollY || window.pageYOffset;
+        const diff = targetY - startY;
+        const start = performance.now();
+
+        function step(now) {
+          const p = Math.min(1, (now - start) / duration);
+          const eased = easeInOutCubic(p);
+          window.scrollTo(0, startY + diff * eased);
+          if (p < 1) requestAnimationFrame(step);
+        }
+        requestAnimationFrame(step);
+      }
+
+      document.addEventListener('click', function(e) {
+        const a = e.target.closest('a[href^="#"]');
+        if (!a) return;
+        const hash = a.getAttribute('href');
+        if (!hash || hash === '#') return;
+        const el = document.querySelector(hash);
+        if (!el) return;
+
+        e.preventDefault();
+        const header = document.querySelector('header');
+        const offset = header ? header.getBoundingClientRect().height + 12 : 0; // add a tiny cushion
+        const y = el.getBoundingClientRect().top + window.scrollY - offset;
+        smoothScrollTo(y, 900); // slightly slow with easing
+        history.pushState(null, '', hash);
+      }, false);
+    })();
+  </script>
 </body>
 </html>
