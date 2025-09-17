@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>What Aged Badly In School?</title>
+  <style>
+    :root {
+      --bg: #0b0f17;
+      --card: #111827;
+      --muted: #9aa3b2;
+      --text: #e5e7eb;
+      --accent: #7c3aed;
+      --accent2: #22d3ee;
+      --good: #16a34a;
+      --warn: #f59e0b;
+      --bad: #ef4444;
+      --radius: 14px;
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+    }
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      margin: 0;
+      font-family: ui-sans-serif, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      color: var(--text);
+      background:
+        radial-gradient(1200px 600px at 10% -10%, rgba(124,58,237,.25), transparent 60%),
+        radial-gradient(900px 500px at 120% 10%, rgba(34,211,238,.22), transparent 60%),
+        var(--bg);
+    }
+    .container { max-width: 980px; margin: 40px auto; padding: 0 18px 50px; }
+    header { text-align: center; margin-bottom: 26px; }
+    h1 { font-size: 28px; margin: 10px 0 6px; letter-spacing: .3px; }
+    p.lead { color: var(--muted); margin: 0; }
+
+    .panel {
+      background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+      border: 1px solid rgba(255,255,255,.06);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 18px;
+    }
+
+    .controls { display: grid; grid-template-columns: 1fr auto; gap: 10px; align-items: center; }
+    input[type="number"] {
+      padding: 14px 14px; font-size: 16px; width: 100%; border-radius: 10px;
+      border: 1px solid rgba(255,255,255,.15); background: rgba(255,255,255,.04); color: var(--text);
+      outline: none; transition: border-color .2s ease;
+    }
+    input[type="number"]:focus { border-color: var(--accent2); }
+    button.primary {
+      padding: 14px 18px; font-size: 16px; border: 0; border-radius: 10px; cursor: pointer;
+      color: white; background: linear-gradient(90deg, var(--accent), var(--accent2));
+      box-shadow: 0 6px 20px rgba(34,211,238,.25);
+    }
+    .quick-years { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 8px; }
+    .chip { font-size: 14px; padding: 8px 10px; border: 1px solid rgba(255,255,255,.12); border-radius: 999px; color: var(--muted); cursor: pointer; }
+    .chip:hover { border-color: var(--accent2); color: var(--text); }
+
+    .results { margin-top: 20px; display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 14px; }
+    .card { background: var(--card); border: 1px solid rgba(255,255,255,.06); border-radius: 14px; padding: 16px; box-shadow: var(--shadow); }
+    .kicker { font-size: 12px; letter-spacing: .2px; color: var(--muted); text-transform: uppercase; }
+    .title { font-size: 16px; font-weight: 700; margin: 6px 0 6px; }
+    .meta { font-size: 12px; color: var(--muted); margin-bottom: 8px; display: flex; gap: 10px; flex-wrap: wrap; }
+    .pill { padding: 2px 8px; border-radius: 999px; font-size: 11px; border: 1px solid rgba(255,255,255,.18); color: var(--text); }
+    .pill.bad { background: rgba(239,68,68,.08); border-color: rgba(239,68,68,.3); }
+    .pill.warn { background: rgba(245,158,11,.08); border-color: rgba(245,158,11,.3); }
+    .pill.good { background: rgba(34,197,94,.08); border-color: rgba(34,197,94,.3); }
+    .desc { font-size: 14px; color: #d7dae0; }
+    .now { font-size: 13px; color: #b7bdc8; margin-top: 6px; }
+    .sources { margin-top: 10px; display: flex; gap: 8px; flex-wrap: wrap; }
+    .sources a { color: #a5b4fc; text-decoration: none; font-size: 12px; border-bottom: 1px dotted rgba(165,180,252,.5); }
+
+    .empty { text-align: center; color: var(--muted); font-size: 15px; padding: 18px; border: 1px dashed rgba(255,255,255,.08); border-radius: 12px; }
+
+    footer { margin-top: 26px; color: var(--muted); font-size: 12px; text-align: center; }
+    .row { display: grid; grid-template-columns: 1fr; gap: 10px; }
+    @media (min-width: 760px) { .row { grid-template-columns: 1fr 1fr; } }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Outdated School Facts</h1>
+      <p class="lead">Enter your high school grad year. We'll show ideas you likely learned that were revised, reclassified, or debunked.</p>
+    </header>
+
+    <section class="panel">
+      <div class="controls">
+        <input id="year" type="number" placeholder="e.g., 1997" min="1900" max="2100" />
+        <button class="primary" id="go">Generate</button>
+      </div>
+      <div class="quick-years" id="quick"></div>
+      <div class="results" id="results"></div>
+    </section>
+
+    <footer>
+      Notes: This is a light guide for the US and similar curricula. Schools vary. Status labels show what changed: Debunked, Reclassified, Revised, or Nuanced. Click sources to read more.
+    </footer>
+  </div>
+
+<script>
+const DATA = [
+  {
+    id: 'pluto',
+    title: 'Pluto is the ninth planet',
+    category: 'Space',
+    status: 'Reclassified',
+    changedYear: 2006,
+    was: 'Pluto was taught as a full planet.',
+    now: 'In 2006 the International Astronomical Union defined "planet" in a way that moved Pluto to the dwarf planet category.',
+    sources: [
+      { name: 'IAU on Pluto', url: 'https://www.iau.org/public/themes/pluto/' }
+    ]
+  },
+  {
+    id: 'food-pyramid',
+    title: 'The Food Pyramid is the gold standard',
+    category: 'Health',
+    status: 'Revised',
+    changedYear: 2011,
+    was: 'The 1992 Food Guide Pyramid was used as the healthy eating map.',
+    now: 'The USDA replaced pyramids with MyPlate in 2011, shifting focus to portions on a plate and updated nutrition science.',
+    sources: [
+      { name: 'USDA MyPlate', url: 'https://www.myplate.gov/eat-healthy/what-is-myplate' }
+    ]
+  },
+  {
+    id: 'ulcers',
+    title: 'Stress and spicy food cause most stomach ulcers',
+    category: 'Health',
+    status: 'Debunked',
+    changedYear: 1994,
+    was: 'Textbooks often blamed stress or spicy food for peptic ulcers.',
+    now: 'Most peptic ulcers are tied to infection with Helicobacter pylori or to certain medicines. A 1994 NIH statement and a 2005 Nobel Prize cemented this view.',
+    sources: [
+      { name: 'NIH 1994 Consensus', url: 'https://consensus.nih.gov/1994/1994HelicobacterPyloriUlcer096html.htm' },
+      { name: 'Nobel 2005 (H. pylori)', url: 'https://www.nobelprize.org/prizes/medicine/2005/summary/' }
+    ]
+  },
+  {
+    id: 'learning-styles',
+    title: 'Teaching to visual vs auditory vs kinesthetic styles boosts outcomes',
+    category: 'Psychology',
+    status: 'Debunked',
+    changedYear: 2009,
+    was: 'Many schools promoted matching lessons to a student\'s labeled style.',
+    now: 'Systematic reviews show little evidence that matching instruction to these labels improves learning. Using multiple formats helps for other reasons.',
+    sources: [
+      { name: 'Pashler et al. 2009', url: 'https://journals.sagepub.com/doi/10.1111/j.1539-6053.2009.01038.x' }
+    ]
+  },
+  {
+    id: 'left-right-brain',
+    title: 'People are left-brained or right-brained',
+    category: 'Psychology',
+    status: 'Debunked',
+    changedYear: 2013,
+    was: 'Personality or talent was said to depend on a dominant brain hemisphere.',
+    now: 'Large imaging studies show no such population split. Both hemispheres work together and specialization is task-specific.',
+    sources: [
+      { name: 'Nielsen et al. 2013', url: 'https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3839434/' }
+    ]
+  },
+  {
+    id: 'tongue-map',
+    title: 'Different parts of the tongue taste only certain flavors',
+    category: 'Biology',
+    status: 'Debunked',
+    changedYear: 2006,
+    was: 'Diagrams showed sweet on the tip, bitter in the back, etc.',
+    now: 'Taste receptors for all basic tastes are spread across the tongue. The classic map was a misunderstanding that stuck around in classrooms.',
+    sources: [
+      { name: 'Scientific American explainer', url: 'https://www.scientificamerican.com/article/fact-or-fiction-tongue-map/' }
+    ]
+  },
+  {
+    id: 'three-states',
+    title: 'There are only three states of matter',
+    category: 'Physics',
+    status: 'Revised',
+    changedYear: 1995,
+    was: 'Solid, liquid, gas were presented as the complete list.',
+    now: 'Plasma is common in the universe and more states exist. Bose–Einstein condensates were created in 1995 and entered textbooks soon after.',
+    sources: [
+      { name: 'NIST on BEC', url: 'https://www.nist.gov/si-redefinition/what-bose-einstein-condensate' }
+    ]
+  },
+  {
+    id: 'dinosaurs',
+    title: 'Dinosaurs were slow and cold-blooded reptiles',
+    category: 'Biology',
+    status: 'Revised',
+    changedYear: 1990,
+    was: 'The old view pictured sluggish, lizard-like dinosaurs.',
+    now: 'Evidence from bones, feathers, and growth rates shows many dinosaurs were active, some with bird-like traits and higher metabolisms.',
+    sources: [
+      { name: 'Natural History Museum (UK)', url: 'https://www.nhm.ac.uk/discover/what-colour-were-dinosaurs.html' }
+    ]
+  },
+  {
+    id: 'great-wall',
+    title: 'The Great Wall of China is visible from space with the naked eye',
+    category: 'Geography',
+    status: 'Debunked',
+    changedYear: 2003,
+    was: 'A common textbook claim said you could see it from space.',
+    now: 'Astronauts report it is generally not visible to the unaided eye from low Earth orbit.',
+    sources: [
+      { name: 'NASA Earth Observatory', url: 'https://earthobservatory.nasa.gov/blogs/elegantfigures/2012/02/28/can-you-see-the-great-wall-of-china-from-space/' }
+    ]
+  },
+  {
+    id: 'coriolis',
+    title: 'Toilets drain opposite directions in each hemisphere',
+    category: 'Physics',
+    status: 'Debunked',
+    changedYear: 2005,
+    was: 'The Coriolis effect was blamed for sink swirl direction.',
+    now: 'For small basins, design and water motion dominate. Coriolis is too weak at that scale.',
+    sources: [
+      { name: 'MIT Tech Review explainer', url: 'https://www.technologyreview.com/2011/11/03/190241/mit-physics-what-drives-toilet-swirl/' }
+    ]
+  },
+  {
+    id: 'ten-percent',
+    title: 'Humans use only 10 percent of their brain',
+    category: 'Psychology',
+    status: 'Debunked',
+    changedYear: 1998,
+    was: 'A pop claim that slipped into some lessons and posters.',
+    now: 'Brain imaging and lesion studies show we use most regions across a normal day.',
+    sources: [
+      { name: 'Scientific American', url: 'https://www.scientificamerican.com/article/do-people-only-use-10-percent-of-their-brains/' }
+    ]
+  },
+  {
+    id: 'plate-tectonics',
+    title: 'Continental drift was controversial',
+    category: 'Earth Science',
+    status: 'Revised',
+    changedYear: 1968,
+    was: 'Before the late 1960s, many courses did not teach plate tectonics as the unifying theory.',
+    now: 'By about 1968 plate tectonics became mainstream as seafloor spreading and subduction evidence stacked up.',
+    sources: [
+      { name: 'USGS summary', url: 'https://pubs.usgs.gov/publication/70010100' }
+    ]
+  },
+  {
+    id: 'brontosaurus',
+    title: 'Brontosaurus never existed as a valid dinosaur',
+    category: 'Biology',
+    status: 'Nuanced',
+    changedYear: 2015,
+    was: 'For decades students were told Brontosaurus was just Apatosaurus.',
+    now: 'A 2015 analysis argued Brontosaurus is distinct after all. Some paleontologists debate this, but many outlets now accept the genus again.',
+    sources: [
+      { name: 'PeerJ 2015 study', url: 'https://peerj.com/articles/857/' }
+    ]
+  },
+];
+
+const TAG_COLORS = {
+  Debunked: 'bad',
+  Reclassified: 'good',
+  Revised: 'warn',
+  Nuanced: 'warn'
+};
+
+function byYear(gradYear) {
+  const y = Number(gradYear);
+  if (!y || y < 1900 || y > 2100) return [];
+  return DATA.filter(item => typeof item.changedYear === 'number' ? y < item.changedYear : true);
+}
+
+function render(list, year) {
+  const wrap = document.getElementById('results');
+  if (!list.length) {
+    wrap.innerHTML = `<div class="empty">No obvious items for ${year}. Try an earlier year.</div>`;
+    return;
+  }
+  wrap.innerHTML = list.map(i => `
+    <article class="card">
+      <div class="kicker">${i.category}</div>
+      <div class="title">${i.title}</div>
+      <div class="meta">
+        <span class="pill ${TAG_COLORS[i.status] || ''}">${i.status}</span>
+        ${i.changedYear ? `<span class="pill">Change noted: ${i.changedYear}</span>` : ''}
+      </div>
+      <div class="desc">${i.was}</div>
+      <div class="now"><strong>Today:</strong> ${i.now}</div>
+      ${i.sources?.length ? `<div class="sources">${i.sources.map(s => `<a href="${s.url}" target="_blank" rel="noopener">${s.name}</a>`).join('')}</div>` : ''}
+    </article>
+  `).join('');
+}
+
+function generate() {
+  const year = document.getElementById('year').value.trim();
+  const results = byYear(year).sort((a,b) => a.category.localeCompare(b.category));
+  render(results, year);
+  const url = new URL(window.location);
+  url.searchParams.set('year', year);
+  history.replaceState(null, '', url.toString());
+}
+
+// setup
+(function init(){
+  const p = new URLSearchParams(location.search);
+  const guess = p.get('year') || (new Date().getFullYear() - 28); // default guess
+  const input = document.getElementById('year');
+  input.value = guess;
+  document.getElementById('go').addEventListener('click', (e)=>{ e.preventDefault(); generate(); });
+
+  const quick = document.getElementById('quick');
+  const samples = [1965, 1975, 1985, 1995, 1997, 2005, 2010, 2015];
+  quick.innerHTML = samples.map(y => `<span class="chip" data-year="${y}">${y}</span>`).join('');
+  quick.addEventListener('click', e => {
+    const y = e.target?.dataset?.year; if (!y) return; input.value = y; generate();
+  });
+
+  // auto run once
+  generate();
+})();
+</script>
+</body>
+</html>
