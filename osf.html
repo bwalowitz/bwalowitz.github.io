@@ -83,10 +83,7 @@
     <section class="panel">
       <div class="controls">
         <input id="year" type="number" placeholder="e.g., 1997" min="1900" max="2100" />
-        <div style="display:flex; gap:8px;">
-          <button class="primary" id="go">Show 6</button>
-          <button class="primary" id="more" title="Show different 6">More</button>
-        </div>
+        <button class="primary" id="go">Show 6</button>
       </div>
       <div class="quick-years" id="quick"></div>
       <div class="results" id="results"></div>
@@ -468,12 +465,7 @@ const DATA = [
     sources: [
       { name: 'National Geographic: Map Projections', url: 'https://education.nationalgeographic.org/resource/map-projections/' }
     ]
-  },
-        { name: 'Smithsonian Human Origins', url: 'https://humanorigins.si.edu/evidence/genetics/ancient-dna-and-neanderthals' }
-    ]
-  }
-,
-  {
+  },  {
     id: 'egg-equinox',
     title: 'You can only balance an egg on the equinox',
     category: 'General Science',
@@ -749,9 +741,9 @@ function generate() {
   const guess = p.get('year') || (new Date().getFullYear() - 28); // default guess
   const input = document.getElementById('year');
   input.value = guess;
+  input.addEventListener('keydown', e => { if (e.key === 'Enter') { e.preventDefault(); generate(); } });
   document.getElementById('go').addEventListener('click', (e)=>{ e.preventDefault(); generate(); });
-  const moreBtn = document.getElementById('more');
-  if (moreBtn) moreBtn.addEventListener('click', (e)=>{ e.preventDefault(); generate(); });
+  
 
   const quick = document.getElementById('quick');
   const samples = [1965, 1975, 1985, 1995, 1997, 2005, 2010, 2015];
