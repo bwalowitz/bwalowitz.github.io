@@ -84,8 +84,8 @@
       <div class="controls">
         <input id="year" type="number" placeholder="e.g., 1997" min="1900" max="2100" />
         <div style="display:flex; gap:8px;">
-          <button class="primary" id="go">Show 9</button>
-          <button class="primary" id="more" title="Show different 9">More</button>
+          <button class="primary" id="go">Show 6</button>
+          <button class="primary" id="more" title="Show different 6">More</button>
         </div>
       </div>
       <div class="quick-years" id="quick"></div>
@@ -469,17 +469,7 @@ const DATA = [
       { name: 'National Geographic: Map Projections', url: 'https://education.nationalgeographic.org/resource/map-projections/' }
     ]
   },
-  {
-    id: 'neanderthal-dna',
-    title: 'Modern humans have no Neanderthal DNA',
-    category: 'Anthropology',
-    status: 'Revised',
-    changedYear: 2010,
-    was: 'Textbooks once implied no gene flow with Neanderthals.',
-    now: 'Genomes show people of non-African ancestry carry roughly 1–2% Neanderthal DNA, indicating ancient interbreeding.',
-    sources: [
-      { name: 'Max Planck 2010 release', url: 'https://www.mpg.de/617258/humans-and-neanderthals-interbred' },
-      { name: 'Smithsonian Human Origins', url: 'https://humanorigins.si.edu/evidence/genetics/ancient-dna-and-neanderthals' }
+        { name: 'Smithsonian Human Origins', url: 'https://humanorigins.si.edu/evidence/genetics/ancient-dna-and-neanderthals' }
     ]
   }
 ,
@@ -640,6 +630,82 @@ const TAG_COLORS = {
   Nuanced: 'warn'
 };
 
+const PAGE_SIZE = 6;
+
+function splitByYear(gradYear) {
+  const y = Number(gradYear);
+  const valid = !!y && y >= 1900 && y <= 2100;
+  if (!valid) return { relevant: DATA.slice(), background: [] };
+  const relevant = DATA.filter(item => typeof item.changedYear === 'number' && y < item.changedYear);
+  const background = DATA.filter(item => !(typeof item.changedYear === 'number' && y < item.changedYear));
+  return { relevant, background };
+}
+
+function sample(arr, n) {
+  const a = arr.slice();
+  for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; }
+  return a.slice(0, Math.max(0, Math.min(n, a.length)));
+}
+
+function chooseDiverse(items, n, maxPerCategory = 1) {
+  const out = [];
+  const perCat = new Map();
+  for (const item of sample(items, items.length)) {
+    const cat = item.category || '_';
+    const count = perCat.get(cat) || 0;
+    if (count >= maxPerCategory) continue;
+    out.push(item);
+    perCat.set(cat, count + 1);
+    if (out.length >= n) break;
+  }
+  return out;
+}
+
+function getSeen(year) {
+  const key = 'osf_seen_' + String(year || 'any');
+  try { return new Set(JSON.parse(localStorage.getItem(key) || '[]')); } catch (e) { return new Set(); }
+}
+function addSeen(year, ids) {
+  const key = 'osf_seen_' + String(year || 'any');
+  try {
+    const prev = JSON.parse(localStorage.getItem(key) || '[]');
+    const s = new Set(prev);
+    ids.forEach(id => s.add(id));
+    localStorage.setItem(key, JSON.stringify(Array.from(s)));
+  } catch (e) {}
+}
+function clearSeen(year) {
+  const key = 'osf_seen_' + String(year || 'any');
+  try { localStorage.removeItem(key); } catch (e) {}
+}
+
+function pickForYear(year) {
+  const { relevant, background } = splitByYear(year);
+  const seen = getSeen(year);
+  const relUnseen = relevant.filter(i => !seen.has(i.id));
+  const bgUnseen = background.filter(i => !seen.has(i.id));
+
+  const wantRelevant = Math.min(PAGE_SIZE, 4);
+  let chosen = chooseDiverse(relUnseen, wantRelevant, 1);
+  let remaining = PAGE_SIZE - chosen.length;
+  if (remaining > 0) {
+    chosen = chosen.concat(chooseDiverse(bgUnseen, remaining, 1));
+  }
+  // If we couldn't fill the page because we ran out of unseen, reset and fill from full pools while avoiding duplicates in this batch
+  if (chosen.length < PAGE_SIZE) {
+    clearSeen(year);
+    const already = new Set(chosen.map(x => x.id));
+    const extraRel = chooseDiverse(relevant.filter(x => !already.has(x.id)), wantRelevant - chosen.filter(x => relevant.includes(x)).length, 1);
+    chosen = chosen.concat(extraRel);
+    remaining = PAGE_SIZE - chosen.length;
+    if (remaining > 0) {
+      const extraBg = chooseDiverse(background.filter(x => !already.has(x.id)), remaining, 1);
+      chosen = chosen.concat(extraBg);
+    }
+  }
+  return chosen.slice(0, PAGE_SIZE);
+}
+
 function byYear(gradYear) {
   const y = Number(gradYear);
   if (!y || y < 1900 || y > 2100) return [];
@@ -671,6 +737,7 @@ function generate() {
   const year = document.getElementById('year').value.trim();
   const results = pickForYear(year).sort((a,b) => a.category.localeCompare(b.category));
   render(results, year);
+  addSeen(year, results.map(r => r.id));
   const url = new URL(window.location);
   url.searchParams.set('year', year);
   history.replaceState(null, '', url.toString());
