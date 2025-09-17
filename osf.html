@@ -41,10 +41,16 @@
     }
     input[type="number"]:focus { border-color: #fff; }
     button.primary {
-      padding: 12px 16px; font-size: 16px; border: 1px solid #fff; border-radius: 10px; cursor: pointer;
-      color: #000; background: #fff;
+      padding: 12px 16px; font-size: 16px; border: 0; border-radius: 10px; cursor: pointer;
+      color: #fff;
+      background: linear-gradient(90deg, #7c3aed, #22d3ee, #7c3aed);
+      background-size: 200% 100%;
+      animation: buttonSheen 6s linear infinite;
+      box-shadow: 0 6px 20px rgba(34, 211, 238, 0.18);
     }
-    button.primary:hover { background: #e5e5e5; }
+    button.primary:hover { filter: brightness(1.05); }
+    button.primary:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
+    @keyframes buttonSheen { 0% { background-position: 0% 50%; } 100% { background-position: 100% 50%; } }
 
     .quick-years { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 8px; }
     .chip { font-size: 14px; padding: 8px 10px; border: 1px solid #333; border-radius: 999px; color: var(--muted); cursor: pointer; background: transparent; }
