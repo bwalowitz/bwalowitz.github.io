@@ -72,6 +72,8 @@
       line-height: 1.15;
       margin: 0 0 10px;
       letter-spacing: 0.2px;
+      /* Help avoid awkward wraps in some browsers that support it */
+      text-wrap: balance;
     }
     .kicker {
       display: inline-block;
@@ -114,7 +116,12 @@
       margin: 32px auto 0;
       padding: 0 20px;
     }
-    .section-title h1 { font-size: clamp(28px, 4vw, 42px); line-height: 1.1; margin: 24px 0 8px; }
+    .section-title h1 {
+      font-size: clamp(28px, 4vw, 42px);
+      line-height: 1.1;
+      margin: 24px 0 8px;
+      text-wrap: balance; /* modern browsers */
+    }
     .section-title p { margin: 0 0 12px; color: rgba(0,0,0,0.7); max-width: 70ch; }
 
     /* Mobile */
@@ -152,7 +159,7 @@
   </div>
 
   <section class="case-section" id="sticky-case">
-    <!-- LEFT narrative: 4 distinct panels with full-sentence copy -->
+    <!-- LEFT narrative -->
     <aside class="sticky-col" aria-label="Project narrative">
       <div id="panel-overview" class="panel is-active" role="region" aria-live="polite">
         <span class="kicker">Overview</span>
@@ -185,13 +192,11 @@
 
     <!-- RIGHT visuals with descriptive alts -->
     <div class="steps" aria-label="Visual steps">
-      <!-- Overview -->
       <figure class="step" data-panel="panel-overview">
         <img src="images/redwood-rebrand/board-overview.jpg" alt="Brand board overview combining logo, color, type, layout, and sample applications for the unified Redwood system" />
         <figcaption>System overview</figcaption>
       </figure>
 
-      <!-- System -->
       <figure class="step" data-panel="panel-system">
         <img src="images/redwood-rebrand/redwood-brandguide-foursecondarylogos.jpg" alt="Secondary Redwood logo lockups showing alternate orientations and marks" />
         <figcaption>Secondary logos</figcaption>
@@ -212,7 +217,6 @@
         <figcaption>Master logo sheet</figcaption>
       </figure>
 
-      <!-- Templates -->
       <figure class="step" data-panel="panel-templates">
         <img src="images/redwood-rebrand/redwood-brand-onepager.jpg" alt="Single page brand summary showing logo usage, palette, and type scale for quick reference" />
         <figcaption>Brand one pager</figcaption>
@@ -238,7 +242,6 @@
         <figcaption>Brochure spread 4</figcaption>
       </figure>
 
-      <!-- Application -->
       <figure class="step" data-panel="panel-application">
         <img src="images/redwood-rebrand/redwood_giftcard-giveaway-tablesign.jpg" alt="Event table sign for a gift card giveaway using brand colors and headline style" />
         <figcaption>Event table sign</figcaption>
@@ -322,6 +325,26 @@
         if (chosen) setActive(chosen);
       }
       window.addEventListener('load', primeOnLoad);
+    })();
+
+    // Prevent single-word widows in headings by replacing the last space with a non-breaking space.
+    (function() {
+      function fixWidows(selector) {
+        document.querySelectorAll(selector).forEach(el => {
+          const t = el.textContent.trim();
+          const i = t.lastIndexOf(' ');
+          if (i > 0) {
+            el.textContent = t.slice(0, i) + '\u00A0' + t.slice(i + 1);
+          }
+        });
+      }
+      // Run after DOM is ready and once fonts have likely settled.
+      document.addEventListener('DOMContentLoaded', () => {
+        fixWidows('.section-title h1, .panel h2');
+        if (document.fonts && document.fonts.ready) {
+          document.fonts.ready.then(() => fixWidows('.section-title h1, .panel h2'));
+        }
+      });
     })();
   </script>
 </body>
