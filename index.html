@@ -16,6 +16,26 @@
     <title>Brandon Walowitz | Designer, Creative Director, Brand Strategist, and Video Producer</title>
 </head>
 <body>
+    <!-- Notice bar -->
+<div id="notice" style="display:none;background:#fff6d8;border-bottom:1px solid rgba(0,0,0,.1);font:15px/1.4 system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:#2b2b2b;text-align:center">
+  <div style="max-width:1200px;margin:0 auto;padding:10px 16px;display:flex;gap:12px;align-items:center;justify-content:center;flex-wrap:wrap">
+    <span>⚡ Site’s getting a refresh. Please excuse a little mess while I update things.</span>
+    <button id="notice-close" aria-label="Dismiss" style="border:1px solid rgba(0,0,0,.15);background:#fff;border-radius:6px;padding:4px 10px;font-weight:600;cursor:pointer;font-size:14px">OK</button>
+  </div>
+</div>
+<script>
+  (function () {
+    const key = "bw_notice_closed_v1";
+    if (!localStorage.getItem(key)) {
+      document.getElementById("notice").style.display = "block";
+    }
+    document.getElementById("notice-close")?.addEventListener("click", () => {
+      localStorage.setItem(key, "1");
+      document.getElementById("notice").style.display = "none";
+    });
+  })();
+</script>
+
 <header>
     <nav>
         <ul>
