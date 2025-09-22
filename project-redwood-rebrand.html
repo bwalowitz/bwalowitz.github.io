@@ -72,7 +72,6 @@
       line-height: 1.15;
       margin: 0 0 10px;
       letter-spacing: 0.2px;
-      /* Help avoid awkward wraps in some browsers that support it */
       text-wrap: balance;
     }
     .kicker {
@@ -120,7 +119,7 @@
       font-size: clamp(28px, 4vw, 42px);
       line-height: 1.1;
       margin: 24px 0 8px;
-      text-wrap: balance; /* modern browsers */
+      text-wrap: balance;
     }
     .section-title p { margin: 0 0 12px; color: rgba(0,0,0,0.7); max-width: 70ch; }
 
@@ -164,8 +163,8 @@
       <div id="panel-overview" class="panel is-active" role="region" aria-live="polite">
         <span class="kicker">Overview</span>
         <h2>Six into one</h2>
-        <p>I led the rebrand that brought six companies into a single Redwood identity. The goal was simple: one name, one look, and one voice that anyone across marketing, sales, HR, and operations could use without slowing down.</p>
-        <p>We set a few clear objectives at the start. We would unify the visual system, give sales a single story and a clear next step, and reduce one-off requests by giving people good defaults and templates that work.</p>
+        <p>I led the rebrand that brought six companies into a single Redwood identity. The goal was simple: one name, one look, and one voice that worked for marketing, sales, HR, and operations.</p>
+        <p>We set a few clear objectives at the start. We would unify the visual system and give sales a single story with a simple way to contact the team or start a conversation on every asset.</p>
       </div>
 
       <div id="panel-system" class="panel" role="region" aria-live="polite">
@@ -338,7 +337,6 @@
           }
         });
       }
-      // Run after DOM is ready and once fonts have likely settled.
       document.addEventListener('DOMContentLoaded', () => {
         fixWidows('.section-title h1, .panel h2');
         if (document.fonts && document.fonts.ready) {
