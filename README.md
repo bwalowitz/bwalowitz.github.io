@@ -62,7 +62,7 @@ Everything lives in `index.html`.
 
 | What | Where | Notes |
 |------|-------|-------|
-| Contact email | search `b@brandonwallowitz.com` | appears twice (button + `mailto:`) |
+| Contact email | search `b@brandonwalowitz.com` | appears twice (button + `mailto:`) |
 | Social links | `<footer>` | Instagram / LinkedIn / Vimeo are `#` placeholders |
 | Disciplines | `const DISCIPLINES` (top of `<script>`) | edit names + descriptions |
 | Credits marquee | `const CREDITS` | add/remove client names |
