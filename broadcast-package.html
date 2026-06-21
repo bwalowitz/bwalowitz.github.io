@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Network On-Air Package — Art &amp; Science</title>
+<meta name="theme-color" content="#08080b">
+<meta name="author" content="Brandon Walowitz">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%2308080b'/%3E%3Ccircle cx='16' cy='16' r='5.5' fill='%23e8c170'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300;1,9..144,400;1,9..144,500&family=Hanken+Grotesk:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#08080b;--ink:#f3efe6;--ink-dim:#b8b2a6;--ink-faint:#6c675e;
+    --line:rgba(243,239,230,0.12);
+    --serif:'Fraunces',Georgia,serif;--sans:'Hanken Grotesk',system-ui,sans-serif;--mono:'JetBrains Mono',monospace;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-weight:300;overflow-x:hidden;-webkit-font-smoothing:antialiased;}
+  ::selection{background:rgba(232,193,112,0.25);color:#fff;}
+  a{color:inherit;text-decoration:none;}
+
+  #gl{position:fixed;inset:0;width:100%;height:100%;z-index:0;display:block;opacity:0.85;}
+  .gl-fallback{position:fixed;inset:0;z-index:0;
+    background:radial-gradient(60% 60% at 70% 25%,rgba(80,120,140,0.30),transparent 70%),
+      radial-gradient(50% 50% at 25% 75%,rgba(150,90,140,0.26),transparent 70%),var(--bg);}
+  .scrim{position:fixed;inset:0;z-index:1;pointer-events:none;
+    background:linear-gradient(180deg,rgba(8,8,11,0.80),rgba(8,8,11,0.90));}
+  .grain{position:fixed;inset:0;z-index:60;pointer-events:none;opacity:0.05;mix-blend-mode:overlay;}
+  .vignette{position:fixed;inset:0;z-index:55;pointer-events:none;box-shadow:inset 0 0 220px 60px rgba(0,0,0,0.85);}
+
+  .cursor{position:fixed;top:0;left:0;width:34px;height:34px;border:1px solid rgba(243,239,230,0.6);border-radius:50%;
+    transform:translate(-50%,-50%);pointer-events:none;z-index:90;mix-blend-mode:difference;
+    transition:width .35s cubic-bezier(.2,.8,.2,1),height .35s cubic-bezier(.2,.8,.2,1),background-color .35s,border-color .35s;}
+  .cursor.big{width:74px;height:74px;background:rgba(243,239,230,0.9);border-color:transparent;}
+  .cursor-dot{position:fixed;top:0;left:0;width:4px;height:4px;background:var(--ink);border-radius:50%;
+    transform:translate(-50%,-50%);pointer-events:none;z-index:91;mix-blend-mode:difference;}
+  @media (hover:none),(pointer:coarse){.cursor,.cursor-dot{display:none;}}
+
+  .hud{position:fixed;inset:0;z-index:40;pointer-events:none;mix-blend-mode:difference;}
+  .hud .corner{position:absolute;width:26px;height:26px;border:1px solid rgba(243,239,230,0.5);}
+  .hud .tl{top:84px;left:clamp(20px,5vw,64px);border-right:0;border-bottom:0;}
+  .hud .tr{top:84px;right:clamp(20px,5vw,64px);border-left:0;border-bottom:0;}
+  .hud .bl{bottom:84px;left:clamp(20px,5vw,64px);border-right:0;border-top:0;}
+  .hud .br{bottom:84px;right:clamp(20px,5vw,64px);border-left:0;border-top:0;}
+  .hud .tag{position:absolute;font-family:var(--mono);font-size:10px;letter-spacing:.18em;color:rgba(243,239,230,0.6);}
+  .hud .file{top:88px;left:clamp(56px,7vw,108px);}
+  .hud .tc{bottom:88px;left:clamp(56px,7vw,108px);}
+  @media(max-width:720px){.hud .corner{display:none;}}
+
+  nav{position:fixed;top:0;left:0;right:0;z-index:80;display:flex;justify-content:space-between;align-items:center;
+    padding:26px clamp(20px,5vw,64px);mix-blend-mode:difference;}
+  .brand{font-family:var(--mono);font-size:12px;letter-spacing:.18em;line-height:1.5;}
+  .brand b{font-weight:500;}.brand span{color:var(--ink-dim);}
+  .nav-links{display:flex;gap:clamp(18px,3vw,40px);align-items:center;}
+  .nav-links a{font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;position:relative;padding-bottom:3px;}
+  .nav-links a::after{content:"";position:absolute;left:0;bottom:0;height:1px;width:0;background:currentColor;transition:width .4s cubic-bezier(.2,.8,.2,1);}
+  .nav-links a:hover::after{width:100%;}
+
+  main{position:relative;z-index:20;}
+  section,header.case-hero{padding-left:clamp(20px,5vw,64px);padding-right:clamp(20px,5vw,64px);}
+  .label{font-family:var(--mono);font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--ink-faint);display:flex;align-items:center;gap:12px;}
+  .label::before{content:"";width:28px;height:1px;background:var(--ink-faint);display:inline-block;}
+
+  .reveal{opacity:0;transform:translateY(34px);transition:opacity 1.1s cubic-bezier(.16,1,.3,1),transform 1.1s cubic-bezier(.16,1,.3,1);}
+  .reveal.in{opacity:1;transform:none;}
+
+  .case-hero{padding-top:clamp(150px,22vh,250px);}
+  .case-back{font-family:var(--mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-faint);
+    display:inline-flex;gap:8px;align-items:center;margin-bottom:44px;transition:color .4s,gap .4s;}
+  .case-back:hover{color:var(--ink);gap:15px;}
+  .case-kicker{font-family:var(--mono);font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--ink-dim);margin-bottom:26px;}
+  .case-hero h1{font-family:var(--serif);font-weight:300;font-size:clamp(44px,8.5vw,128px);line-height:0.94;letter-spacing:-0.02em;max-width:14ch;}
+  .case-intro{margin-top:34px;max-width:58ch;font-size:clamp(17px,1.7vw,24px);line-height:1.5;color:var(--ink-dim);}
+
+  .case-cover{height:clamp(280px,54vh,640px);border-radius:6px;margin:clamp(44px,7vh,90px) clamp(20px,5vw,64px);
+    background-size:cover;background-position:center;position:relative;overflow:hidden;box-shadow:0 50px 110px -50px rgba(0,0,0,0.9);}
+  .case-cover::before{content:"";position:absolute;inset:0;opacity:.45;mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E");}
+  .case-cover .ghost{position:absolute;left:5%;bottom:-4%;font-family:var(--serif);font-style:italic;font-weight:300;
+    font-size:clamp(120px,26vw,360px);color:rgba(243,239,230,0.12);line-height:0.8;user-select:none;}
+
+  .case-body{padding-bottom:clamp(80px,12vh,140px);}
+  .case-grid{display:grid;grid-template-columns:1.6fr 1fr;gap:clamp(40px,7vw,110px);align-items:start;}
+  .case-text p{font-size:clamp(16px,1.5vw,20px);line-height:1.7;color:var(--ink-dim);margin-bottom:1.4em;max-width:62ch;}
+  .case-text p:first-child{font-family:var(--serif);font-weight:300;font-size:clamp(22px,2.4vw,32px);line-height:1.35;color:var(--ink);}
+  .facts{font-family:var(--mono);font-size:12px;letter-spacing:.04em;color:var(--ink-dim);}
+  .facts .row{display:flex;justify-content:space-between;gap:18px;padding:16px 0;border-bottom:1px solid var(--line);}
+  .facts .row:first-child{border-top:1px solid var(--line);}
+  .facts .row b{color:var(--ink);font-weight:500;text-align:right;}
+  .case-cta{display:inline-flex;align-items:center;gap:12px;margin-top:30px;font-family:var(--mono);font-size:12px;
+    letter-spacing:.14em;border:1px solid var(--line);border-radius:60px;padding:15px 26px;transition:background-color .5s,color .5s,border-color .5s;}
+  .case-cta:hover{background:var(--ink);color:var(--bg);border-color:var(--ink);}
+  @media(max-width:860px){.case-grid{grid-template-columns:1fr;gap:48px;}}
+
+  .case-shots{padding-bottom:clamp(80px,12vh,140px);}
+  .shots-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(16px,2vw,28px);margin-top:36px;}
+  .shot{aspect-ratio:4/3;border-radius:5px;background-size:cover;background-position:center;position:relative;overflow:hidden;
+    box-shadow:0 30px 60px -34px rgba(0,0,0,0.8);}
+  .shot.wide{grid-column:1/-1;aspect-ratio:21/9;}
+  .shot::before{content:"";position:absolute;inset:0;opacity:.4;mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)'/%3E%3C/svg%3E");}
+  .shot .fl{position:absolute;left:16px;bottom:13px;font-family:var(--mono);font-size:10px;letter-spacing:.16em;color:rgba(243,239,230,0.6);}
+  @media(max-width:640px){.shots-grid{grid-template-columns:1fr;}}
+
+  .case-next{border-top:1px solid var(--line);margin-top:clamp(20px,4vh,40px);padding:clamp(60px,10vh,120px) 0;}
+  .next-link{display:block;}
+  .next-link .label{margin-bottom:22px;}
+  .next-link h2{font-family:var(--serif);font-weight:300;font-size:clamp(40px,8vw,112px);line-height:1;letter-spacing:-0.02em;
+    transition:color .4s,padding-left .5s cubic-bezier(.16,1,.3,1);}
+  .next-link:hover h2{color:#fff;padding-left:18px;}
+
+  .notfound{min-height:70vh;display:flex;flex-direction:column;justify-content:center;gap:24px;}
+  .notfound h1{font-family:var(--serif);font-weight:300;font-size:clamp(40px,7vw,90px);line-height:1;}
+  .notfound a{font-family:var(--mono);font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-dim);
+    display:inline-flex;gap:8px;width:max-content;}
+  .notfound a:hover{color:var(--ink);}
+
+  footer{position:relative;z-index:20;padding:48px clamp(20px,5vw,64px);display:flex;justify-content:space-between;
+    align-items:center;flex-wrap:wrap;gap:18px;border-top:1px solid var(--line);font-family:var(--mono);font-size:11px;
+    letter-spacing:.14em;color:var(--ink-faint);text-transform:uppercase;}
+  footer .socials{display:flex;gap:24px;}footer a:hover{color:var(--ink);}
+
+  @media (prefers-reduced-motion:reduce){
+    *{animation-duration:.001s !important;}
+    .reveal{transition:none;opacity:1;transform:none;}
+  }
+</style>
+</head>
+<body data-project="broadcast-package">
+
+<canvas id="gl"></canvas>
+<div class="gl-fallback" id="fallback" style="display:none"></div>
+<div class="scrim"></div>
+<svg class="grain"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="3"/></filter><rect width="100%" height="100%" filter="url(#n)"/></svg>
+<div class="vignette"></div>
+<div class="cursor" id="cursor"></div>
+<div class="cursor-dot" id="cursorDot"></div>
+
+<div class="hud" aria-hidden="true">
+  <div class="corner tl"></div><div class="corner tr"></div><div class="corner bl"></div><div class="corner br"></div>
+  <div class="tag file" id="hudFile">CASE FILE</div>
+  <div class="tag tc" id="timecode">00:00:00:00</div>
+</div>
+
+<nav>
+  <a class="brand" href="index.html"><b>BRANDON WALOWITZ</b><br><span>ART &amp; SCIENCE</span></a>
+  <div class="nav-links">
+    <a href="index.html#projects" data-cursor>All Projects</a>
+    <a href="index.html#contact" data-cursor>Contact</a>
+  </div>
+</nav>
+
+<main id="main"><!-- rendered by JS --></main>
+
+<footer>
+  <div>© <span id="yr"></span> Brandon Walowitz · Art &amp; Science</div>
+  <div class="socials">
+    <a href="https://www.linkedin.com/in/walowitz/" data-cursor>LinkedIn</a>
+  </div>
+  <div>Designed &amp; built in-house</div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+/* ─────────────────────────────────────────────────────────────
+   PROJECTS — keep this array identical to the one in index.html.
+   After editing, run `node generate-project-pages.mjs` to refresh
+   every standalone project page.
+   index.html uses: slug,title,category,year,summary,accent,cover.
+   This page additionally uses: intro, body[], details[[k,v]], shots[].
+   Add real images per project with e.g. cover:"img/x.jpg" and
+   shots:[{image:"img/a.jpg"},{image:"img/b.jpg",wide:true}].
+───────────────────────────────────────────────────────────── */
+const PROJECTS = [
+  { slug:"synergy-homecare", title:"SYNERGY HomeCare", category:"Brand · Performance", year:"2025",
+    summary:"A franchise growth engine built on paid search and conversion-first creative.",
+    accent:["#1f5e5a","#0b2225"],
+    intro:"Turning a local home-care franchise into a measurable, repeatable growth machine.",
+    body:[
+      "SYNERGY HomeCare needed more than impressions — it needed booked consultations. The work began with the funnel: who is searching, what they fear, and the exact moment they decide to call.",
+      "From there it became a tight loop — paid-search structure, landing pages written for intent, and creative that meets families in a hard moment. Every dollar mapped to an outcome.",
+      "The result is a system the owner can run and trust, and a template that scales to the next franchise, and the next."
+    ],
+    details:[["Client","SYNERGY HomeCare"],["Year","2025"],["Scope","Paid Search · Landing Pages · Creative"],["Role","Strategy · Creative Direction"]]
+  },
+  { slug:"redwood-logistics", title:"Redwood Logistics", category:"Brand System", year:"2022",
+    summary:"Unifying a multi-brand logistics group under one umbrella identity.",
+    accent:["#5e4326","#241606"],
+    intro:"One coherent brand architecture for a group that had outgrown its pieces.",
+    body:[
+      "Years of acquisitions had left a portfolio of logos, voices, and value props that didn't add up to a story. The brief: make it one company without erasing what each part had built.",
+      "We built an umbrella system — naming logic, a flexible identity, and templates the internal team could actually use across sales, web, and trade.",
+      "The throughline became the asset: a single brand that flexes across very different audiences and still feels like Redwood."
+    ],
+    details:[["Client","Redwood Logistics"],["Year","2022"],["Scope","Naming · Identity · Brand System"],["Role","Creative Direction · Design"]]
+  },
+  { slug:"broadcast-package", title:"Network On-Air Package", category:"Motion Design", year:"2019",
+    summary:"Title systems and broadcast graphics for national television.",
+    accent:["#3a2a5e","#15102a"],
+    intro:"A motion language built to survive the chaos of live broadcast.",
+    body:[
+      "On-air graphics live or die on consistency under pressure — dozens of variations, tight timelines, zero room for error. The system had to be beautiful and bulletproof.",
+      "I designed the title sequences, lower-thirds, and transition language as a kit: modular, on-brand, and fast for an editorial team to deploy nightly.",
+      "What shipped was a look that felt premium on screen and stayed coherent across hundreds of segments."
+    ],
+    details:[["Sector","National Broadcast"],["Year","2019"],["Scope","Title Design · Motion System"],["Role","Motion Director"]]
+  },
+  { slug:"art-and-science", title:"Art & Science", category:"Interactive · Code", year:"2025",
+    summary:"This site — WebGL shaders, real-time 3D, and a living identity.",
+    accent:["#22506e","#0b1b29"],
+    intro:"A portfolio that is itself the proof — design and engineering as one gesture.",
+    body:[
+      "The brief was personal: build a home for everything I do that makes people stop. No stock components, no template — a living surface.",
+      "Custom GLSL drives the background field and a morphing 3D object; the whole thing reads as one idea executed in code. Serif for the art, mono for the science.",
+      "It runs as a single file, deploys static, and degrades gracefully — craft and engineering holding hands."
+    ],
+    details:[["Project","Art & Science"],["Year","2025"],["Scope","Art Direction · WebGL · Front-End"],["Stack","Three.js · GLSL · Vanilla JS"]]
+  },
+  { slug:"coast-to-coast", title:"Coast to Coast", category:"Sales Enablement · AI", year:"2023",
+    summary:"AI-assisted sales tools, decks, and brand collateral for a logistics team.",
+    accent:["#5e2a4a","#22101c"],
+    intro:"Giving a sales team better tools — and a sharper story to tell with them.",
+    body:[
+      "The team had pipeline but inconsistent materials. We rebuilt the narrative, then the assets: a sales deck, one-sheets, and AI-assisted tools that made personalization fast.",
+      "The point wasn't novelty — it was leverage. Reps spending less time formatting and more time selling.",
+      "Brand and utility in the same package, tuned to how the team actually works."
+    ],
+    details:[["Client","Coast to Coast"],["Year","2023"],["Scope","Sales Deck · Collateral · AI Tools"],["Role","Creative Direction · Build"]]
+  },
+  { slug:"short-film", title:"Untitled Short", category:"Film · Direction", year:"2024",
+    summary:"A personal narrative short — directed, shot, and cut in-house.",
+    accent:["#2a5e3e","#0e2418"],
+    intro:"A small, true story about a phone call that never quite happens.",
+    body:[
+      "Drawn from something personal, this short trades plot for feeling — everyday images doing the emotional work.",
+      "I directed, shot, and edited it, keeping the crew tiny so the performances could stay honest.",
+      "It's the side of the practice that feeds everything else: story first, always."
+    ],
+    details:[["Format","Short Film"],["Year","2024"],["Scope","Writing · Directing · Edit"],["Role","Director"]]
+  }
+];
+
+/* ----- resolve which project ----- */
+const params=new URLSearchParams(location.search);
+const fileSlug=location.pathname.split('/').pop().replace(/\.html$/,'');
+const id=document.body.dataset.project || params.get('id') || (fileSlug!=='project' ? fileSlug : '');
+const idx=PROJECTS.findIndex(p=>p.slug===id);
+const main=document.getElementById('main');
+document.getElementById('yr').textContent=new Date().getFullYear();
+
+function esc(s){return String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));}
+
+function shotTiles(p){
+  if(p.shots && p.shots.length){
+    return p.shots.map((s,i)=>{
+      const bg = s.image ? `background-image:url('${s.image}')` : `background:linear-gradient(140deg,${p.accent[0]},${p.accent[1]})`;
+      return `<div class="shot ${s.wide?'wide':''}" style="${bg}"><span class="fl">FRAME ${String(i+1).padStart(2,'0')}</span></div>`;
+    }).join('');
+  }
+  const [a,b]=p.accent;
+  const gens=[
+    {bg:`linear-gradient(140deg,${a},${b})`,wide:true},
+    {bg:`radial-gradient(130% 130% at 22% 18%,${a},${b})`},
+    {bg:`linear-gradient(300deg,${b},${a})`}
+  ];
+  return gens.map((g,i)=>`<div class="shot ${g.wide?'wide':''}" style="background:${g.bg}"><span class="fl">FRAME ${String(i+1).padStart(2,'0')}</span></div>`).join('');
+}
+
+function render(p){
+  document.title=`${p.title} — Art & Science`;
+  document.getElementById('hudFile').textContent=`CASE FILE · ${p.slug.toUpperCase()}`;
+  const next=PROJECTS[(PROJECTS.indexOf(p)+1)%PROJECTS.length];
+  const cover = p.cover
+    ? `style="background-image:url('${p.cover}')"`
+    : `style="background:linear-gradient(140deg,${p.accent[0]},${p.accent[1]})"`;
+  const body = (p.body||[]).map(t=>`<p>${esc(t)}</p>`).join('');
+  const details = (p.details||[]).map(([k,v])=>`<div class="row"><span>${esc(k)}</span><b>${esc(v)}</b></div>`).join('');
+
+  main.innerHTML=`
+    <header class="case-hero">
+      <div class="reveal in">
+        <a class="case-back" href="index.html#projects" data-cursor>← Selected projects</a>
+        <div class="case-kicker">${esc(p.category)} · ${esc(p.year)}</div>
+        <h1>${esc(p.title)}</h1>
+        <p class="case-intro">${esc(p.intro||p.summary)}</p>
+      </div>
+    </header>
+
+    <div class="case-cover" ${cover}><span class="ghost">${esc(p.title.charAt(0))}</span></div>
+
+    <section class="case-body">
+      <div class="case-grid">
+        <div class="case-text reveal">${body}</div>
+        <aside class="case-details reveal">
+          <div class="facts">${details}</div>
+          <a class="case-cta" href="index.html#contact" data-cursor>Start a project ↗</a>
+        </aside>
+      </div>
+    </section>
+
+    <section class="case-shots reveal">
+      <p class="label">Selected frames</p>
+      <div class="shots-grid">${shotTiles(p)}</div>
+    </section>
+
+    <section class="case-next">
+      <a class="next-link reveal" href="${next.slug}.html" data-cursor>
+        <p class="label">Next project</p>
+        <h2>${esc(next.title)} ↗</h2>
+      </a>
+    </section>`;
+  observeReveals();
+}
+
+function renderNotFound(){
+  document.title='Project not found — Art & Science';
+  main.innerHTML=`<section class="notfound">
+      <p class="label">404</p>
+      <h1>That project isn't here.</h1>
+      <a href="index.html#projects" data-cursor>← Back to all projects</a>
+    </section>`;
+}
+
+if(idx>=0) render(PROJECTS[idx]);
+else if(!id) render(PROJECTS[0]);   // template preview → first project
+else renderNotFound();
+
+/* ----- reveal on scroll ----- */
+function observeReveals(){
+  const io=new IntersectionObserver((entries)=>{
+    entries.forEach(en=>{ if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target);} });
+  },{threshold:0.15});
+  document.querySelectorAll('.reveal:not(.in)').forEach(el=>io.observe(el));
+}
+
+/* ----- cursor ----- */
+const cursor=document.getElementById('cursor'),dot=document.getElementById('cursorDot');
+const fine=matchMedia('(hover:hover) and (pointer:fine)').matches;
+if(fine){
+  let cx=innerWidth/2,cy=innerHeight/2,tx=cx,ty=cy;
+  addEventListener('mousemove',e=>{tx=e.clientX;ty=e.clientY;dot.style.left=tx+'px';dot.style.top=ty+'px';});
+  (function loop(){cx+=(tx-cx)*0.18;cy+=(ty-cy)*0.18;cursor.style.left=cx+'px';cursor.style.top=cy+'px';requestAnimationFrame(loop);})();
+  document.addEventListener('mouseover',e=>{if(e.target.closest('[data-cursor]'))cursor.classList.add('big');});
+  document.addEventListener('mouseout',e=>{if(e.target.closest('[data-cursor]'))cursor.classList.remove('big');});
+}
+
+/* ----- timecode ----- */
+const tcEl=document.getElementById('timecode');let fr=0;
+setInterval(()=>{fr=(fr+1)%24;const t=performance.now()/1000;
+  const mm=String(Math.floor(t/60)%60).padStart(2,'0');
+  const ss=String(Math.floor(t)%60).padStart(2,'0');
+  tcEl.textContent=`00:${mm}:${ss}:${String(fr).padStart(2,'0')}`;},1000/24);
+
+/* ----- background shader field ----- */
+const reduceMotion=matchMedia('(prefers-reduced-motion:reduce)').matches;
+const mouse={x:0,y:0,tx:0,ty:0};
+addEventListener('mousemove',e=>{mouse.tx=(e.clientX/innerWidth)*2-1;mouse.ty=-((e.clientY/innerHeight)*2-1);});
+
+const bgVert=`varying vec2 vUv;void main(){vUv=uv;gl_Position=vec4(position.xy,0.0,1.0);}`;
+const bgFrag=`
+  precision highp float;varying vec2 vUv;
+  uniform float uTime;uniform float uAspect;uniform vec2 uMouse;
+  float hash(vec2 p){return fract(sin(dot(p,vec2(127.1,311.7)))*43758.5453123);}
+  float noise(vec2 p){vec2 i=floor(p),f=fract(p);vec2 u=f*f*(3.0-2.0*f);
+    return mix(mix(hash(i+vec2(0,0)),hash(i+vec2(1,0)),u.x),mix(hash(i+vec2(0,1)),hash(i+vec2(1,1)),u.x),u.y);}
+  float fbm(vec2 p){float v=0.0,a=0.5;mat2 m=mat2(1.6,1.2,-1.2,1.6);
+    for(int i=0;i<6;i++){v+=a*noise(p);p=m*p;a*=0.5;}return v;}
+  vec3 palette(float t){vec3 a=vec3(0.48,0.45,0.50),b=vec3(0.45,0.42,0.48),c=vec3(1.0),d=vec3(0.0,0.18,0.42);
+    return a+b*cos(6.28318*(c*t+d));}
+  void main(){vec2 uv=vUv;vec2 p=(uv-0.5);p.x*=uAspect;p*=2.3;
+    vec2 m=uMouse*0.4;float t=uTime*0.045;
+    vec2 q=vec2(fbm(p+t),fbm(p+vec2(3.1,1.7)-t));
+    vec2 r=vec2(fbm(p+2.6*q+vec2(1.7,9.2)+m),fbm(p+2.6*q+vec2(8.3,2.8)-m));
+    float fv=fbm(p+2.6*r);
+    vec3 col=palette(fv*1.1+length(r)*0.4+0.08);
+    col=mix(vec3(0.015,0.015,0.028),col,smoothstep(0.0,1.0,fv));
+    col*=0.55+0.45*length(q);
+    float vig=smoothstep(1.35,0.15,length(uv-0.5)*1.4);col*=vig;
+    col=pow(max(col,0.0),vec3(0.92));gl_FragColor=vec4(col,1.0);}`;
+
+(function initGL(){
+  const canvas=document.getElementById('gl');let renderer;
+  try{renderer=new THREE.WebGLRenderer({canvas,antialias:true});}catch(e){return fail();}
+  if(!renderer||!renderer.getContext())return fail();
+  renderer.setPixelRatio(Math.min(devicePixelRatio,2));renderer.setSize(innerWidth,innerHeight);
+  const scene=new THREE.Scene();const cam=new THREE.Camera();
+  const mat=new THREE.ShaderMaterial({vertexShader:bgVert,fragmentShader:bgFrag,depthTest:false,depthWrite:false,
+    uniforms:{uTime:{value:0},uAspect:{value:innerWidth/innerHeight},uMouse:{value:new THREE.Vector2(0,0)}}});
+  scene.add(new THREE.Mesh(new THREE.PlaneGeometry(2,2),mat));
+  const clock=new THREE.Clock();
+  addEventListener('resize',()=>{renderer.setSize(innerWidth,innerHeight);mat.uniforms.uAspect.value=innerWidth/innerHeight;});
+  (function animate(){requestAnimationFrame(animate);if(document.hidden)return;
+    const t=clock.getElapsedTime()*(reduceMotion?0.25:1);
+    mouse.x+=(mouse.tx-mouse.x)*0.05;mouse.y+=(mouse.ty-mouse.y)*0.05;
+    mat.uniforms.uTime.value=t;mat.uniforms.uMouse.value.set(mouse.x,mouse.y);
+    renderer.render(scene,cam);})();
+  function fail(){canvas.style.display='none';document.getElementById('fallback').style.display='block';}
+})();
+</script>
+</body>
+</html>

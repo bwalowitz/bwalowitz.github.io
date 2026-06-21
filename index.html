@@ -205,6 +205,40 @@
   .marquee .ghost{-webkit-text-stroke:1px var(--ink-faint);color:transparent;}
   @keyframes scroll{from{transform:translateX(0);}to{transform:translateX(-50%);}}
 
+  /* ---------- project gallery ---------- */
+  .gallery{padding-top:clamp(120px,16vh,200px);padding-bottom:clamp(120px,16vh,220px);}
+  .gallery-head{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:24px;
+    padding-bottom:clamp(40px,6vw,64px);}
+  .gallery-head h2{font-family:var(--serif);font-weight:300;font-size:clamp(32px,5vw,72px);line-height:1;letter-spacing:-0.02em;}
+  .gallery-head h2 em{font-style:italic;color:var(--ink-dim);}
+  .gallery-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(48px,6vw,80px) clamp(24px,3vw,48px);}
+  .gallery-grid .proj:nth-child(even){margin-top:72px;}
+  @media(max-width:760px){.gallery-grid{grid-template-columns:1fr;gap:56px;}.gallery-grid .proj:nth-child(even){margin-top:0;}}
+  .proj{display:block;color:inherit;}
+  .proj-cover{position:relative;aspect-ratio:4/3;border-radius:5px;overflow:hidden;display:flex;
+    align-items:center;justify-content:center;background-size:cover;background-position:center;
+    box-shadow:0 34px 70px -34px rgba(0,0,0,0.85);transition:transform .7s cubic-bezier(.16,1,.3,1);}
+  .proj-cover::after{content:"";position:absolute;inset:0;background:rgba(8,8,11,0.18);transition:background .5s;}
+  .proj-cover::before{content:"";position:absolute;inset:0;z-index:1;opacity:.5;mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)'/%3E%3C/svg%3E");}
+  .proj:hover .proj-cover{transform:scale(0.98);}
+  .proj:hover .proj-cover::after{background:rgba(8,8,11,0.34);}
+  .proj-ghost{position:relative;z-index:2;font-family:var(--serif);font-weight:300;font-style:italic;
+    font-size:clamp(64px,12vw,150px);color:rgba(243,239,230,0.16);line-height:1;}
+  .proj-meta{padding:24px 4px 0;}
+  .proj-top{display:flex;justify-content:space-between;gap:16px;font-family:var(--mono);font-size:11px;
+    letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint);}
+  .proj-title{font-family:var(--serif);font-weight:300;font-size:clamp(26px,3vw,42px);line-height:1.04;
+    letter-spacing:-0.01em;margin:14px 0 10px;transition:color .4s;}
+  .proj:hover .proj-title{color:#fff;}
+  .proj-sum{font-size:clamp(14px,1.3vw,16px);color:var(--ink-dim);line-height:1.5;max-width:44ch;}
+  .proj-view{display:inline-flex;align-items:center;gap:8px;margin-top:18px;font-family:var(--mono);font-size:11px;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--ink-faint);
+    opacity:0;transform:translateY(6px);transition:opacity .45s,transform .45s,color .45s;}
+  .proj:hover .proj-view{opacity:1;transform:none;color:var(--ink);}
+  .proj-view i{font-style:normal;transition:transform .45s;}
+  .proj:hover .proj-view i{transform:translate(3px,-3px);}
+
   /* ---------- about ---------- */
   .about{padding-top:clamp(120px,16vh,200px);padding-bottom:clamp(120px,16vh,200px);}
   .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,8vw,120px);align-items:start;}
@@ -278,6 +312,7 @@
   <div class="brand"><b>BRANDON WALOWITZ</b><br><span>ART &amp; SCIENCE — EST. 2001</span></div>
   <div class="nav-links">
     <a href="#work" data-cursor>Work</a>
+    <a href="#projects" data-cursor>Projects</a>
     <a href="#about" data-cursor>About</a>
     <a href="#contact" class="cta-link" data-cursor>Contact</a>
     <div class="nav-status"><span class="dot"></span> Available — select projects</div>
@@ -322,6 +357,15 @@
   <section class="credits" id="credits">
     <p class="label reveal">Selected credits</p>
     <div class="marquee" id="marquee"></div>
+  </section>
+
+  <!-- PROJECT GALLERY -->
+  <section class="gallery" id="projects">
+    <div class="gallery-head reveal">
+      <h2>Selected <em>projects</em></h2>
+      <p class="label">Case studies · <span id="projCount">00</span></p>
+    </div>
+    <div class="gallery-grid" id="galleryGrid"></div>
   </section>
 
   <!-- ABOUT -->
@@ -381,6 +425,77 @@ const DISCIPLINES = [
 ];
 const CREDITS = ["Netflix","Amazon","NBC","MSN","Reelz","Redwood Logistics"];
 
+/* ─────────────────────────────────────────────────────────────
+   PROJECTS — EDIT HERE to add/change gallery + case-study pages.
+   Keep this list identical to the PROJECTS array in project.html, then
+   run `node generate-project-pages.mjs` to refresh the standalone pages.
+   Fields: slug (page filename), title, category, year, summary, accent
+   (2 colors for the placeholder cover). Optional: cover (image url).
+   Full case-study fields (intro/body/details/shots) live in project.html.
+───────────────────────────────────────────────────────────── */
+const PROJECTS = [
+  { slug:"synergy-homecare", title:"SYNERGY HomeCare", category:"Brand · Performance", year:"2025",
+    summary:"A franchise growth engine built on paid search and conversion-first creative.",
+    accent:["#1f5e5a","#0b2225"],
+    intro:"Turning a local home-care franchise into a measurable, repeatable growth machine.",
+    body:[
+      "SYNERGY HomeCare needed more than impressions — it needed booked consultations. The work began with the funnel: who is searching, what they fear, and the exact moment they decide to call.",
+      "From there it became a tight loop — paid-search structure, landing pages written for intent, and creative that meets families in a hard moment. Every dollar mapped to an outcome.",
+      "The result is a system the owner can run and trust, and a template that scales to the next franchise, and the next."
+    ],
+    details:[["Client","SYNERGY HomeCare"],["Year","2025"],["Scope","Paid Search · Landing Pages · Creative"],["Role","Strategy · Creative Direction"]] },
+  { slug:"redwood-logistics", title:"Redwood Logistics", category:"Brand System", year:"2022",
+    summary:"Unifying a multi-brand logistics group under one umbrella identity.",
+    accent:["#5e4326","#241606"],
+    intro:"One coherent brand architecture for a group that had outgrown its pieces.",
+    body:[
+      "Years of acquisitions had left a portfolio of logos, voices, and value props that didn't add up to a story. The brief: make it one company without erasing what each part had built.",
+      "We built an umbrella system — naming logic, a flexible identity, and templates the internal team could actually use across sales, web, and trade.",
+      "The throughline became the asset: a single brand that flexes across very different audiences and still feels like Redwood."
+    ],
+    details:[["Client","Redwood Logistics"],["Year","2022"],["Scope","Naming · Identity · Brand System"],["Role","Creative Direction · Design"]] },
+  { slug:"broadcast-package", title:"Network On-Air Package", category:"Motion Design", year:"2019",
+    summary:"Title systems and broadcast graphics for national television.",
+    accent:["#3a2a5e","#15102a"],
+    intro:"A motion language built to survive the chaos of live broadcast.",
+    body:[
+      "On-air graphics live or die on consistency under pressure — dozens of variations, tight timelines, zero room for error. The system had to be beautiful and bulletproof.",
+      "I designed the title sequences, lower-thirds, and transition language as a kit: modular, on-brand, and fast for an editorial team to deploy nightly.",
+      "What shipped was a look that felt premium on screen and stayed coherent across hundreds of segments."
+    ],
+    details:[["Sector","National Broadcast"],["Year","2019"],["Scope","Title Design · Motion System"],["Role","Motion Director"]] },
+  { slug:"art-and-science", title:"Art & Science", category:"Interactive · Code", year:"2025",
+    summary:"This site — WebGL shaders, real-time 3D, and a living identity.",
+    accent:["#22506e","#0b1b29"],
+    intro:"A portfolio that is itself the proof — design and engineering as one gesture.",
+    body:[
+      "The brief was personal: build a home for everything I do that makes people stop. No stock components, no template — a living surface.",
+      "Custom GLSL drives the background field and a morphing 3D object; the whole thing reads as one idea executed in code. Serif for the art, mono for the science.",
+      "It runs as a single file, deploys static, and degrades gracefully — craft and engineering holding hands."
+    ],
+    details:[["Project","Art & Science"],["Year","2025"],["Scope","Art Direction · WebGL · Front-End"],["Stack","Three.js · GLSL · Vanilla JS"]] },
+  { slug:"coast-to-coast", title:"Coast to Coast", category:"Sales Enablement · AI", year:"2023",
+    summary:"AI-assisted sales tools, decks, and brand collateral for a logistics team.",
+    accent:["#5e2a4a","#22101c"],
+    intro:"Giving a sales team better tools — and a sharper story to tell with them.",
+    body:[
+      "The team had pipeline but inconsistent materials. We rebuilt the narrative, then the assets: a sales deck, one-sheets, and AI-assisted tools that made personalization fast.",
+      "The point wasn't novelty — it was leverage. Reps spending less time formatting and more time selling.",
+      "Brand and utility in the same package, tuned to how the team actually works."
+    ],
+    details:[["Client","Coast to Coast"],["Year","2023"],["Scope","Sales Deck · Collateral · AI Tools"],["Role","Creative Direction · Build"]] },
+  { slug:"short-film", title:"Untitled Short", category:"Film · Direction", year:"2024",
+    summary:"A personal narrative short — directed, shot, and cut in-house.",
+    accent:["#2a5e3e","#0e2418"],
+    intro:"A small, true story about a phone call that never quite happens.",
+    body:[
+      "Drawn from something personal, this short trades plot for feeling — everyday images doing the emotional work.",
+      "I directed, shot, and edited it, keeping the crew tiny so the performances could stay honest.",
+      "It's the side of the practice that feeds everything else: story first, always."
+    ],
+    details:[["Format","Short Film"],["Year","2024"],["Scope","Writing · Directing · Edit"],["Role","Director"]] }
+];
+
 /* =========================================================
    BUILD DOM
 ========================================================= */
@@ -413,6 +528,28 @@ const buildMarquee=()=>{
   marquee.innerHTML=html;
 };
 buildMarquee();
+
+/* ----- project gallery ----- */
+const galleryGrid=document.getElementById('galleryGrid');
+PROJECTS.forEach((p,i)=>{
+  const a=document.createElement('a');
+  a.className='proj reveal';
+  a.href=`${p.slug}.html`;
+  a.setAttribute('data-cursor','');
+  const cover = p.cover
+    ? `<div class="proj-cover" style="background-image:url('${p.cover}')"></div>`
+    : `<div class="proj-cover" style="background:linear-gradient(140deg,${p.accent[0]},${p.accent[1]})">
+         <span class="proj-ghost">${String(i+1).padStart(2,'0')}</span></div>`;
+  a.innerHTML = `${cover}
+    <div class="proj-meta">
+      <div class="proj-top"><span>${p.category}</span><span>${p.year}</span></div>
+      <h3 class="proj-title">${p.title}</h3>
+      <p class="proj-sum">${p.summary}</p>
+      <span class="proj-view">View project <i>↗</i></span>
+    </div>`;
+  galleryGrid.appendChild(a);
+});
+document.getElementById('projCount').textContent=String(PROJECTS.length).padStart(2,'0');
 
 document.getElementById('yr').textContent=new Date().getFullYear();
 
