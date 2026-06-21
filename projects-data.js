@@ -217,13 +217,12 @@ const PROJECTS = [
     ],
     details:[["Project","Voices of Learning"],["Period","Archived work"],["Scope","Educational Video Series"],["Role","Video Producer"]],
     shots:[
-      {image:"images/sarahsilverman-1.png",wide:true,fit:"contain",background:"#111111",aspect:"16/9"},
-      {video:"7O56hYuq7w4",wide:true},
-      {video:"feD2OYZnzfw",wide:true},
-      {video:"62bJxibZ0B0",wide:true},
-      {video:"OqEGHXBvXlE",wide:true},
-      {video:"D4e8vT-HnpY",wide:true},
-      {video:"72dRZcbm-8U",wide:true}
+      {video:"7O56hYuq7w4",title:"Sarah Silverman's Voices of Learning: Episode 1",wide:true},
+      {video:"feD2OYZnzfw",title:"Sarah Silverman's Voices of Learning: Episode 2",wide:true},
+      {video:"62bJxibZ0B0",title:"Sarah Silverman's Voices of Learning: Episode 3",wide:true},
+      {video:"OqEGHXBvXlE",title:"Sarah Silverman's Voices of Learning: Episode 4",wide:true},
+      {video:"D4e8vT-HnpY",title:"Sarah Silverman's Voices of Learning: Episode 5",wide:true},
+      {video:"72dRZcbm-8U",title:"Sarah Silverman's Voices of Learning: Episode 6",wide:true}
     ]
   },
   {
@@ -261,13 +260,12 @@ const PROJECTS = [
     ],
     details:[["Client","Makeful"],["Period","Archived work"],["Scope","Programming · Writing · Video"],["Role","Director of Programming · Writer"]],
     shots:[
-      {image:"images/makeful-1.png",wide:true,fit:"contain",background:"#efe8e1",aspect:"16/9"},
-      {video:"UrrY814gYQk",wide:true},
-      {video:"ZaoSsVsl6YE",wide:true},
-      {video:"yvL2hjvBbbA",wide:true},
-      {video:"1peZkwhqj3o",wide:true},
-      {video:"bC7xP1wmVro",wide:true},
-      {video:"hMumsDg0lP4",wide:true}
+      {video:"UrrY814gYQk",title:"DIY Pom Pom Lamp Shade | 3 Minute DIY with Jeanine Amapola",wide:true},
+      {video:"ZaoSsVsl6YE",title:"Mason Jar Candle Holders | 3 Minute DIY with Jeanine Amapola",wide:true},
+      {video:"yvL2hjvBbbA",title:"Easy Travel Tips & Hacks | Girl, Get Your Life! | Makeful",wide:true},
+      {video:"1peZkwhqj3o",title:"3 Easy Cake Decorating Hacks with Cutlery",wide:true},
+      {video:"bC7xP1wmVro",title:"Try These Easy Fruit-Cutting Hacks!",wide:true},
+      {video:"hMumsDg0lP4",title:"Learning To Paint | The Creative Lab | Makeful",wide:true}
     ]
   },
   {
@@ -286,15 +284,14 @@ const PROJECTS = [
     ],
     details:[["Client","Mr. Kate"],["Period","Archived work"],["Scope","Lifestyle Video Series"],["Role","Video Producer"]],
     shots:[
-      {image:"images/mrkate-1.png",wide:true,fit:"contain",background:"#111111",aspect:"16/9"},
-      {video:"7BcNeFmdkQw",wide:true},
-      {video:"R5P5N7jlPFg",wide:true},
-      {video:"EDZrHpKpmCs",wide:true},
-      {video:"PV_GHHXy7Po",wide:true},
-      {video:"rsSCMAPD0Fg",wide:true},
-      {video:"A8u1jqvDsVY",wide:true},
-      {video:"o_az8-Kyd88",wide:true},
-      {video:"cfLV2KDhxQQ",wide:true}
+      {video:"7BcNeFmdkQw",title:"Liza Koshy's Urban Outdoor Oasis Makeover! | OMG We're Coming Over",wide:true},
+      {video:"R5P5N7jlPFg",title:"Design Vs. Design — Room Makeover Competition!",wide:true},
+      {video:"EDZrHpKpmCs",title:"Colleen Ballinger's Nursery Makeover!",wide:true},
+      {video:"PV_GHHXy7Po",title:"Joey Graceffa's Enchanted Gaming Room Makeover! | OMG We're Coming Over",wide:true},
+      {video:"rsSCMAPD0Fg",title:"Interior Design For A Blind Person? Ft. Molly Burke x OMG We’re Coming Over",wide:true},
+      {video:"A8u1jqvDsVY",title:"Surprise Brother and Sister Room Makeovers! | Mr. Kate Decorates",wide:true},
+      {video:"o_az8-Kyd88",title:"Tween Bedroom on a Budget *emotional* | Mr. Kate Decorates",wide:true},
+      {video:"cfLV2KDhxQQ",title:"Dolan Twins House Makeover! | OMG We're Coming Over",wide:true}
     ]
   },
   {
