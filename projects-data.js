@@ -1,0 +1,425 @@
+/* Shared project data for the homepage gallery and every case-study page.
+   Run `node generate-project-pages.mjs` after adding or removing a project. */
+const PROJECTS = [
+  {
+    slug:"redwood-logistics",
+    title:"Redwood Logistics",
+    category:"Brand System",
+    year:"Archive",
+    summary:"Five companies brought together under one clear Redwood identity.",
+    accent:["#8f181c","#1b0d0d"],
+    cover:"images/redwood-rebrand/redwood_weathered-mock-ups.jpg",
+    intro:"One coherent brand architecture for a group that had outgrown its pieces.",
+    body:[
+      "Years of acquisitions had left a portfolio of logos, voices, and value propositions that did not add up to one story. The brief was to make it one company without erasing what each part had built.",
+      "The work became an umbrella system: naming logic, a flexible identity, practical guidelines, and templates the internal team could use across sales, web, events, and print.",
+      "This page restores a selection of the original brand-system work from the previous portfolio."
+    ],
+    details:[["Client","Redwood Logistics"],["Period","Archived work"],["Scope","Naming · Identity · Brand System"],["Role","Creative Direction · Design"]],
+    shots:[
+      {image:"images/redwoodlogo-original-1.png",fit:"contain",background:"#ffffff"},
+      {image:"images/redwood-rebrand/board-overview.jpg",wide:true,fit:"contain",background:"#ffffff",aspect:"1248/841"},
+      {image:"images/redwood-rebrand/redwood-brandguide-foursecondarylogos.jpg",wide:true,fit:"contain",background:"#ffffff"},
+      {image:"images/redwood-rebrand/redwood-brandguide-fourlogos.jpg",wide:true,fit:"contain",background:"#ffffff"},
+      {image:"images/redwood-rebrand/Redwood_ColorGuideSheet-01.png",wide:true,fit:"contain",background:"#ffffff"},
+      {image:"images/redwood-rebrand/Redwood_MasterLogoSheet-01.png",wide:true,fit:"contain",background:"#f3f1ed"},
+      {image:"images/redwood-rebrand/redwood-brand-onepager.jpg",wide:true,fit:"contain",background:"#f3f1ed",aspect:"2550/3053"},
+      {image:"images/redwood-rebrand/redwood_wood-and-steel-mock-ups_2.jpg",wide:true},
+      {image:"images/redwood-rebrand/redwood_wood-and-steel-mock-ups.jpg",wide:true},
+      {image:"images/redwood-rebrand/redwood_weathered-mock-ups.jpg",wide:true},
+      {image:"images/redwood-rebrand/redwood_watercolor_72dpi.jpg",wide:true}
+    ]
+  },
+  {
+    slug:"ellen-shop",
+    title:"Ellen Shop",
+    category:"E-Commerce · Digital",
+    year:"Archive",
+    summary:"Seasonal commerce design, merchandising, and responsive storefront experiences.",
+    accent:["#4387e8","#a9e3ea"],
+    cover:"images/ellenshop-2.png",
+    intro:"A bright, flexible shopping experience built around products, clubs, and seasonal campaigns.",
+    body:[
+      "The archived work shows a commerce system designed to move comfortably between editorial storytelling, product discovery, and promotional moments.",
+      "Color, photography, and simple category structures gave the storefront a playful personality without losing the practical work of helping people browse and buy.",
+      "These restored screens are a useful starting point for deciding how much of the Ellen Shop work belongs in the next portfolio edit."
+    ],
+    details:[["Client","Ellen Shop"],["Period","Archived work"],["Scope","E-Commerce · Campaigns · UX"],["Role","Creative Direction · Digital"]],
+    shots:[
+      {image:"images/ellenshop-2.png",wide:true,aspect:"16/10"},
+      {image:"images/ellenshop-1.png",wide:true,fit:"contain",background:"#ffffff",aspect:"1433/756"},
+      {image:"images/ellenshop-3.png",wide:true,fit:"contain",background:"#eef7fb",aspect:"1428/496"},
+      {image:"images/ellenshop-4.png",wide:true,fit:"contain",background:"#ffffff",aspect:"1457/526"}
+    ]
+  },
+  {
+    slug:"redwood-sales-collateral",
+    title:"Redwood Sales Collateral",
+    category:"Sales Enablement · Print",
+    year:"Archive",
+    summary:"Brochures, one-pagers, and event materials built from the Redwood system.",
+    accent:["#243b7a","#8f181c"],
+    cover:"images/redwood-folder-1.png",
+    coverFit:"contain",
+    coverBackground:"#e8e8e8",
+    intro:"A practical collateral library designed to make the sales organization faster and more consistent.",
+    body:[
+      "This work translated the Redwood identity into the everyday materials used by sales and marketing teams.",
+      "The system covered brochures, presentation-ready spreads, event pieces, quick-reference materials, and templates that could be reused without rebuilding the brand each time.",
+      "It is separated from the identity case study here so you can decide later whether it deserves its own project or should be folded back into the larger Redwood story."
+    ],
+    details:[["Client","Redwood Logistics"],["Period","Archived work"],["Scope","Brochures · One-Pagers · Events"],["Role","Creative Direction · Design"]],
+    shots:[
+      {image:"images/redwood-folder-1.png",fit:"contain",background:"#e8e8e8"},
+      {image:"images/redwood-rebrand/rdwd_brochure_11X17_Final_1.jpg",wide:true},
+      {image:"images/redwood-rebrand/rdwd_brochure_11X17_Final_2.jpg",wide:true},
+      {image:"images/redwood-rebrand/rdwd_brochure_11X17_Final_3.jpg",wide:true},
+      {image:"images/redwood-rebrand/rdwd_brochure_11X17_Final_4.jpg",wide:true},
+      {image:"images/redwood-rebrand/redwood_giftcard-giveaway-tablesign.jpg",fit:"contain",background:"#f0eee9"},
+      {image:"images/redwood-rebrand/redwood_careerfair-banner_1.jpg",fit:"contain",background:"#8f181c"},
+      {image:"images/redwood-rebrand/redwood_careerfair-banner_2.jpg",fit:"contain",background:"#8f181c"},
+      {image:"images/redwood-rebrand/RedwoodPartyInvite_Finalw.jpg",fit:"contain",background:"#f0eee9"},
+      {image:"images/redwood-rebrand/RedwoodParty_Invite_7X5_Bleed-1.jpg",fit:"contain",background:"#f0eee9"},
+      {image:"images/redwood-rebrand/redwood_redwood_card.jpg",wide:true,fit:"contain",background:"#ece9e3"}
+    ]
+  },
+  {
+    slug:"abled",
+    title:"Abled",
+    category:"Editorial · Press Kit",
+    year:"Archive",
+    summary:"A cinematic electronic press kit assembled as a complete editorial story.",
+    accent:["#7e6d59","#182024"],
+    cover:"images/abled-1.png",
+    intro:"A long-form press kit built to introduce the people, story, and visual world of Abled.",
+    body:[
+      "The previous portfolio presented the complete press kit as a sequence of designed spreads.",
+      "The restored pages combine photography, typography, pull quotes, and production information into one coherent editorial package.",
+      "All twelve original spreads are included below so the project can be reviewed in full before anything is cut."
+    ],
+    details:[["Project","Abled"],["Period","Archived work"],["Scope","Press Kit · Editorial Design"],["Role","Creative Direction · Design"]],
+    shots:[
+      {image:"images/abled/Abled-EPK-11-1.jpg",wide:true,fit:"contain",background:"#111417",aspect:"5/3"},
+      {image:"images/abled/Abled-EPK-11-2.jpg",wide:true,fit:"contain",background:"#111417",aspect:"5/3"},
+      {image:"images/abled/Abled-EPK-11-3.jpg",wide:true,fit:"contain",background:"#111417",aspect:"5/3"},
+      {image:"images/abled/Abled-EPK-11-4.jpg",wide:true,fit:"contain",background:"#111417",aspect:"5/3"},
+      {image:"images/abled/Abled-EPK-11-5.jpg",wide:true,fit:"contain",background:"#111417",aspect:"5/3"},
+      {image:"images/abled/Abled-EPK-11-6.jpg",wide:true,fit:"contain",background:"#111417",aspect:"5/3"},
+      {image:"images/abled/Abled-EPK-11-7.jpg",wide:true,fit:"contain",background:"#111417",aspect:"5/3"},
+      {image:"images/abled/Abled-EPK-11-8.jpg",wide:true,fit:"contain",background:"#111417",aspect:"5/3"},
+      {image:"images/abled/Abled-EPK-11-9.jpg",wide:true,fit:"contain",background:"#111417",aspect:"5/3"},
+      {image:"images/abled/Abled-EPK-11-10.jpg",wide:true,fit:"contain",background:"#111417",aspect:"5/3"},
+      {image:"images/abled/Abled-EPK-11-11.jpg",wide:true,fit:"contain",background:"#111417",aspect:"5/3"},
+      {image:"images/abled/Abled-EPK-11-12.jpg",wide:true,fit:"contain",background:"#111417",aspect:"5/3"}
+    ]
+  },
+  {
+    slug:"be-kind-by-ellen",
+    title:"Be Kind by Ellen",
+    category:"Responsive Digital",
+    year:"Archive",
+    summary:"A responsive editorial and commerce experience centered on recurring unboxing content.",
+    accent:["#9be4ea","#b7b9f3"],
+    cover:"images/bekindbyellen-1.png",
+    intro:"One campaign experience carried cleanly across phone, tablet, and desktop.",
+    body:[
+      "The archived visual shows a responsive landing experience for Be Kind by Ellen.",
+      "The design balances editorial video, subscription messaging, and a direct commerce path while keeping the personality light and approachable.",
+      "The original portfolio contained one primary presentation image, restored here as the foundation for a fuller case study later."
+    ],
+    details:[["Client","Be Kind by Ellen"],["Period","Archived work"],["Scope","Responsive Design · Campaign"],["Role","Creative Direction · Digital"]],
+    shots:[
+      {image:"images/bekindbyellen-1.png",wide:true,fit:"contain",background:"#cbeef2",aspect:"1547/1000"}
+    ]
+  },
+  {
+    slug:"roots-logistics-presentation",
+    title:"Roots Logistics Presentation",
+    category:"Sales Presentation",
+    year:"Archive",
+    summary:"A presentation system for a logistics company moving under a new visual identity.",
+    accent:["#1f8f43","#b6dcf2"],
+    cover:"images/roots-presentation-1.png",
+    coverFit:"contain",
+    coverBackground:"#dbeaf2",
+    intro:"A sales-story presentation designed to make a logistics offer easier to understand.",
+    body:[
+      "This archived project captures the presentation side of the Roots Logistics work.",
+      "The material combines brand identity, fleet photography, and a straightforward message intended for sales conversations.",
+      "It remains separate from the identity entry so both pieces can be evaluated independently."
+    ],
+    details:[["Client","Roots Logistics"],["Period","Archived work"],["Scope","Presentation · Sales Enablement"],["Role","Creative Direction · Design"]],
+    shots:[
+      {image:"images/roots-presentation-1.png",fit:"contain",background:"#dbeaf2"},
+      {image:"images/roots-1.png",wide:true,fit:"contain",background:"#ffffff",aspect:"945/764"},
+      {image:"images/roots-2.png",fit:"contain",background:"#eeeeee"}
+    ]
+  },
+  {
+    slug:"redwood-games",
+    title:"Redwood Games 2019",
+    category:"Event · Apparel",
+    year:"2019",
+    summary:"Event identity and apparel concepts for the SXMW Redwood Games.",
+    accent:["#21a6b3","#f0c43c"],
+    cover:"images/redwoodgames2019-3.png",
+    coverFit:"contain",
+    coverBackground:"#ffffff",
+    intro:"A location-driven event graphic translated from rough concepts into finished apparel.",
+    body:[
+      "The Redwood Games project began with a broad set of hand-drawn shirt ideas and event motifs.",
+      "The finished direction combined recognizable Monterey imagery with a playful illustrated style and a restrained event lockup.",
+      "The restored sequence includes the original concept sheet, the resolved front-and-back design, and the final thumbnail used in the old portfolio."
+    ],
+    details:[["Client","Redwood Logistics"],["Year","2019"],["Scope","Event Identity · Apparel"],["Role","Creative Direction · Design"]],
+    shots:[
+      {image:"images/redwoodgames2019-2.jpeg",wide:true,fit:"contain",background:"#ffffff",aspect:"1440/1536"},
+      {image:"images/redwoodgames2019-1.jpg",wide:true,fit:"contain",background:"#ffffff",aspect:"1440/717"},
+      {image:"images/redwoodgames2019-3.png",fit:"contain",background:"#ffffff"}
+    ]
+  },
+  {
+    slug:"lightifier",
+    title:"Lightifier",
+    category:"Identity Design",
+    year:"Archive",
+    summary:"A high-contrast identity exploration built around illumination and display typography.",
+    accent:["#050505","#dfd5c4"],
+    cover:"images/lightifier-1.png",
+    coverFit:"contain",
+    coverBackground:"#050505",
+    intro:"A compact identity study using a light source as both symbol and typographic anchor.",
+    body:[
+      "Lightifier is preserved in the archive as a focused logo and identity exploration.",
+      "The mark combines a radiating light form with contrasting letter styles, designed to work in both positive and reversed applications.",
+      "The black and white lockups are restored below for side-by-side review."
+    ],
+    details:[["Project","Lightifier"],["Period","Archived work"],["Scope","Logo · Identity"],["Role","Design"]],
+    shots:[
+      {image:"images/lightifier-black.jpeg",wide:true,fit:"contain",background:"#ffffff",aspect:"2026/817"},
+      {image:"images/lightifier-white.jpeg",wide:true,fit:"contain",background:"#000000",aspect:"2026/817"},
+      {image:"images/lightifier-1.png",fit:"contain",background:"#000000"}
+    ]
+  },
+  {
+    slug:"voices-of-learning",
+    title:"Voices of Learning",
+    category:"Video Production",
+    year:"Archive",
+    summary:"A produced educational video series featuring Sarah Silverman.",
+    accent:["#d7936a","#f4c979"],
+    cover:"images/sarahsilverman-2.png",
+    intro:"A multi-episode educational series shaped for clear, direct delivery on camera.",
+    body:[
+      "The previous portfolio identified this work as a video-production project for Voices of Learning.",
+      "Six original episodes were embedded in the case study and are restored below as playable videos.",
+      "The collection can now be reviewed in the new site before choosing a shorter final reel."
+    ],
+    details:[["Project","Voices of Learning"],["Period","Archived work"],["Scope","Educational Video Series"],["Role","Video Producer"]],
+    shots:[
+      {image:"images/sarahsilverman-1.png",wide:true,fit:"contain",background:"#111111",aspect:"16/9"},
+      {video:"7O56hYuq7w4",wide:true},
+      {video:"feD2OYZnzfw",wide:true},
+      {video:"62bJxibZ0B0",wide:true},
+      {video:"OqEGHXBvXlE",wide:true},
+      {video:"D4e8vT-HnpY",wide:true},
+      {video:"72dRZcbm-8U",wide:true}
+    ]
+  },
+  {
+    slug:"outstanding",
+    title:"Outstanding",
+    category:"Motion Design",
+    year:"Archive",
+    summary:"A neon-glitch title exploration for Outstanding: A Comedy Revolution.",
+    accent:["#44206f","#d43bd6"],
+    cover:"images/outstanding-1.jpeg",
+    intro:"A saturated motion identity built from neon color, distortion, and fragmented typography.",
+    body:[
+      "The archived contact sheet captures the visual language developed for Outstanding: A Comedy Revolution.",
+      "Glitch transitions, dimensional letterforms, and a magenta-blue palette create the feeling of a title package in motion.",
+      "This restored frame is enough to keep the project visible while a fuller motion reel is assembled."
+    ],
+    details:[["Project","Outstanding"],["Period","Archived work"],["Scope","Title Design · Motion"],["Role","Creative Direction · Motion"]],
+    shots:[
+      {image:"images/outstanding-1.jpeg",wide:true,fit:"contain",background:"#100917",aspect:"16/9"}
+    ]
+  },
+  {
+    slug:"makeful",
+    title:"Makeful",
+    category:"Programming · Video",
+    year:"Archive",
+    summary:"Craft and lifestyle programming developed, written, and produced for Makeful.",
+    accent:["#eab8ad","#e9e1d5"],
+    cover:"images/makeful-1.png",
+    intro:"A collection of approachable craft programming designed for repeatable digital viewing.",
+    body:[
+      "The previous portfolio described this work as Director of Programming and Writer for Makeful.",
+      "Six original episodes were included, spanning accessible projects and host-led instruction.",
+      "They are restored here as playable videos so the body of work can be reviewed before selecting a tighter final set."
+    ],
+    details:[["Client","Makeful"],["Period","Archived work"],["Scope","Programming · Writing · Video"],["Role","Director of Programming · Writer"]],
+    shots:[
+      {image:"images/makeful-1.png",wide:true,fit:"contain",background:"#efe8e1",aspect:"16/9"},
+      {video:"UrrY814gYQk",wide:true},
+      {video:"ZaoSsVsl6YE",wide:true},
+      {video:"yvL2hjvBbbA",wide:true},
+      {video:"1peZkwhqj3o",wide:true},
+      {video:"bC7xP1wmVro",wide:true},
+      {video:"hMumsDg0lP4",wide:true}
+    ]
+  },
+  {
+    slug:"mr-kate",
+    title:"Mr. Kate",
+    category:"Video Production",
+    year:"Archive",
+    summary:"A collection of produced lifestyle and design videos for Mr. Kate.",
+    accent:["#bd829f","#53694f"],
+    cover:"images/mrkate-1.png",
+    intro:"Energetic lifestyle production built around personality, transformation, and reveal.",
+    body:[
+      "The previous portfolio identified this work as a video-production project for Mr. Kate.",
+      "Eight original videos were embedded in the archive, covering the range of the produced series.",
+      "The complete set is restored below so the strongest pieces can be selected later."
+    ],
+    details:[["Client","Mr. Kate"],["Period","Archived work"],["Scope","Lifestyle Video Series"],["Role","Video Producer"]],
+    shots:[
+      {image:"images/mrkate-1.png",wide:true,fit:"contain",background:"#111111",aspect:"16/9"},
+      {video:"7BcNeFmdkQw",wide:true},
+      {video:"R5P5N7jlPFg",wide:true},
+      {video:"EDZrHpKpmCs",wide:true},
+      {video:"PV_GHHXy7Po",wide:true},
+      {video:"rsSCMAPD0Fg",wide:true},
+      {video:"A8u1jqvDsVY",wide:true},
+      {video:"o_az8-Kyd88",wide:true},
+      {video:"cfLV2KDhxQQ",wide:true}
+    ]
+  },
+  {
+    slug:"roots-logistics-identity",
+    title:"Roots Logistics Identity",
+    category:"Brand Identity",
+    year:"Archive",
+    summary:"A clean logistics identity centered on a directional green arrow.",
+    accent:["#1d9143","#efefef"],
+    cover:"images/roots-2.png",
+    coverFit:"contain",
+    coverBackground:"#eeeeee",
+    intro:"A direct, modern identity for a logistics brand built around movement and direction.",
+    body:[
+      "The Roots Logistics identity uses a minimal wordmark and a bold directional device.",
+      "The restored files show the core mark, a presentation-ready variation, and the identity applied over fleet photography.",
+      "This entry remains separate from the presentation project so the identity can be judged on its own."
+    ],
+    details:[["Client","Roots Logistics"],["Period","Archived work"],["Scope","Logo · Identity"],["Role","Brand Design"]],
+    shots:[
+      {image:"images/roots-2.png",fit:"contain",background:"#eeeeee"},
+      {image:"images/roots-1.png",wide:true,fit:"contain",background:"#ffffff",aspect:"945/764"},
+      {image:"images/roots-presentation-1.png",fit:"contain",background:"#dbeaf2"}
+    ]
+  },
+  {
+    slug:"synergy-homecare",
+    title:"SYNERGY HomeCare",
+    category:"Brand · Performance",
+    year:"2025",
+    summary:"A franchise growth engine built on paid search and conversion-first creative.",
+    accent:["#1f5e5a","#0b2225"],
+    intro:"Turning a local home-care franchise into a measurable, repeatable growth machine.",
+    body:[
+      "SYNERGY HomeCare needed more than impressions — it needed booked consultations. The work began with the funnel: who is searching, what they fear, and the exact moment they decide to call.",
+      "From there it became a tight loop — paid-search structure, landing pages written for intent, and creative that meets families in a hard moment. Every dollar mapped to an outcome.",
+      "The result is a system the owner can run and trust, and a template that scales to the next franchise, and the next."
+    ],
+    details:[["Client","SYNERGY HomeCare"],["Year","2025"],["Scope","Paid Search · Landing Pages · Creative"],["Role","Strategy · Creative Direction"]]
+  },
+  {
+    slug:"ai-sales-coaches",
+    title:"AI Sales & Onboarding Coaches",
+    category:"AI · Sales Enablement",
+    year:"Archive",
+    summary:"Interactive practice tools for logistics teams onboarding new sales representatives.",
+    accent:["#28496a","#10202d"],
+    cover:"C2C_Logo-hires-alpha-white.png",
+    coverFit:"contain",
+    coverBackground:"#16374d",
+    intro:"Training that feels like a coach, not a script.",
+    body:[
+      "The archived case study describes a set of AI-assisted coaches for logistics teams hiring and onboarding new sales representatives.",
+      "The tools teach industry language, help people work through difficult questions, and create a safe place to practice calls with clear feedback.",
+      "The original page relied on placeholder supporting visuals, so this restored entry keeps the written case-study structure while awaiting final product screenshots."
+    ],
+    details:[["Sector","Logistics Sales"],["Period","Archived work"],["Scope","AI Tools · Training · UX"],["Role","Strategy · Product Build"]],
+    shots:[
+      {image:"C2C_Logo-hires-alpha-white.png",wide:true,fit:"contain",background:"#16374d",aspect:"16/9"}
+    ]
+  },
+  {
+    slug:"coast-to-coast",
+    title:"Coast to Coast",
+    category:"Sales Enablement · AI",
+    year:"2023",
+    summary:"AI-assisted sales tools, decks, and brand collateral for a logistics team.",
+    accent:["#5e2a4a","#22101c"],
+    cover:"C2C_Logo-hires-alpha-white.png",
+    coverFit:"contain",
+    coverBackground:"#3b1830",
+    intro:"Giving a sales team better tools — and a sharper story to tell with them.",
+    body:[
+      "The team had pipeline but inconsistent materials. We rebuilt the narrative, then the assets: a sales deck, one-sheets, and AI-assisted tools that made personalization fast.",
+      "The point was not novelty — it was leverage. Representatives spending less time formatting and more time selling.",
+      "Brand and utility in the same package, tuned to how the team actually works."
+    ],
+    details:[["Client","Coast to Coast"],["Year","2023"],["Scope","Sales Deck · Collateral · AI Tools"],["Role","Creative Direction · Build"]],
+    shots:[
+      {image:"C2C_Logo-hires-alpha-white.png",wide:true,fit:"contain",background:"#3b1830",aspect:"16/9"}
+    ]
+  },
+  {
+    slug:"broadcast-package",
+    title:"Network On-Air Package",
+    category:"Motion Design",
+    year:"2019",
+    summary:"Title systems and broadcast graphics for national television.",
+    accent:["#3a2a5e","#15102a"],
+    intro:"A motion language built to survive the chaos of live broadcast.",
+    body:[
+      "On-air graphics live or die on consistency under pressure — dozens of variations, tight timelines, zero room for error. The system had to be beautiful and bulletproof.",
+      "I designed the title sequences, lower-thirds, and transition language as a kit: modular, on-brand, and fast for an editorial team to deploy nightly.",
+      "What shipped was a look that felt premium on screen and stayed coherent across hundreds of segments."
+    ],
+    details:[["Sector","National Broadcast"],["Year","2019"],["Scope","Title Design · Motion System"],["Role","Motion Director"]]
+  },
+  {
+    slug:"art-and-science",
+    title:"Art & Science",
+    category:"Interactive · Code",
+    year:"2025",
+    summary:"This site — WebGL shaders, real-time 3D, and a living identity.",
+    accent:["#22506e","#0b1b29"],
+    intro:"A portfolio that is itself the proof — design and engineering as one gesture.",
+    body:[
+      "The brief was personal: build a home for everything I do that makes people stop. No stock components, no template — a living surface.",
+      "Custom GLSL drives the background field and a morphing 3D object; the whole thing reads as one idea executed in code. Serif for the art, mono for the science.",
+      "It runs as a static site and degrades gracefully — craft and engineering holding hands."
+    ],
+    details:[["Project","Art & Science"],["Year","2025"],["Scope","Art Direction · WebGL · Front-End"],["Stack","Three.js · GLSL · Vanilla JS"]]
+  },
+  {
+    slug:"short-film",
+    title:"Untitled Short",
+    category:"Film · Direction",
+    year:"2024",
+    summary:"A personal narrative short — directed, shot, and cut in-house.",
+    accent:["#2a5e3e","#0e2418"],
+    intro:"A small, true story about a phone call that never quite happens.",
+    body:[
+      "Drawn from something personal, this short trades plot for feeling — everyday images doing the emotional work.",
+      "I directed, shot, and edited it, keeping the crew tiny so the performances could stay honest.",
+      "It is the side of the practice that feeds everything else: story first, always."
+    ],
+    details:[["Format","Short Film"],["Year","2024"],["Scope","Writing · Directing · Edit"],["Role","Director"]]
+  }
+];

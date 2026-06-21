@@ -100,9 +100,12 @@
   .shot{aspect-ratio:4/3;border-radius:5px;background-size:cover;background-position:center;background-repeat:no-repeat;position:relative;overflow:hidden;
     box-shadow:0 30px 60px -34px rgba(0,0,0,0.8);}
   .shot.wide{grid-column:1/-1;aspect-ratio:21/9;}
+  .shot.video{aspect-ratio:16/9;background:#000;}
+  .shot.video::before{display:none;}
+  .shot iframe{position:absolute;inset:0;width:100%;height:100%;border:0;z-index:1;}
   .shot::before{content:"";position:absolute;inset:0;opacity:.4;mix-blend-mode:overlay;
     background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)'/%3E%3C/svg%3E");}
-  .shot .fl{position:absolute;left:16px;bottom:13px;font-family:var(--mono);font-size:10px;letter-spacing:.16em;color:rgba(243,239,230,0.6);}
+  .shot .fl{position:absolute;left:16px;bottom:13px;z-index:2;pointer-events:none;font-family:var(--mono);font-size:10px;letter-spacing:.16em;color:rgba(243,239,230,0.6);}
   @media(max-width:640px){.shots-grid{grid-template-columns:1fr;}}
 
   .case-next{border-top:1px solid var(--line);margin-top:clamp(20px,4vh,40px);padding:clamp(60px,10vh,120px) 0;}
@@ -164,92 +167,8 @@
 </footer>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="projects-data.js"></script>
 <script>
-/* ─────────────────────────────────────────────────────────────
-   PROJECTS — keep this array identical to the one in index.html.
-   After editing, run `node generate-project-pages.mjs` to refresh
-   every standalone project page.
-   index.html uses: slug,title,category,year,summary,accent,cover.
-   This page additionally uses: intro, body[], details[[k,v]], shots[].
-   Add real images per project with e.g. cover:"img/x.jpg" and
-   shots:[{image:"img/a.jpg"},{image:"img/b.jpg",wide:true}].
-───────────────────────────────────────────────────────────── */
-const PROJECTS = [
-  { slug:"synergy-homecare", title:"SYNERGY HomeCare", category:"Brand · Performance", year:"2025",
-    summary:"A franchise growth engine built on paid search and conversion-first creative.",
-    accent:["#1f5e5a","#0b2225"],
-    intro:"Turning a local home-care franchise into a measurable, repeatable growth machine.",
-    body:[
-      "SYNERGY HomeCare needed more than impressions — it needed booked consultations. The work began with the funnel: who is searching, what they fear, and the exact moment they decide to call.",
-      "From there it became a tight loop — paid-search structure, landing pages written for intent, and creative that meets families in a hard moment. Every dollar mapped to an outcome.",
-      "The result is a system the owner can run and trust, and a template that scales to the next franchise, and the next."
-    ],
-    details:[["Client","SYNERGY HomeCare"],["Year","2025"],["Scope","Paid Search · Landing Pages · Creative"],["Role","Strategy · Creative Direction"]]
-  },
-  { slug:"redwood-logistics", title:"Redwood Logistics", category:"Brand System", year:"2022",
-    summary:"Unifying a multi-brand logistics group under one umbrella identity.",
-    accent:["#5e4326","#241606"],
-    cover:"images/redwood-rebrand/redwood_weathered-mock-ups.jpg",
-    shots:[
-      {image:"images/redwood-rebrand/Redwood_MasterLogoSheet-01.png",wide:true,fit:"contain",background:"#f3f1ed"},
-      {image:"images/redwood-rebrand/redwood-brand-onepager.jpg",fit:"contain",background:"#f3f1ed"},
-      {image:"images/redwood-rebrand/redwood_careerfair-banner_1.jpg",fit:"contain",background:"#8f181c"},
-      {image:"images/redwood-rebrand/rdwd_brochure_11X17_Final_1.jpg",wide:true},
-      {image:"images/redwood-rebrand/redwood_redwood_card.jpg",wide:true,fit:"contain",background:"#ece9e3"}
-    ],
-    intro:"One coherent brand architecture for a group that had outgrown its pieces.",
-    body:[
-      "Years of acquisitions had left a portfolio of logos, voices, and value props that didn't add up to a story. The brief: make it one company without erasing what each part had built.",
-      "We built an umbrella system — naming logic, a flexible identity, and templates the internal team could actually use across sales, web, and trade.",
-      "The throughline became the asset: a single brand that flexes across very different audiences and still feels like Redwood."
-    ],
-    details:[["Client","Redwood Logistics"],["Year","2022"],["Scope","Naming · Identity · Brand System"],["Role","Creative Direction · Design"]]
-  },
-  { slug:"broadcast-package", title:"Network On-Air Package", category:"Motion Design", year:"2019",
-    summary:"Title systems and broadcast graphics for national television.",
-    accent:["#3a2a5e","#15102a"],
-    intro:"A motion language built to survive the chaos of live broadcast.",
-    body:[
-      "On-air graphics live or die on consistency under pressure — dozens of variations, tight timelines, zero room for error. The system had to be beautiful and bulletproof.",
-      "I designed the title sequences, lower-thirds, and transition language as a kit: modular, on-brand, and fast for an editorial team to deploy nightly.",
-      "What shipped was a look that felt premium on screen and stayed coherent across hundreds of segments."
-    ],
-    details:[["Sector","National Broadcast"],["Year","2019"],["Scope","Title Design · Motion System"],["Role","Motion Director"]]
-  },
-  { slug:"art-and-science", title:"Art & Science", category:"Interactive · Code", year:"2025",
-    summary:"This site — WebGL shaders, real-time 3D, and a living identity.",
-    accent:["#22506e","#0b1b29"],
-    intro:"A portfolio that is itself the proof — design and engineering as one gesture.",
-    body:[
-      "The brief was personal: build a home for everything I do that makes people stop. No stock components, no template — a living surface.",
-      "Custom GLSL drives the background field and a morphing 3D object; the whole thing reads as one idea executed in code. Serif for the art, mono for the science.",
-      "It runs as a single file, deploys static, and degrades gracefully — craft and engineering holding hands."
-    ],
-    details:[["Project","Art & Science"],["Year","2025"],["Scope","Art Direction · WebGL · Front-End"],["Stack","Three.js · GLSL · Vanilla JS"]]
-  },
-  { slug:"coast-to-coast", title:"Coast to Coast", category:"Sales Enablement · AI", year:"2023",
-    summary:"AI-assisted sales tools, decks, and brand collateral for a logistics team.",
-    accent:["#5e2a4a","#22101c"],
-    intro:"Giving a sales team better tools — and a sharper story to tell with them.",
-    body:[
-      "The team had pipeline but inconsistent materials. We rebuilt the narrative, then the assets: a sales deck, one-sheets, and AI-assisted tools that made personalization fast.",
-      "The point wasn't novelty — it was leverage. Reps spending less time formatting and more time selling.",
-      "Brand and utility in the same package, tuned to how the team actually works."
-    ],
-    details:[["Client","Coast to Coast"],["Year","2023"],["Scope","Sales Deck · Collateral · AI Tools"],["Role","Creative Direction · Build"]]
-  },
-  { slug:"short-film", title:"Untitled Short", category:"Film · Direction", year:"2024",
-    summary:"A personal narrative short — directed, shot, and cut in-house.",
-    accent:["#2a5e3e","#0e2418"],
-    intro:"A small, true story about a phone call that never quite happens.",
-    body:[
-      "Drawn from something personal, this short trades plot for feeling — everyday images doing the emotional work.",
-      "I directed, shot, and edited it, keeping the crew tiny so the performances could stay honest.",
-      "It's the side of the practice that feeds everything else: story first, always."
-    ],
-    details:[["Format","Short Film"],["Year","2024"],["Scope","Writing · Directing · Edit"],["Role","Director"]]
-  }
-];
 
 /* ----- resolve which project ----- */
 const params=new URLSearchParams(location.search);
@@ -264,11 +183,19 @@ function esc(s){return String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','
 function shotTiles(p){
   if(p.shots && p.shots.length){
     return p.shots.map((s,i)=>{
+      const aspect = s.aspect ? `aspect-ratio:${s.aspect};` : '';
+      if(s.video){
+        return `<div class="shot video ${s.wide?'wide':''}" style="${aspect}">
+          <iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/${encodeURIComponent(s.video)}"
+            title="${esc(p.title)} video ${i+1}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+          <span class="fl">VIDEO ${String(i+1).padStart(2,'0')}</span></div>`;
+      }
       const bg = s.image ? `background-image:url('${s.image}')` : `background:linear-gradient(140deg,${p.accent[0]},${p.accent[1]})`;
       const fit = s.fit ? `background-size:${s.fit};` : '';
       const position = s.position ? `background-position:${s.position};` : '';
       const background = s.background ? `background-color:${s.background};` : '';
-      return `<div class="shot ${s.wide?'wide':''}" style="${bg};${fit}${position}${background}"><span class="fl">FRAME ${String(i+1).padStart(2,'0')}</span></div>`;
+      return `<div class="shot ${s.wide?'wide':''}" style="${bg};${fit}${position}${background}${aspect}"><span class="fl">FRAME ${String(i+1).padStart(2,'0')}</span></div>`;
     }).join('');
   }
   const [a,b]=p.accent;
@@ -284,8 +211,11 @@ function render(p){
   document.title=`${p.title} — Art & Science`;
   document.getElementById('hudFile').textContent=`CASE FILE · ${p.slug.toUpperCase()}`;
   const next=PROJECTS[(PROJECTS.indexOf(p)+1)%PROJECTS.length];
+  const coverFit = p.coverFit ? `background-size:${p.coverFit};background-repeat:no-repeat;` : '';
+  const coverPosition = p.coverPosition ? `background-position:${p.coverPosition};` : '';
+  const coverBackground = p.coverBackground ? `background-color:${p.coverBackground};` : '';
   const cover = p.cover
-    ? `style="background-image:url('${p.cover}')"`
+    ? `style="background-image:url('${p.cover}');${coverFit}${coverPosition}${coverBackground}"`
     : `style="background:linear-gradient(140deg,${p.accent[0]},${p.accent[1]})"`;
   const body = (p.body||[]).map(t=>`<p>${esc(t)}</p>`).join('');
   const details = (p.details||[]).map(([k,v])=>`<div class="row"><span>${esc(k)}</span><b>${esc(v)}</b></div>`).join('');
