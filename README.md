@@ -73,14 +73,21 @@ Everything lives in `index.html`.
 ## Projects &amp; case studies
 
 The gallery under the client scroll and the individual project pages are driven by
-one array called `PROJECTS`, kept identical in **two files**: the top of the
+one array called `PROJECTS`, kept identical in **two source files**: the top of the
 `<script>` in `index.html` and the top of the `<script>` in `project.html`. They're
-inlined (not one shared file) so the site renders with zero setup on any host and
-over `file://`.
+inlined so the site renders with zero setup on any host and over `file://`.
 
 **To add or edit a project:** copy one `{ ... }` block, change the fields, and paste
-the same block into the array in *both* files. Keep each `slug` unique — it's the
-URL id (`project.html?id=your-slug`).
+the same block into the array in *both* source files. Keep each `slug` unique — it
+becomes the page filename (`your-slug.html`). Then regenerate the standalone pages:
+
+```bash
+node generate-project-pages.mjs
+```
+
+`project.html` is the reusable source template. The generator creates one complete,
+standalone HTML file for every project listed there, while the homepage links
+directly to those clean project URLs.
 
 | Field | Used by | Notes |
 |-------|---------|-------|
@@ -95,8 +102,8 @@ Seed projects are **examples** — swap the copy and drop in real images later. 
 images, make an `img/` folder, commit your files, and reference them as
 `cover:"img/synergy.jpg"`, `shots:[{image:"img/01.jpg"}]`, etc.
 
-> Want one source of truth instead of two arrays? Say the word and I'll switch you to
-> a shared `projects.js` (one file to edit; needs a local server for `file://` preview).
+> Want one source of truth instead of two arrays? Say the word and I'll switch the
+> homepage and project template to shared project data.
 
 ### Shader / 3D tuning (for the curious)
 

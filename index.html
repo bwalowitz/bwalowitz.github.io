@@ -427,8 +427,9 @@ const CREDITS = ["Netflix","Amazon","NBC","MSN","Reelz","Redwood Logistics"];
 
 /* ─────────────────────────────────────────────────────────────
    PROJECTS — EDIT HERE to add/change gallery + case-study pages.
-   Keep this list identical to the PROJECTS array in project.html.
-   Fields: slug (url id), title, category, year, summary, accent
+   Keep this list identical to the PROJECTS array in project.html, then
+   run `node generate-project-pages.mjs` to refresh the standalone pages.
+   Fields: slug (page filename), title, category, year, summary, accent
    (2 colors for the placeholder cover). Optional: cover (image url).
    Full case-study fields (intro/body/details/shots) live in project.html.
 ───────────────────────────────────────────────────────────── */
@@ -533,7 +534,7 @@ const galleryGrid=document.getElementById('galleryGrid');
 PROJECTS.forEach((p,i)=>{
   const a=document.createElement('a');
   a.className='proj reveal';
-  a.href=`project.html?id=${p.slug}`;
+  a.href=`${p.slug}.html`;
   a.setAttribute('data-cursor','');
   const cover = p.cover
     ? `<div class="proj-cover" style="background-image:url('${p.cover}')"></div>`
