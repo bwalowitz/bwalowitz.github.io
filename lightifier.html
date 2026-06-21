@@ -187,7 +187,7 @@
 </footer>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-<script src="projects-data.js?v=20260621-portfolio-trim"></script>
+<script src="projects-data.js?v=20260621-redwood-games"></script>
 <script>
 
 /* ----- resolve which project ----- */
@@ -246,6 +246,7 @@ function render(p){
     : `style="background:linear-gradient(140deg,${p.accent[0]},${p.accent[1]})"`;
   const body = (p.body||[]).map(t=>`<p>${esc(t)}</p>`).join('');
   const details = (p.details||[]).map(([k,v])=>`<div class="row"><span>${esc(k)}</span><b>${esc(v)}</b></div>`).join('');
+  const kicker = [p.category,p.year].filter(Boolean).map(esc).join(' · ');
   const videoCount = (p.shots||[]).filter(s=>s.video).length;
   const imageCount = (p.shots||[]).filter(s=>!s.video).length;
   const mediaTitle = videoCount ? (imageCount ? 'Videos & selected frame' : 'Videos') : 'Selected frames';
@@ -273,7 +274,7 @@ function render(p){
     <header class="case-hero">
       <div class="reveal in">
         <a class="case-back" href="index.html#projects" data-cursor>← Selected projects</a>
-        <div class="case-kicker">${esc(p.category)} · ${esc(p.year)}</div>
+        <div class="case-kicker">${kicker}</div>
         <h1>${esc(p.title)}</h1>
         <p class="case-intro">${esc(p.intro||p.summary)}</p>
         ${mediaJump}
