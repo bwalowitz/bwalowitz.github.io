@@ -1,11 +1,13 @@
 import { readFile, writeFile } from 'node:fs/promises';
 
 const templatePath = new URL('./project.html', import.meta.url);
+const projectDataPath = new URL('./projects-data.js', import.meta.url);
 const template = await readFile(templatePath, 'utf8');
-const projectBlock = template.match(/const PROJECTS = (\[[\s\S]*?\n\]);/);
+const projectData = await readFile(projectDataPath, 'utf8');
+const projectBlock = projectData.match(/const PROJECTS = (\[[\s\S]*?\n\]);/);
 
 if (!projectBlock) {
-  throw new Error('Could not find the PROJECTS array in project.html.');
+  throw new Error('Could not find the PROJECTS array in projects-data.js.');
 }
 
 const PROJECTS = Function(`"use strict"; return ${projectBlock[1]};`)();

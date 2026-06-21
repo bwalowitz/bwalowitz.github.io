@@ -72,22 +72,20 @@ Everything lives in `index.html`.
 
 ## Projects &amp; case studies
 
-The gallery under the client scroll and the individual project pages are driven by
-one array called `PROJECTS`, kept identical in **two source files**: the top of the
-`<script>` in `index.html` and the top of the `<script>` in `project.html`. They're
-inlined so the site renders with zero setup on any host and over `file://`.
+The gallery under the client scroll and every individual project page are driven by
+one array called `PROJECTS` in `projects-data.js`.
 
-**To add or edit a project:** copy one `{ ... }` block, change the fields, and paste
-the same block into the array in *both* source files. Keep each `slug` unique — it
-becomes the page filename (`your-slug.html`). Then regenerate the standalone pages:
+**To add or edit a project:** copy one `{ ... }` block in `projects-data.js` and
+change its fields. Keep each `slug` unique — it becomes the page filename
+(`your-slug.html`). Then regenerate the standalone pages:
 
 ```bash
 node generate-project-pages.mjs
 ```
 
-`project.html` is the reusable source template. The generator creates one complete,
-standalone HTML file for every project listed there, while the homepage links
-directly to those clean project URLs.
+`project.html` is the reusable source template. The generator creates one project
+HTML file for every entry, while the homepage and project pages share the same
+external project data.
 
 | Field | Used by | Notes |
 |-------|---------|-------|
@@ -95,15 +93,17 @@ directly to those clean project URLs.
 | `title`, `category`, `year`, `summary` | gallery + page | |
 | `accent: ["#hex","#hex"]` | both | gradient for placeholder cover/frames |
 | `cover: "img/x.jpg"` | both | optional real cover image; replaces the gradient |
+| `coverFit`, `coverPosition`, `coverBackground` | both | optional cover-crop controls |
 | `intro`, `body: [...]`, `details: [["k","v"]]` | page only | the case-study copy |
-| `shots: [{image:"img/a.jpg"},{image:"img/b.jpg",wide:true}]` | page only | optional; omitted → 3 gradient frames generated |
+| `shots: [{image:"img/a.jpg"},{video:"YOUTUBE_ID"}]` | page only | supports images or YouTube embeds |
+| `wide`, `fit`, `position`, `background`, `aspect` | page only | optional per-frame layout controls |
 
-Seed projects are **examples** — swap the copy and drop in real images later. For
-images, make an `img/` folder, commit your files, and reference them as
-`cover:"img/synergy.jpg"`, `shots:[{image:"img/01.jpg"}]`, etc.
+For images, place files in `images/`, commit them, and reference them as
+`cover:"images/project/cover.jpg"` or `shots:[{image:"images/project/01.jpg"}]`.
 
-> Want one source of truth instead of two arrays? Say the word and I'll switch the
-> homepage and project template to shared project data.
+The restored archive projects intentionally include more work than the final
+portfolio may need. Remove an object from `projects-data.js` and regenerate when
+you decide to cut a project.
 
 ### Shader / 3D tuning (for the curious)
 

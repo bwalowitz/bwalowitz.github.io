@@ -411,6 +411,7 @@
 </footer>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="projects-data.js"></script>
 <script>
 /* =========================================================
    DATA
@@ -424,85 +425,6 @@ const DISCIPLINES = [
   ["06","Creative Direction","The throughline. Holding the vision across every discipline so the work feels like one idea, executed completely."]
 ];
 const CREDITS = ["Netflix","Amazon","NBC","MSN","Reelz","Redwood Logistics"];
-
-/* ─────────────────────────────────────────────────────────────
-   PROJECTS — EDIT HERE to add/change gallery + case-study pages.
-   Keep this list identical to the PROJECTS array in project.html, then
-   run `node generate-project-pages.mjs` to refresh the standalone pages.
-   Fields: slug (page filename), title, category, year, summary, accent
-   (2 colors for the placeholder cover). Optional: cover (image url).
-   Full case-study fields (intro/body/details/shots) live in project.html.
-───────────────────────────────────────────────────────────── */
-const PROJECTS = [
-  { slug:"synergy-homecare", title:"SYNERGY HomeCare", category:"Brand · Performance", year:"2025",
-    summary:"A franchise growth engine built on paid search and conversion-first creative.",
-    accent:["#1f5e5a","#0b2225"],
-    intro:"Turning a local home-care franchise into a measurable, repeatable growth machine.",
-    body:[
-      "SYNERGY HomeCare needed more than impressions — it needed booked consultations. The work began with the funnel: who is searching, what they fear, and the exact moment they decide to call.",
-      "From there it became a tight loop — paid-search structure, landing pages written for intent, and creative that meets families in a hard moment. Every dollar mapped to an outcome.",
-      "The result is a system the owner can run and trust, and a template that scales to the next franchise, and the next."
-    ],
-    details:[["Client","SYNERGY HomeCare"],["Year","2025"],["Scope","Paid Search · Landing Pages · Creative"],["Role","Strategy · Creative Direction"]] },
-  { slug:"redwood-logistics", title:"Redwood Logistics", category:"Brand System", year:"2022",
-    summary:"Unifying a multi-brand logistics group under one umbrella identity.",
-    accent:["#5e4326","#241606"],
-    cover:"images/redwood-rebrand/redwood_weathered-mock-ups.jpg",
-    shots:[
-      {image:"images/redwood-rebrand/Redwood_MasterLogoSheet-01.png",wide:true,fit:"contain",background:"#f3f1ed"},
-      {image:"images/redwood-rebrand/redwood-brand-onepager.jpg",fit:"contain",background:"#f3f1ed"},
-      {image:"images/redwood-rebrand/redwood_careerfair-banner_1.jpg",fit:"contain",background:"#8f181c"},
-      {image:"images/redwood-rebrand/rdwd_brochure_11X17_Final_1.jpg",wide:true},
-      {image:"images/redwood-rebrand/redwood_redwood_card.jpg",wide:true,fit:"contain",background:"#ece9e3"}
-    ],
-    intro:"One coherent brand architecture for a group that had outgrown its pieces.",
-    body:[
-      "Years of acquisitions had left a portfolio of logos, voices, and value props that didn't add up to a story. The brief: make it one company without erasing what each part had built.",
-      "We built an umbrella system — naming logic, a flexible identity, and templates the internal team could actually use across sales, web, and trade.",
-      "The throughline became the asset: a single brand that flexes across very different audiences and still feels like Redwood."
-    ],
-    details:[["Client","Redwood Logistics"],["Year","2022"],["Scope","Naming · Identity · Brand System"],["Role","Creative Direction · Design"]] },
-  { slug:"broadcast-package", title:"Network On-Air Package", category:"Motion Design", year:"2019",
-    summary:"Title systems and broadcast graphics for national television.",
-    accent:["#3a2a5e","#15102a"],
-    intro:"A motion language built to survive the chaos of live broadcast.",
-    body:[
-      "On-air graphics live or die on consistency under pressure — dozens of variations, tight timelines, zero room for error. The system had to be beautiful and bulletproof.",
-      "I designed the title sequences, lower-thirds, and transition language as a kit: modular, on-brand, and fast for an editorial team to deploy nightly.",
-      "What shipped was a look that felt premium on screen and stayed coherent across hundreds of segments."
-    ],
-    details:[["Sector","National Broadcast"],["Year","2019"],["Scope","Title Design · Motion System"],["Role","Motion Director"]] },
-  { slug:"art-and-science", title:"Art & Science", category:"Interactive · Code", year:"2025",
-    summary:"This site — WebGL shaders, real-time 3D, and a living identity.",
-    accent:["#22506e","#0b1b29"],
-    intro:"A portfolio that is itself the proof — design and engineering as one gesture.",
-    body:[
-      "The brief was personal: build a home for everything I do that makes people stop. No stock components, no template — a living surface.",
-      "Custom GLSL drives the background field and a morphing 3D object; the whole thing reads as one idea executed in code. Serif for the art, mono for the science.",
-      "It runs as a single file, deploys static, and degrades gracefully — craft and engineering holding hands."
-    ],
-    details:[["Project","Art & Science"],["Year","2025"],["Scope","Art Direction · WebGL · Front-End"],["Stack","Three.js · GLSL · Vanilla JS"]] },
-  { slug:"coast-to-coast", title:"Coast to Coast", category:"Sales Enablement · AI", year:"2023",
-    summary:"AI-assisted sales tools, decks, and brand collateral for a logistics team.",
-    accent:["#5e2a4a","#22101c"],
-    intro:"Giving a sales team better tools — and a sharper story to tell with them.",
-    body:[
-      "The team had pipeline but inconsistent materials. We rebuilt the narrative, then the assets: a sales deck, one-sheets, and AI-assisted tools that made personalization fast.",
-      "The point wasn't novelty — it was leverage. Reps spending less time formatting and more time selling.",
-      "Brand and utility in the same package, tuned to how the team actually works."
-    ],
-    details:[["Client","Coast to Coast"],["Year","2023"],["Scope","Sales Deck · Collateral · AI Tools"],["Role","Creative Direction · Build"]] },
-  { slug:"short-film", title:"Untitled Short", category:"Film · Direction", year:"2024",
-    summary:"A personal narrative short — directed, shot, and cut in-house.",
-    accent:["#2a5e3e","#0e2418"],
-    intro:"A small, true story about a phone call that never quite happens.",
-    body:[
-      "Drawn from something personal, this short trades plot for feeling — everyday images doing the emotional work.",
-      "I directed, shot, and edited it, keeping the crew tiny so the performances could stay honest.",
-      "It's the side of the practice that feeds everything else: story first, always."
-    ],
-    details:[["Format","Short Film"],["Year","2024"],["Scope","Writing · Directing · Edit"],["Role","Director"]] }
-];
 
 /* =========================================================
    BUILD DOM
@@ -544,8 +466,11 @@ PROJECTS.forEach((p,i)=>{
   a.className='proj reveal';
   a.href=`${p.slug}.html`;
   a.setAttribute('data-cursor','');
+  const coverFit = p.coverFit ? `background-size:${p.coverFit};background-repeat:no-repeat;` : '';
+  const coverPosition = p.coverPosition ? `background-position:${p.coverPosition};` : '';
+  const coverBackground = p.coverBackground ? `background-color:${p.coverBackground};` : '';
   const cover = p.cover
-    ? `<div class="proj-cover" style="background-image:url('${p.cover}')"></div>`
+    ? `<div class="proj-cover" style="background-image:url('${p.cover}');${coverFit}${coverPosition}${coverBackground}"></div>`
     : `<div class="proj-cover" style="background:linear-gradient(140deg,${p.accent[0]},${p.accent[1]})">
          <span class="proj-ghost">${String(i+1).padStart(2,'0')}</span></div>`;
   a.innerHTML = `${cover}
