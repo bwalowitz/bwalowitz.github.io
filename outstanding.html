@@ -187,7 +187,7 @@
 </footer>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-<script src="projects-data.js?v=20260621-video-fix"></script>
+<script src="projects-data.js?v=20260621-portfolio-trim"></script>
 <script>
 
 /* ----- resolve which project ----- */
@@ -231,13 +231,7 @@ function shotTiles(p){
       return `<div class="shot ${s.wide?'wide':''}" style="${bg};${fit}${position}${background}${aspect}"><span class="fl">FRAME ${String(frameIndex).padStart(2,'0')}</span></div>`;
     }).join('');
   }
-  const [a,b]=p.accent;
-  const gens=[
-    {bg:`linear-gradient(140deg,${a},${b})`,wide:true},
-    {bg:`radial-gradient(130% 130% at 22% 18%,${a},${b})`},
-    {bg:`linear-gradient(300deg,${b},${a})`}
-  ];
-  return gens.map((g,i)=>`<div class="shot ${g.wide?'wide':''}" style="background:${g.bg}"><span class="fl">FRAME ${String(i+1).padStart(2,'0')}</span></div>`).join('');
+  return '';
 }
 
 function render(p){
@@ -261,6 +255,18 @@ function render(p){
   ].filter(Boolean).join(' · ');
   const mediaJump = videoCount
     ? `<a class="media-jump" href="#project-media" data-cursor>Watch all ${videoCount} videos ↓</a>`
+    : '';
+  const mediaSection = imageCount || videoCount
+    ? `<section class="case-shots" id="project-media">
+        <div class="media-heading">
+          <div>
+            <p class="label">Project media</p>
+            <h2>${mediaTitle}</h2>
+          </div>
+          <p class="media-count">${mediaCount}</p>
+        </div>
+        <div class="shots-grid">${shotTiles(p)}</div>
+      </section>`
     : '';
 
   main.innerHTML=`
@@ -286,16 +292,7 @@ function render(p){
       </div>
     </section>
 
-    <section class="case-shots" id="project-media">
-      <div class="media-heading">
-        <div>
-          <p class="label">Project media</p>
-          <h2>${mediaTitle}</h2>
-        </div>
-        <p class="media-count">${mediaCount}</p>
-      </div>
-      <div class="shots-grid">${shotTiles(p)}</div>
-    </section>
+    ${mediaSection}
 
     <section class="case-next">
       <a class="next-link reveal" href="${next.slug}.html" data-cursor>

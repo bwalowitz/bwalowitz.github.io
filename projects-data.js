@@ -388,35 +388,5 @@ const PROJECTS = [
       "What shipped was a look that felt premium on screen and stayed coherent across hundreds of segments."
     ],
     details:[["Sector","National Broadcast"],["Year","2019"],["Scope","Title Design · Motion System"],["Role","Motion Director"]]
-  },
-  {
-    slug:"art-and-science",
-    title:"Art & Science",
-    category:"Interactive · Code",
-    year:"2025",
-    summary:"This site — WebGL shaders, real-time 3D, and a living identity.",
-    accent:["#22506e","#0b1b29"],
-    intro:"A portfolio that is itself the proof — design and engineering as one gesture.",
-    body:[
-      "The brief was personal: build a home for everything I do that makes people stop. No stock components, no template — a living surface.",
-      "Custom GLSL drives the background field and a morphing 3D object; the whole thing reads as one idea executed in code. Serif for the art, mono for the science.",
-      "It runs as a static site and degrades gracefully — craft and engineering holding hands."
-    ],
-    details:[["Project","Art & Science"],["Year","2025"],["Scope","Art Direction · WebGL · Front-End"],["Stack","Three.js · GLSL · Vanilla JS"]]
-  },
-  {
-    slug:"short-film",
-    title:"Untitled Short",
-    category:"Film · Direction",
-    year:"2024",
-    summary:"A personal narrative short — directed, shot, and cut in-house.",
-    accent:["#2a5e3e","#0e2418"],
-    intro:"A small, true story about a phone call that never quite happens.",
-    body:[
-      "Drawn from something personal, this short trades plot for feeling — everyday images doing the emotional work.",
-      "I directed, shot, and edited it, keeping the crew tiny so the performances could stay honest.",
-      "It is the side of the practice that feeds everything else: story first, always."
-    ],
-    details:[["Format","Short Film"],["Year","2024"],["Scope","Writing · Directing · Edit"],["Role","Director"]]
   }
 ];
