@@ -157,9 +157,9 @@ const PROJECTS = [
   },
   {
     slug:"redwood-games",
-    title:"Redwood Games 2019",
+    title:"Redwood Games",
     category:"Event · Apparel",
-    year:"2019",
+    year:"",
     summary:"Event identity and apparel concepts for the SXMW Redwood Games.",
     accent:["#21a6b3","#f0c43c"],
     cover:"images/redwoodgames2019-3.png",
@@ -171,7 +171,7 @@ const PROJECTS = [
       "The finished direction combined recognizable Monterey imagery with a playful illustrated style and a restrained event lockup.",
       "The restored sequence includes the original concept sheet, the resolved front-and-back design, and the final thumbnail used in the old portfolio."
     ],
-    details:[["Client","Redwood Logistics"],["Year","2019"],["Scope","Event Identity · Apparel"],["Role","Creative Direction · Design"]],
+    details:[["Client","Redwood Logistics"],["Scope","Event Identity · Apparel"],["Role","Creative Direction · Design"]],
     shots:[
       {image:"images/redwoodgames2019-2.jpeg",wide:true,fit:"contain",background:"#ffffff",aspect:"1440/1536"},
       {image:"images/redwoodgames2019-1.jpg",wide:true,fit:"contain",background:"#ffffff",aspect:"1440/717"},

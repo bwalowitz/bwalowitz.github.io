@@ -411,7 +411,7 @@
 </footer>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-<script src="projects-data.js?v=20260621-portfolio-trim"></script>
+<script src="projects-data.js?v=20260621-redwood-games"></script>
 <script>
 /* =========================================================
    DATA
@@ -475,7 +475,7 @@ PROJECTS.forEach((p,i)=>{
          <span class="proj-ghost">${String(i+1).padStart(2,'0')}</span></div>`;
   a.innerHTML = `${cover}
     <div class="proj-meta">
-      <div class="proj-top"><span>${p.category}</span><span>${p.year}</span></div>
+      <div class="proj-top"><span>${p.category}</span>${p.year?`<span>${p.year}</span>`:''}</div>
       <h3 class="proj-title">${p.title}</h3>
       <p class="proj-sum">${p.summary}</p>
       <span class="proj-view">View project <i>↗</i></span>
