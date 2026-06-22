@@ -411,12 +411,12 @@
 </footer>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-<script src="projects-data.js?v=20260621-roots-padding"></script>
+<script src="projects-data.js?v=20260621-logo-padding"></script>
 <script>
 /* =========================================================
    DATA
 ========================================================= */
-const PROJECT_PAGE_VERSION='20260621-roots-padding';
+const PROJECT_PAGE_VERSION='20260621-logo-padding';
 const DISCIPLINES = [
   ["01","Brand Strategy","Positioning, naming, and identity systems built to scale — the logic beneath the look. Rebrands, umbrella architectures, and the story that ties it together."],
   ["02","Graphic Design","Editorial, packaging, decks, and brand collateral with a designer's eye for type, hierarchy, and restraint. Pixel-considered, print-ready."],
@@ -469,9 +469,10 @@ PROJECTS.forEach((p,i)=>{
   a.setAttribute('data-cursor','');
   const coverFit = p.coverFit ? `background-size:${p.coverFit};background-repeat:no-repeat;` : '';
   const coverPosition = p.coverPosition ? `background-position:${p.coverPosition};` : '';
+  const coverPadding = p.coverPadding ? `padding:${p.coverPadding};background-origin:content-box;` : '';
   const coverBackground = p.coverBackground ? `background-color:${p.coverBackground};` : '';
   const cover = p.cover
-    ? `<div class="proj-cover" style="background-image:url('${p.cover}');${coverFit}${coverPosition}${coverBackground}"></div>`
+    ? `<div class="proj-cover" style="background-image:url('${p.cover}');${coverFit}${coverPosition}${coverPadding}${coverBackground}"></div>`
     : `<div class="proj-cover" style="background:linear-gradient(140deg,${p.accent[0]},${p.accent[1]})">
          <span class="proj-ghost">${String(i+1).padStart(2,'0')}</span></div>`;
   a.innerHTML = `${cover}
