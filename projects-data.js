@@ -352,41 +352,5 @@ const PROJECTS = [
     shots:[
       {image:"C2C_Logo-hires-alpha-white.png",wide:true,fit:"contain",background:"#16374d",aspect:"16/9"}
     ]
-  },
-  {
-    slug:"coast-to-coast",
-    title:"Coast to Coast",
-    category:"Sales Enablement · AI",
-    year:"2023",
-    summary:"AI-assisted sales tools, decks, and brand collateral for a logistics team.",
-    accent:["#5e2a4a","#22101c"],
-    cover:"C2C_Logo-hires-alpha-white.png",
-    coverFit:"contain",
-    coverBackground:"#3b1830",
-    intro:"Giving a sales team better tools — and a sharper story to tell with them.",
-    body:[
-      "The team had pipeline but inconsistent materials. We rebuilt the narrative, then the assets: a sales deck, one-sheets, and AI-assisted tools that made personalization fast.",
-      "The point was not novelty — it was leverage. Representatives spending less time formatting and more time selling.",
-      "Brand and utility in the same package, tuned to how the team actually works."
-    ],
-    details:[["Client","Coast to Coast"],["Year","2023"],["Scope","Sales Deck · Collateral · AI Tools"],["Role","Creative Direction · Build"]],
-    shots:[
-      {image:"C2C_Logo-hires-alpha-white.png",wide:true,fit:"contain",background:"#3b1830",aspect:"16/9"}
-    ]
-  },
-  {
-    slug:"broadcast-package",
-    title:"Network On-Air Package",
-    category:"Motion Design",
-    year:"2019",
-    summary:"Title systems and broadcast graphics for national television.",
-    accent:["#3a2a5e","#15102a"],
-    intro:"A motion language built to survive the chaos of live broadcast.",
-    body:[
-      "On-air graphics live or die on consistency under pressure — dozens of variations, tight timelines, zero room for error. The system had to be beautiful and bulletproof.",
-      "I designed the title sequences, lower-thirds, and transition language as a kit: modular, on-brand, and fast for an editorial team to deploy nightly.",
-      "What shipped was a look that felt premium on screen and stayed coherent across hundreds of segments."
-    ],
-    details:[["Sector","National Broadcast"],["Year","2019"],["Scope","Title Design · Motion System"],["Role","Motion Director"]]
   }
 ];
