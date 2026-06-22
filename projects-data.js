@@ -324,10 +324,13 @@ const PROJECTS = [
     year:"2025",
     summary:"A franchise growth engine built on paid search and conversion-first creative.",
     accent:["#1f5e5a","#0b2225"],
+    cover:"images/synergy-logo.svg",
+    coverFit:"contain",
+    coverBackground:"#1f5e5a",
     intro:"Turning a local home-care franchise into a measurable, repeatable growth machine.",
     body:[
-      "SYNERGY HomeCare needed more than impressions — it needed booked consultations. The work began with the funnel: who is searching, what they fear, and the exact moment they decide to call.",
-      "From there it became a tight loop — paid-search structure, landing pages written for intent, and creative that meets families in a hard moment. Every dollar mapped to an outcome.",
+      "SYNERGY HomeCare needed more than impressions — it needed booked consultations. The work began with the funnel: who is searching, what matters most to them, and what helps them feel ready to call.",
+      "From there it became a tight loop — paid-search structure, landing pages written for intent, and creative that gives families clarity when they need it. Every dollar mapped to an outcome.",
       "The result is a system the owner can run and trust, and a template that scales to the next franchise, and the next."
     ],
     details:[["Client","SYNERGY HomeCare"],["Year","2025"],["Scope","Paid Search · Landing Pages · Creative"],["Role","Strategy · Creative Direction"]]
