@@ -309,12 +309,11 @@ const PROJECTS = [
     body:[
       "The Roots Logistics identity uses a minimal wordmark and a bold directional device.",
       "The green arrow creates a clear signal of movement and progress, giving the system a recognizable device that works independently or alongside the wordmark.",
-      "The brand extends into fleet photography with a clean, practical visual language suited to a logistics business."
+      "The final lockup balances a straightforward wordmark with the directional symbol, creating a flexible identity that can scale cleanly across brand applications."
     ],
     details:[["Client","Roots Logistics"],["Scope","Branding · Logo · Identity"],["Role","Brand Design"]],
     shots:[
-      {image:"images/roots-2.png",fit:"contain",background:"#eeeeee"},
-      {image:"images/roots-1.png",wide:true,fit:"contain",background:"#ffffff",aspect:"945/764"}
+      {image:"images/roots-2.png",fit:"contain",background:"#eeeeee"}
     ]
   },
   {
