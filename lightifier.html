@@ -187,7 +187,7 @@
 </footer>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-<script src="projects-data.js?v=20260621-synergy-logo"></script>
+<script src="projects-data.js?v=20260621-ai-sales-header"></script>
 <script>
 
 /* ----- resolve which project ----- */
@@ -241,8 +241,9 @@ function render(p){
   const coverFit = p.coverFit ? `background-size:${p.coverFit};background-repeat:no-repeat;` : '';
   const coverPosition = p.coverPosition ? `background-position:${p.coverPosition};` : '';
   const coverBackground = p.coverBackground ? `background-color:${p.coverBackground};` : '';
-  const cover = p.cover
-    ? `style="background-image:url('${p.cover}');${coverFit}${coverPosition}${coverBackground}"`
+  const caseCoverImage = p.caseCover === false ? '' : p.cover;
+  const cover = caseCoverImage
+    ? `style="background-image:url('${caseCoverImage}');${coverFit}${coverPosition}${coverBackground}"`
     : `style="background:linear-gradient(140deg,${p.accent[0]},${p.accent[1]})"`;
   const body = (p.body||[]).map(t=>`<p>${esc(t)}</p>`).join('');
   const details = (p.details||[]).map(([k,v])=>`<div class="row"><span>${esc(k)}</span><b>${esc(v)}</b></div>`).join('');

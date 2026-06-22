@@ -345,6 +345,7 @@ const PROJECTS = [
     cover:"C2C_Logo-hires-alpha-white.png",
     coverFit:"contain",
     coverBackground:"#16374d",
+    caseCover:false,
     intro:"Training that feels like a coach, not a script.",
     body:[
       "The archived case study describes a set of AI-assisted coaches for logistics teams hiring and onboarding new sales representatives.",
