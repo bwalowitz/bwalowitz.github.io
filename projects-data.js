@@ -327,6 +327,7 @@ const PROJECTS = [
     coverFit:"contain",
     coverPadding:"35px",
     coverBackground:"#1f5e5a",
+    caseCover:false,
     intro:"Turning a local home-care franchise into a measurable, repeatable growth machine.",
     body:[
       "SYNERGY HomeCare needed more than impressions — it needed booked consultations. The work began with the funnel: who is searching, what matters most to them, and what helps them feel ready to call.",
