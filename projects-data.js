@@ -297,24 +297,23 @@ const PROJECTS = [
   {
     slug:"roots-logistics-identity",
     title:"Roots Logistics Identity",
-    category:"Brand Identity",
+    category:"Branding",
     year:"",
-    summary:"A clean logistics identity centered on a directional green arrow.",
+    summary:"A clean logistics brand centered on a directional green arrow.",
     accent:["#1d9143","#efefef"],
     cover:"images/roots-2.png",
     coverFit:"contain",
     coverBackground:"#eeeeee",
-    intro:"A direct, modern identity for a logistics brand built around movement and direction.",
+    intro:"A direct, modern brand system built around movement and direction.",
     body:[
       "The Roots Logistics identity uses a minimal wordmark and a bold directional device.",
       "The green arrow creates a clear signal of movement and progress, giving the system a recognizable device that works independently or alongside the wordmark.",
-      "The identity extends into presentation graphics and fleet photography with a clean, practical visual language suited to a logistics business."
+      "The brand extends into fleet photography with a clean, practical visual language suited to a logistics business."
     ],
-    details:[["Client","Roots Logistics"],["Scope","Logo · Identity"],["Role","Brand Design"]],
+    details:[["Client","Roots Logistics"],["Scope","Branding · Logo · Identity"],["Role","Brand Design"]],
     shots:[
       {image:"images/roots-2.png",fit:"contain",background:"#eeeeee"},
-      {image:"images/roots-1.png",wide:true,fit:"contain",background:"#ffffff",aspect:"945/764"},
-      {image:"images/roots-presentation-1.png",fit:"contain",background:"#dbeaf2"}
+      {image:"images/roots-1.png",wide:true,fit:"contain",background:"#ffffff",aspect:"945/764"}
     ]
   },
   {
