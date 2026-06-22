@@ -5,7 +5,7 @@ const PROJECTS = [
     slug:"redwood-logistics",
     title:"Redwood Logistics",
     category:"Brand System",
-    year:"Archive",
+    year:"",
     summary:"Five companies brought together under one clear Redwood identity.",
     accent:["#8f181c","#1b0d0d"],
     cover:"images/redwood-rebrand/redwood_weathered-mock-ups.jpg",
@@ -13,9 +13,9 @@ const PROJECTS = [
     body:[
       "Years of acquisitions had left a portfolio of logos, voices, and value propositions that did not add up to one story. The brief was to make it one company without erasing what each part had built.",
       "The work became an umbrella system: naming logic, a flexible identity, practical guidelines, and templates the internal team could use across sales, web, events, and print.",
-      "This page restores a selection of the original brand-system work from the previous portfolio."
+      "The system extended across sales materials, digital channels, events, and environmental applications, giving every team a consistent foundation for telling the Redwood story."
     ],
-    details:[["Client","Redwood Logistics"],["Period","Archived work"],["Scope","Naming · Identity · Brand System"],["Role","Creative Direction · Design"]],
+    details:[["Client","Redwood Logistics"],["Scope","Naming · Identity · Brand System"],["Role","Creative Direction · Design"]],
     shots:[
       {image:"images/redwoodlogo-original-1.png",fit:"contain",background:"#ffffff"},
       {image:"images/redwood-rebrand/board-overview.jpg",wide:true,fit:"contain",background:"#ffffff",aspect:"1248/841"},
@@ -34,17 +34,17 @@ const PROJECTS = [
     slug:"ellen-shop",
     title:"Ellen Shop",
     category:"E-Commerce · Digital",
-    year:"Archive",
+    year:"",
     summary:"Seasonal commerce design, merchandising, and responsive storefront experiences.",
     accent:["#4387e8","#a9e3ea"],
     cover:"images/ellenshop-2.png",
     intro:"A bright, flexible shopping experience built around products, clubs, and seasonal campaigns.",
     body:[
-      "The archived work shows a commerce system designed to move comfortably between editorial storytelling, product discovery, and promotional moments.",
+      "The commerce system moves comfortably between editorial storytelling, product discovery, and promotional moments.",
       "Color, photography, and simple category structures gave the storefront a playful personality without losing the practical work of helping people browse and buy.",
-      "These restored screens are a useful starting point for deciding how much of the Ellen Shop work belongs in the next portfolio edit."
+      "Responsive modules created a consistent experience across seasonal campaigns, featured collections, product categories, and membership-focused content."
     ],
-    details:[["Client","Ellen Shop"],["Period","Archived work"],["Scope","E-Commerce · Campaigns · UX"],["Role","Creative Direction · Digital"]],
+    details:[["Client","Ellen Shop"],["Scope","E-Commerce · Campaigns · UX"],["Role","Creative Direction · Digital"]],
     shots:[
       {image:"images/ellenshop-2.png",wide:true,aspect:"16/10"},
       {image:"images/ellenshop-1.png",wide:true,fit:"contain",background:"#ffffff",aspect:"1433/756"},
@@ -56,7 +56,7 @@ const PROJECTS = [
     slug:"redwood-sales-collateral",
     title:"Redwood Sales Collateral",
     category:"Sales Enablement · Print",
-    year:"Archive",
+    year:"",
     summary:"Brochures, one-pagers, and event materials built from the Redwood system.",
     accent:["#243b7a","#8f181c"],
     cover:"images/redwood-folder-1.png",
@@ -66,9 +66,9 @@ const PROJECTS = [
     body:[
       "This work translated the Redwood identity into the everyday materials used by sales and marketing teams.",
       "The system covered brochures, presentation-ready spreads, event pieces, quick-reference materials, and templates that could be reused without rebuilding the brand each time.",
-      "It is separated from the identity case study here so you can decide later whether it deserves its own project or should be folded back into the larger Redwood story."
+      "A shared grid, type hierarchy, and repeatable content patterns kept the materials recognizable while allowing each piece to serve a specific sales or event need."
     ],
-    details:[["Client","Redwood Logistics"],["Period","Archived work"],["Scope","Brochures · One-Pagers · Events"],["Role","Creative Direction · Design"]],
+    details:[["Client","Redwood Logistics"],["Scope","Brochures · One-Pagers · Events"],["Role","Creative Direction · Design"]],
     shots:[
       {image:"images/redwood-folder-1.png",fit:"contain",background:"#e8e8e8"},
       {image:"images/redwood-rebrand/rdwd_brochure_11X17_Final_1.jpg",wide:true},
@@ -87,17 +87,17 @@ const PROJECTS = [
     slug:"abled",
     title:"Abled",
     category:"Editorial · Press Kit",
-    year:"Archive",
+    year:"",
     summary:"A cinematic electronic press kit assembled as a complete editorial story.",
     accent:["#7e6d59","#182024"],
     cover:"images/abled-1.png",
     intro:"A long-form press kit built to introduce the people, story, and visual world of Abled.",
     body:[
-      "The previous portfolio presented the complete press kit as a sequence of designed spreads.",
-      "The restored pages combine photography, typography, pull quotes, and production information into one coherent editorial package.",
-      "All twelve original spreads are included below so the project can be reviewed in full before anything is cut."
+      "The electronic press kit was structured as a complete editorial narrative, introducing the project through a deliberate sequence of imagery and information.",
+      "Cinematic photography, restrained typography, pull quotes, and production details establish a consistent visual tone from the opening spread through the supporting material.",
+      "The twelve-spread system balances atmosphere with practical information, giving press and industry audiences a clear, engaging overview of the work."
     ],
-    details:[["Project","Abled"],["Period","Archived work"],["Scope","Press Kit · Editorial Design"],["Role","Creative Direction · Design"]],
+    details:[["Project","Abled"],["Scope","Press Kit · Editorial Design"],["Role","Creative Direction · Design"]],
     shots:[
       {image:"images/abled/Abled-EPK-11-1.jpg",wide:true,fit:"contain",background:"#111417",aspect:"5/3"},
       {image:"images/abled/Abled-EPK-11-2.jpg",wide:true,fit:"contain",background:"#111417",aspect:"5/3"},
@@ -117,17 +117,17 @@ const PROJECTS = [
     slug:"be-kind-by-ellen",
     title:"Be Kind by Ellen",
     category:"Responsive Digital",
-    year:"Archive",
+    year:"",
     summary:"A responsive editorial and commerce experience centered on recurring unboxing content.",
     accent:["#9be4ea","#b7b9f3"],
     cover:"images/bekindbyellen-1.png",
     intro:"One campaign experience carried cleanly across phone, tablet, and desktop.",
     body:[
-      "The archived visual shows a responsive landing experience for Be Kind by Ellen.",
+      "The campaign experience was designed around recurring editorial video and a direct path into the Be Kind subscription offering.",
       "The design balances editorial video, subscription messaging, and a direct commerce path while keeping the personality light and approachable.",
-      "The original portfolio contained one primary presentation image, restored here as the foundation for a fuller case study later."
+      "A flexible responsive system carries the same hierarchy and energy across desktop, tablet, and mobile without losing the campaign's warmth or clarity."
     ],
-    details:[["Client","Be Kind by Ellen"],["Period","Archived work"],["Scope","Responsive Design · Campaign"],["Role","Creative Direction · Digital"]],
+    details:[["Client","Be Kind by Ellen"],["Scope","Responsive Design · Campaign"],["Role","Creative Direction · Digital"]],
     shots:[
       {image:"images/bekindbyellen-1.png",wide:true,fit:"contain",background:"#cbeef2",aspect:"1547/1000"}
     ]
@@ -136,7 +136,7 @@ const PROJECTS = [
     slug:"roots-logistics-presentation",
     title:"Roots Logistics Presentation",
     category:"Sales Presentation",
-    year:"Archive",
+    year:"",
     summary:"A presentation system for a logistics company moving under a new visual identity.",
     accent:["#1f8f43","#b6dcf2"],
     cover:"images/roots-presentation-1.png",
@@ -144,11 +144,11 @@ const PROJECTS = [
     coverBackground:"#dbeaf2",
     intro:"A sales-story presentation designed to make a logistics offer easier to understand.",
     body:[
-      "This archived project captures the presentation side of the Roots Logistics work.",
-      "The material combines brand identity, fleet photography, and a straightforward message intended for sales conversations.",
-      "It remains separate from the identity entry so both pieces can be evaluated independently."
+      "The presentation translates the Roots Logistics identity into a clear sales narrative built for live conversations.",
+      "Fleet photography, service messaging, and the directional brand device work together to make the company's capabilities easy to follow.",
+      "A consistent hierarchy gives presenters room to move from company overview to supporting detail without losing pace or visual continuity."
     ],
-    details:[["Client","Roots Logistics"],["Period","Archived work"],["Scope","Presentation · Sales Enablement"],["Role","Creative Direction · Design"]],
+    details:[["Client","Roots Logistics"],["Scope","Presentation · Sales Enablement"],["Role","Creative Direction · Design"]],
     shots:[
       {image:"images/roots-presentation-1.png",fit:"contain",background:"#dbeaf2"},
       {image:"images/roots-1.png",wide:true,fit:"contain",background:"#ffffff",aspect:"945/764"},
@@ -169,7 +169,7 @@ const PROJECTS = [
     body:[
       "The Redwood Games project began with a broad set of hand-drawn shirt ideas and event motifs.",
       "The finished direction combined recognizable Monterey imagery with a playful illustrated style and a restrained event lockup.",
-      "The restored sequence includes the original concept sheet, the resolved front-and-back design, and the final thumbnail used in the old portfolio."
+      "The process moved from a broad concept sheet into a resolved front-and-back apparel system, preserving the hand-drawn energy while creating a graphic that reads clearly at a distance."
     ],
     details:[["Client","Redwood Logistics"],["Scope","Event Identity · Apparel"],["Role","Creative Direction · Design"]],
     shots:[
@@ -182,7 +182,7 @@ const PROJECTS = [
     slug:"lightifier",
     title:"Lightifier",
     category:"Identity Design",
-    year:"Archive",
+    year:"",
     summary:"A high-contrast identity exploration built around illumination and display typography.",
     accent:["#050505","#dfd5c4"],
     cover:"images/lightifier-1.png",
@@ -190,11 +190,11 @@ const PROJECTS = [
     coverBackground:"#050505",
     intro:"A compact identity study using a light source as both symbol and typographic anchor.",
     body:[
-      "Lightifier is preserved in the archive as a focused logo and identity exploration.",
+      "Lightifier is a focused logo and identity exploration built around the visual language of illumination.",
       "The mark combines a radiating light form with contrasting letter styles, designed to work in both positive and reversed applications.",
-      "The black and white lockups are restored below for side-by-side review."
+      "Black and white lockups test the mark across light and dark environments while preserving contrast, legibility, and the character of the central symbol."
     ],
-    details:[["Project","Lightifier"],["Period","Archived work"],["Scope","Logo · Identity"],["Role","Design"]],
+    details:[["Project","Lightifier"],["Scope","Logo · Identity"],["Role","Design"]],
     shots:[
       {image:"images/lightifier-black.jpeg",wide:true,fit:"contain",background:"#ffffff",aspect:"2026/817"},
       {image:"images/lightifier-white.jpeg",wide:true,fit:"contain",background:"#000000",aspect:"2026/817"},
@@ -205,17 +205,17 @@ const PROJECTS = [
     slug:"voices-of-learning",
     title:"Voices of Learning",
     category:"Video Production",
-    year:"Archive",
+    year:"",
     summary:"A produced educational video series featuring Sarah Silverman.",
     accent:["#d7936a","#f4c979"],
     cover:"images/sarahsilverman-2.png",
     intro:"A multi-episode educational series shaped for clear, direct delivery on camera.",
     body:[
-      "The previous portfolio identified this work as a video-production project for Voices of Learning.",
-      "Six original episodes were embedded in the case study and are restored below as playable videos.",
-      "The collection can now be reviewed in the new site before choosing a shorter final reel."
+      "Produced as a six-episode educational series, Voices of Learning pairs Sarah Silverman's direct on-camera presence with concise, accessible storytelling.",
+      "Each installment uses a consistent format and production approach, giving the series continuity while allowing every topic to stand on its own.",
+      "The result is an approachable body of educational content built for clarity, personality, and repeat viewing."
     ],
-    details:[["Project","Voices of Learning"],["Period","Archived work"],["Scope","Educational Video Series"],["Role","Video Producer"]],
+    details:[["Project","Voices of Learning"],["Scope","Educational Video Series"],["Role","Video Producer"]],
     shots:[
       {video:"7O56hYuq7w4",title:"Sarah Silverman's Voices of Learning: Episode 1",wide:true},
       {video:"feD2OYZnzfw",title:"Sarah Silverman's Voices of Learning: Episode 2",wide:true},
@@ -229,17 +229,17 @@ const PROJECTS = [
     slug:"outstanding",
     title:"Outstanding",
     category:"Motion Design",
-    year:"Archive",
+    year:"",
     summary:"A neon-glitch title exploration for Outstanding: A Comedy Revolution.",
     accent:["#44206f","#d43bd6"],
     cover:"images/outstanding-1.jpeg",
     intro:"A saturated motion identity built from neon color, distortion, and fragmented typography.",
     body:[
-      "The archived contact sheet captures the visual language developed for Outstanding: A Comedy Revolution.",
+      "The motion identity for Outstanding: A Comedy Revolution uses saturated color, distortion, and fragmented typography to create a bold on-screen presence.",
       "Glitch transitions, dimensional letterforms, and a magenta-blue palette create the feeling of a title package in motion.",
-      "This restored frame is enough to keep the project visible while a fuller motion reel is assembled."
+      "The system balances the energy of live performance with the scale and polish of a documentary title sequence."
     ],
-    details:[["Project","Outstanding"],["Period","Archived work"],["Scope","Title Design · Motion"],["Role","Creative Direction · Motion"]],
+    details:[["Project","Outstanding"],["Scope","Title Design · Motion"],["Role","Creative Direction · Motion"]],
     shots:[
       {image:"images/outstanding-1.jpeg",wide:true,fit:"contain",background:"#100917",aspect:"16/9"}
     ]
@@ -248,17 +248,17 @@ const PROJECTS = [
     slug:"makeful",
     title:"Makeful",
     category:"Programming · Video",
-    year:"Archive",
+    year:"",
     summary:"Craft and lifestyle programming developed, written, and produced for Makeful.",
     accent:["#eab8ad","#e9e1d5"],
     cover:"images/makeful-1.png",
     intro:"A collection of approachable craft programming designed for repeatable digital viewing.",
     body:[
-      "The previous portfolio described this work as Director of Programming and Writer for Makeful.",
-      "Six original episodes were included, spanning accessible projects and host-led instruction.",
-      "They are restored here as playable videos so the body of work can be reviewed before selecting a tighter final set."
+      "As Director of Programming and Writer, I developed approachable craft and lifestyle formats designed for clear, repeatable digital viewing.",
+      "The work spans quick DIY projects, practical tips, and host-led creative instruction, with each format built around an immediate, achievable idea.",
+      "A concise structure and friendly editorial voice keep the projects accessible while giving the series a consistent Makeful personality."
     ],
-    details:[["Client","Makeful"],["Period","Archived work"],["Scope","Programming · Writing · Video"],["Role","Director of Programming · Writer"]],
+    details:[["Client","Makeful"],["Scope","Programming · Writing · Video"],["Role","Director of Programming · Writer"]],
     shots:[
       {video:"UrrY814gYQk",title:"DIY Pom Pom Lamp Shade | 3 Minute DIY with Jeanine Amapola",wide:true},
       {video:"ZaoSsVsl6YE",title:"Mason Jar Candle Holders | 3 Minute DIY with Jeanine Amapola",wide:true},
@@ -272,17 +272,17 @@ const PROJECTS = [
     slug:"mr-kate",
     title:"Mr. Kate",
     category:"Video Production",
-    year:"Archive",
+    year:"",
     summary:"A collection of produced lifestyle and design videos for Mr. Kate.",
     accent:["#bd829f","#53694f"],
     cover:"images/mrkate-1.png",
     intro:"Energetic lifestyle production built around personality, transformation, and reveal.",
     body:[
-      "The previous portfolio identified this work as a video-production project for Mr. Kate.",
-      "Eight original videos were embedded in the archive, covering the range of the produced series.",
-      "The complete set is restored below so the strongest pieces can be selected later."
+      "As Video Producer, I helped shape a lifestyle series centered on room transformations, creator personalities, and the emotional payoff of a strong reveal.",
+      "Each episode turns an interior-design challenge into a clear narrative, moving from the client's needs through creative decisions, installation, and final reaction.",
+      "The work ranges from celebrity collaborations and makeover competitions to personal, budget-conscious spaces, while maintaining the energetic voice of the Mr. Kate brand."
     ],
-    details:[["Client","Mr. Kate"],["Period","Archived work"],["Scope","Lifestyle Video Series"],["Role","Video Producer"]],
+    details:[["Client","Mr. Kate"],["Scope","Lifestyle Video Series"],["Role","Video Producer"]],
     shots:[
       {video:"7BcNeFmdkQw",title:"Liza Koshy's Urban Outdoor Oasis Makeover! | OMG We're Coming Over",wide:true},
       {video:"R5P5N7jlPFg",title:"Design Vs. Design — Room Makeover Competition!",wide:true},
@@ -298,7 +298,7 @@ const PROJECTS = [
     slug:"roots-logistics-identity",
     title:"Roots Logistics Identity",
     category:"Brand Identity",
-    year:"Archive",
+    year:"",
     summary:"A clean logistics identity centered on a directional green arrow.",
     accent:["#1d9143","#efefef"],
     cover:"images/roots-2.png",
@@ -307,10 +307,10 @@ const PROJECTS = [
     intro:"A direct, modern identity for a logistics brand built around movement and direction.",
     body:[
       "The Roots Logistics identity uses a minimal wordmark and a bold directional device.",
-      "The restored files show the core mark, a presentation-ready variation, and the identity applied over fleet photography.",
-      "This entry remains separate from the presentation project so the identity can be judged on its own."
+      "The green arrow creates a clear signal of movement and progress, giving the system a recognizable device that works independently or alongside the wordmark.",
+      "The identity extends into presentation graphics and fleet photography with a clean, practical visual language suited to a logistics business."
     ],
-    details:[["Client","Roots Logistics"],["Period","Archived work"],["Scope","Logo · Identity"],["Role","Brand Design"]],
+    details:[["Client","Roots Logistics"],["Scope","Logo · Identity"],["Role","Brand Design"]],
     shots:[
       {image:"images/roots-2.png",fit:"contain",background:"#eeeeee"},
       {image:"images/roots-1.png",wide:true,fit:"contain",background:"#ffffff",aspect:"945/764"},
@@ -339,7 +339,7 @@ const PROJECTS = [
     slug:"ai-sales-coaches",
     title:"AI Sales & Onboarding Coaches",
     category:"AI · Sales Enablement",
-    year:"Archive",
+    year:"",
     summary:"Interactive practice tools for logistics teams onboarding new sales representatives.",
     accent:["#28496a","#10202d"],
     cover:"C2C_Logo-hires-alpha-white.png",
@@ -348,10 +348,10 @@ const PROJECTS = [
     caseCover:false,
     intro:"Training that feels like a coach, not a script.",
     body:[
-      "The archived case study describes a set of AI-assisted coaches for logistics teams hiring and onboarding new sales representatives.",
-      "The tools teach industry language, help people work through difficult questions, and create a safe place to practice calls with clear feedback.",
-      "The original page relied on placeholder supporting visuals, so this restored entry keeps the written case-study structure while awaiting final product screenshots."
+      "I built a set of AI-assisted coaches for logistics sales teams: a Jargon Coach for industry language, an Objection Coach for difficult questions, and a Cold Call Coach for realistic practice.",
+      "Each tool uses short sessions, plain-language guidance, and immediate feedback to help new representatives build clarity and confidence without adding more meetings.",
+      "I led strategy, experience design, prompt development, content, and testing in collaboration with client subject-matter experts."
     ],
-    details:[["Sector","Logistics Sales"],["Period","Archived work"],["Scope","AI Tools · Training · UX"],["Role","Strategy · Product Build"]]
+    details:[["Sector","Logistics Sales"],["Scope","AI Tools · Training · UX"],["Role","Strategy · Product Build"]]
   }
 ];
