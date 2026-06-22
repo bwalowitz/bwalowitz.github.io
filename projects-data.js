@@ -352,9 +352,6 @@ const PROJECTS = [
       "The tools teach industry language, help people work through difficult questions, and create a safe place to practice calls with clear feedback.",
       "The original page relied on placeholder supporting visuals, so this restored entry keeps the written case-study structure while awaiting final product screenshots."
     ],
-    details:[["Sector","Logistics Sales"],["Period","Archived work"],["Scope","AI Tools · Training · UX"],["Role","Strategy · Product Build"]],
-    shots:[
-      {image:"C2C_Logo-hires-alpha-white.png",wide:true,fit:"contain",background:"#16374d",aspect:"16/9"}
-    ]
+    details:[["Sector","Logistics Sales"],["Period","Archived work"],["Scope","AI Tools · Training · UX"],["Role","Strategy · Product Build"]]
   }
 ];
