@@ -325,6 +325,7 @@ const PROJECTS = [
     accent:["#1f5e5a","#0b2225"],
     cover:"images/synergy-logo.svg",
     coverFit:"contain",
+    coverPadding:"35px",
     coverBackground:"#1f5e5a",
     intro:"Turning a local home-care franchise into a measurable, repeatable growth machine.",
     body:[
@@ -343,6 +344,7 @@ const PROJECTS = [
     accent:["#28496a","#10202d"],
     cover:"C2C_Logo-hires-alpha-white.png",
     coverFit:"contain",
+    coverPadding:"35px",
     coverBackground:"#16374d",
     caseCover:false,
     intro:"Training that feels like a coach, not a script.",
