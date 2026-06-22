@@ -187,10 +187,11 @@
 </footer>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-<script src="projects-data.js?v=20260621-case-copy"></script>
+<script src="projects-data.js?v=20260621-case-copy-2"></script>
 <script>
 
 /* ----- resolve which project ----- */
+const PROJECT_PAGE_VERSION='20260621-case-copy-2';
 const params=new URLSearchParams(location.search);
 const fileSlug=location.pathname.split('/').pop().replace(/\.html$/,'');
 const id=document.body.dataset.project || params.get('id') || (fileSlug!=='project' ? fileSlug : '');
@@ -297,7 +298,7 @@ function render(p){
     ${mediaSection}
 
     <section class="case-next">
-      <a class="next-link reveal" href="${next.slug}.html" data-cursor>
+      <a class="next-link reveal" href="${next.slug}.html?v=${PROJECT_PAGE_VERSION}" data-cursor>
         <p class="label">Next project</p>
         <h2>${esc(next.title)} ↗</h2>
       </a>

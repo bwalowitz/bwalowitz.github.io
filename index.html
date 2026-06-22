@@ -411,11 +411,12 @@
 </footer>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-<script src="projects-data.js?v=20260621-case-copy"></script>
+<script src="projects-data.js?v=20260621-case-copy-2"></script>
 <script>
 /* =========================================================
    DATA
 ========================================================= */
+const PROJECT_PAGE_VERSION='20260621-case-copy-2';
 const DISCIPLINES = [
   ["01","Brand Strategy","Positioning, naming, and identity systems built to scale — the logic beneath the look. Rebrands, umbrella architectures, and the story that ties it together."],
   ["02","Graphic Design","Editorial, packaging, decks, and brand collateral with a designer's eye for type, hierarchy, and restraint. Pixel-considered, print-ready."],
@@ -464,7 +465,7 @@ const galleryGrid=document.getElementById('galleryGrid');
 PROJECTS.forEach((p,i)=>{
   const a=document.createElement('a');
   a.className='proj reveal';
-  a.href=`${p.slug}.html`;
+  a.href=`${p.slug}.html?v=${PROJECT_PAGE_VERSION}`;
   a.setAttribute('data-cursor','');
   const coverFit = p.coverFit ? `background-size:${p.coverFit};background-repeat:no-repeat;` : '';
   const coverPosition = p.coverPosition ? `background-position:${p.coverPosition};` : '';
