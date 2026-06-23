@@ -102,9 +102,13 @@
   .facts .row{display:flex;justify-content:space-between;gap:18px;padding:16px 0;border-bottom:1px solid var(--line);}
   .facts .row:first-child{border-top:1px solid var(--line);}
   .facts .row b{color:var(--ink);font-weight:500;text-align:right;}
+  .facts .row a{color:var(--ink);font-weight:500;text-align:right;border-bottom:1px solid var(--line);transition:border-color .3s;}
+  .facts .row a:hover{border-color:var(--ink);}
   .case-cta{display:inline-flex;align-items:center;gap:12px;margin-top:30px;font-family:var(--mono);font-size:12px;
     letter-spacing:.14em;border:1px solid var(--line);border-radius:60px;padding:15px 26px;transition:background-color .5s,color .5s,border-color .5s;}
+  .case-cta + .case-cta{margin-left:12px;}
   .case-cta:hover{background:var(--ink);color:var(--bg);border-color:var(--ink);}
+  @media(max-width:1100px){.case-cta + .case-cta{margin-left:0;margin-top:14px;}}
   @media(max-width:860px){.case-grid{grid-template-columns:1fr;gap:48px;}}
 
   .case-shots{padding-bottom:clamp(80px,12vh,140px);scroll-margin-top:110px;}
@@ -201,11 +205,11 @@
 </footer>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-<script src="projects-data.js?v=20260623-fishbein"></script>
+<script src="projects-data.js?v=20260623-fishbein-link"></script>
 <script>
 
 /* ----- resolve which project ----- */
-const PROJECT_PAGE_VERSION='20260623-fishbein';
+const PROJECT_PAGE_VERSION='20260623-fishbein-link';
 const params=new URLSearchParams(location.search);
 const fileSlug=location.pathname.split('/').pop().replace(/\.html$/,'');
 const id=document.body.dataset.project || params.get('id') || (fileSlug!=='project' ? fileSlug : '');
@@ -280,7 +284,15 @@ function render(p){
     : `style="background:linear-gradient(140deg,${p.accent[0]},${p.accent[1]})"`;
   const coverClass = p.coverCaption ? 'case-cover has-caption' : 'case-cover';
   const body = renderBody(p);
-  const details = (p.details||[]).map(([k,v])=>`<div class="row"><span>${esc(k)}</span><b>${esc(v)}</b></div>`).join('');
+  const details = (p.details||[]).map(([k,v,u])=>{
+    const value = u
+      ? `<a href="${esc(u)}" target="_blank" rel="noopener noreferrer" data-cursor>${esc(v)} ↗</a>`
+      : `<b>${esc(v)}</b>`;
+    return `<div class="row"><span>${esc(k)}</span>${value}</div>`;
+  }).join('');
+  const siteCta = p.siteUrl
+    ? `<a class="case-cta" href="${esc(p.siteUrl)}" target="_blank" rel="noopener noreferrer" data-cursor>Visit live site ↗</a>`
+    : '';
   const kicker = [p.category,p.year].filter(Boolean).map(esc).join(' · ');
   const videoCount = (p.shots||[]).filter(s=>s.video).length;
   const imageCount = (p.shots||[]).filter(s=>!s.video).length;
@@ -324,6 +336,7 @@ function render(p){
         <div class="case-text reveal">${body}</div>
         <aside class="case-details reveal">
           <div class="facts">${details}</div>
+          ${siteCta}
           <a class="case-cta" href="index.html#contact" data-cursor>Start a project ↗</a>
         </aside>
       </div>

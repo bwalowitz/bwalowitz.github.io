@@ -12,6 +12,8 @@ const PROJECTS = [
     coverFit:"contain",
     coverBackground:"#030503",
     intro:"Brand identity, website, and digital launch system for a specialized psychology practice serving athletes, performers, teams, executives, and families.",
+    siteUrl:"https://www.dr-fishbein.com/",
+    siteLabel:"dr-fishbein.com",
     coverCaption:"Hero screen: Homepage design showing the main positioning for sport, performance, and mental wellness.",
     sections:[
       {
@@ -63,7 +65,7 @@ const PROJECTS = [
         ]
       }
     ],
-    details:[["Client","Fishbein Performance Group"],["Discipline","Brand Identity & Website"],["Scope","Brand identity · Website · Digital launch system"],["Role","Brand · Copy · Structure · Design · Launch"]],
+    details:[["Client","Fishbein Performance Group"],["Website","dr-fishbein.com","https://www.dr-fishbein.com/"],["Discipline","Brand Identity & Website"],["Scope","Brand identity · Website · Digital launch system"],["Role","Brand · Copy · Structure · Design · Launch"]],
     shots:[
       {image:"images/fishbein/2-fpg-about.jpg",wide:true,fit:"contain",background:"#030303",aspect:"1467/1015",caption:"Brand system: Logo, typography, color, and visual direction for Fishbein Performance Group."},
       {image:"images/fishbein/3-fpg-groups.jpg",wide:true,fit:"contain",background:"#030303",aspect:"1497/1182",caption:"Homepage detail: Above-the-fold layout with clear positioning and contact path."},
