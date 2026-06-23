@@ -80,15 +80,24 @@
 
   .case-cover{height:clamp(280px,54vh,640px);border-radius:6px;margin:clamp(44px,7vh,90px) clamp(20px,5vw,64px);
     background-size:cover;background-position:center;position:relative;overflow:hidden;box-shadow:0 50px 110px -50px rgba(0,0,0,0.9);}
+  .case-cover.has-caption{margin-bottom:14px;}
   .case-cover::before{content:"";position:absolute;inset:0;opacity:.45;mix-blend-mode:overlay;
     background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E");}
   .case-cover .ghost{position:absolute;left:5%;bottom:-4%;font-family:var(--serif);font-style:italic;font-weight:300;
     font-size:clamp(120px,26vw,360px);color:rgba(243,239,230,0.12);line-height:0.8;user-select:none;}
+  .cover-caption{margin:0 clamp(20px,5vw,64px) clamp(44px,7vh,90px);font-family:var(--mono);font-size:11px;
+    letter-spacing:0;text-transform:uppercase;color:var(--ink-dim);line-height:1.55;}
 
   .case-body{padding-bottom:clamp(80px,12vh,140px);}
   .case-grid{display:grid;grid-template-columns:1.6fr 1fr;gap:clamp(40px,7vw,110px);align-items:start;}
   .case-text p{font-size:clamp(16px,1.5vw,20px);line-height:1.7;color:var(--ink-dim);margin-bottom:1.4em;max-width:62ch;}
   .case-text p:first-child{font-family:var(--serif);font-weight:300;font-size:clamp(22px,2.4vw,32px);line-height:1.35;color:var(--ink);}
+  .case-section{margin-bottom:clamp(44px,7vw,84px);}
+  .case-section:last-child{margin-bottom:0;}
+  .case-section h2{font-family:var(--serif);font-weight:300;font-size:clamp(27px,3.5vw,52px);line-height:1.08;
+    letter-spacing:0;margin-bottom:22px;max-width:18ch;}
+  .case-section p:first-child{font-family:var(--sans);font-size:clamp(16px,1.5vw,20px);line-height:1.7;color:var(--ink-dim);}
+  .case-section p:last-child{margin-bottom:0;}
   .facts{font-family:var(--mono);font-size:12px;letter-spacing:.04em;color:var(--ink-dim);}
   .facts .row{display:flex;justify-content:space-between;gap:18px;padding:16px 0;border-bottom:1px solid var(--line);}
   .facts .row:first-child{border-top:1px solid var(--line);}
@@ -118,6 +127,11 @@
   .video-link{flex:0 0 auto;font-family:var(--mono);font-size:10px;letter-spacing:.13em;text-transform:uppercase;color:var(--ink-dim);
     border-bottom:1px solid var(--line);padding-bottom:4px;transition:color .3s,border-color .3s;}
   .video-link:hover{color:var(--ink);border-color:var(--ink);}
+  .image-card{min-width:0;}
+  .image-card.wide{grid-column:1/-1;}
+  .image-card .shot{width:100%;}
+  .image-caption{font-family:var(--mono);font-size:11px;line-height:1.55;letter-spacing:0;text-transform:uppercase;color:var(--ink-dim);
+    padding:14px 2px 4px;}
   .shot::before{content:"";position:absolute;inset:0;opacity:.4;mix-blend-mode:overlay;
     background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)'/%3E%3C/svg%3E");}
   .shot .fl{position:absolute;left:16px;bottom:13px;z-index:2;pointer-events:none;font-family:var(--mono);font-size:10px;letter-spacing:.16em;color:rgba(243,239,230,0.6);}
@@ -187,11 +201,11 @@
 </footer>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-<script src="projects-data.js?v=20260621-synergy-case"></script>
+<script src="projects-data.js?v=20260623-fishbein"></script>
 <script>
 
 /* ----- resolve which project ----- */
-const PROJECT_PAGE_VERSION='20260621-synergy-case';
+const PROJECT_PAGE_VERSION='20260623-fishbein';
 const params=new URLSearchParams(location.search);
 const fileSlug=location.pathname.split('/').pop().replace(/\.html$/,'');
 const id=document.body.dataset.project || params.get('id') || (fileSlug!=='project' ? fileSlug : '');
@@ -229,10 +243,28 @@ function shotTiles(p){
       const fit = s.fit ? `background-size:${s.fit};` : '';
       const position = s.position ? `background-position:${s.position};` : '';
       const background = s.background ? `background-color:${s.background};` : '';
-      return `<div class="shot ${s.wide?'wide':''}" style="${bg};${fit}${position}${background}${aspect}"><span class="fl">FRAME ${String(frameIndex).padStart(2,'0')}</span></div>`;
+      const label = `FRAME ${String(frameIndex).padStart(2,'0')}`;
+      const tile = `<div class="shot ${s.wide?'wide':''}" style="${bg};${fit}${position}${background}${aspect}"><span class="fl">${label}</span></div>`;
+      if(s.caption){
+        return `<figure class="image-card ${s.wide?'wide':''}">
+          ${tile}
+          <figcaption class="image-caption">${esc(s.caption)}</figcaption>
+        </figure>`;
+      }
+      return tile;
     }).join('');
   }
   return '';
+}
+
+function renderBody(p){
+  if(p.sections && p.sections.length){
+    return p.sections.map(section=>`<article class="case-section">
+      ${section.heading?`<h2>${esc(section.heading)}</h2>`:''}
+      ${(section.body||[]).map(t=>`<p>${esc(t)}</p>`).join('')}
+    </article>`).join('');
+  }
+  return (p.body||[]).map(t=>`<p>${esc(t)}</p>`).join('');
 }
 
 function render(p){
@@ -246,7 +278,8 @@ function render(p){
   const cover = caseCoverImage
     ? `style="background-image:url('${caseCoverImage}');${coverFit}${coverPosition}${coverBackground}"`
     : `style="background:linear-gradient(140deg,${p.accent[0]},${p.accent[1]})"`;
-  const body = (p.body||[]).map(t=>`<p>${esc(t)}</p>`).join('');
+  const coverClass = p.coverCaption ? 'case-cover has-caption' : 'case-cover';
+  const body = renderBody(p);
   const details = (p.details||[]).map(([k,v])=>`<div class="row"><span>${esc(k)}</span><b>${esc(v)}</b></div>`).join('');
   const kicker = [p.category,p.year].filter(Boolean).map(esc).join(' · ');
   const videoCount = (p.shots||[]).filter(s=>s.video).length;
@@ -283,7 +316,8 @@ function render(p){
       </div>
     </header>
 
-    <div class="case-cover" ${cover}><span class="ghost">${esc(p.title.charAt(0))}</span></div>
+    <div class="${coverClass}" ${cover}><span class="ghost">${esc(p.title.charAt(0))}</span></div>
+    ${p.coverCaption?`<p class="cover-caption reveal">${esc(p.coverCaption)}</p>`:''}
 
     <section class="case-body">
       <div class="case-grid">

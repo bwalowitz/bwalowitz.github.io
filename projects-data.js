@@ -2,6 +2,77 @@
    Run `node generate-project-pages.mjs` after adding or removing a project. */
 const PROJECTS = [
   {
+    slug:"fishbein-performance-group",
+    title:"Fishbein Performance Group",
+    category:"Brand Identity & Website",
+    year:"",
+    summary:"Brand identity, website, and digital launch system for a specialized psychology practice serving athletes, performers, teams, executives, and families.",
+    accent:["#2d6f95","#111f12"],
+    cover:"images/fishbein/1-fpg-hero.jpg",
+    coverFit:"contain",
+    coverBackground:"#030503",
+    intro:"Brand identity, website, and digital launch system for a specialized psychology practice serving athletes, performers, teams, executives, and families.",
+    coverCaption:"Hero screen: Homepage design showing the main positioning for sport, performance, and mental wellness.",
+    sections:[
+      {
+        heading:"A respected practice needed a clearer digital front door",
+        body:[
+          "Fishbein Performance Group had the credibility, history, and real-world results. The job was to make that expertise easier to understand, easier to trust, and easier to act on.",
+          "I worked across brand, copy, structure, design, and launch to turn a long-standing practice into a modern web presence that feels focused, professional, and human. The site needed to speak to elite athletes without feeling exclusive, support clinical services without feeling cold, and give prospective clients a clear path from curiosity to contact.",
+          "The result is a digital home built around clarity: what the practice does, who it helps, why the work matters, and how to get started."
+        ]
+      },
+      {
+        heading:"Performance psychology without the clutter",
+        body:[
+          "The brand needed to feel credible, calm, and precise. This wasn't a hype-driven sports brand. It was a psychology practice with decades of experience helping people perform under pressure.",
+          "I helped shape a visual and verbal system that balances authority with approachability. The language stays direct. The design gives the work room to breathe. The site uses sports imagery, strong typography, clean structure, and a restrained palette to create a feeling of confidence without over-selling the promise.",
+          "The goal was simple: make Fishbein Performance Group feel like the place serious performers go when the mental side of the game matters."
+        ]
+      },
+      {
+        heading:"A site that explains the practice without overexplaining it",
+        body:[
+          "I built the site around the way people actually look for this kind of help. Some visitors are athletes. Some are parents. Some are coaches, executives, performers, or people looking for clinical support. The structure needed to make each of them feel like they were in the right place.",
+          "The homepage introduces the practice through a clear promise: psychology for sport, performance, and mental wellness. From there, visitors can quickly move into services, client types, testimonials, press, team information, the S.I.M.P.L.E. framework, or contact.",
+          "The page flow does a lot of quiet work. It establishes credibility early, shows the range of clients served, explains the services without burying people in technical language, and keeps the contact path close."
+        ]
+      },
+      {
+        heading:"Complex services made easier to navigate",
+        body:[
+          "The practice offers sport psychology, clinical psychology, student-athlete advising, nutrition counseling, team support, business performance work, and resources for high performers. That could easily become confusing.",
+          "I organized the content around audience and intent. Services explain what the practice provides. Clients We See explains who it is for. Testimonials and press prove the track record. The team section adds trust. S.I.M.P.L.E. gives the practice a proprietary point of view and a reason for people to stay connected through the newsletter.",
+          "The copy is intentionally plainspoken. It avoids sounding like a medical brochure or a motivational poster. It gives visitors enough confidence to reach out without making them work too hard."
+        ]
+      },
+      {
+        heading:"Built to support the practice after launch",
+        body:[
+          "This was not just a homepage design. It was a working system for a real practice.",
+          "I helped create and organize the site structure, page copy, visual hierarchy, forms, newsletter signup, client portal access, press content, testimonials, team presentation, and footer navigation. The site also needed to work across desktop and mobile, with enough flexibility for future updates as the practice adds services, stories, press, and resources.",
+          "The system gives Fishbein Performance Group a more consistent brand journey across the website, marketing materials, presentations, and client touchpoints."
+        ]
+      },
+      {
+        heading:"A sharper presence for the next chapter",
+        body:[
+          "The final site gives Fishbein Performance Group a more polished, more useful public face. It reflects the level of trust already earned by the practice while making the offering easier for new clients to understand.",
+          "It also creates a stronger foundation for marketing. Search, referrals, press links, testimonials, contact forms, and future content now point toward a single experience that feels intentional and complete.",
+          "The work is quiet by design. It doesn't try to make the practice look bigger than it is. It makes the value clearer, the story tighter, and the path forward easier."
+        ]
+      }
+    ],
+    details:[["Client","Fishbein Performance Group"],["Discipline","Brand Identity & Website"],["Scope","Brand identity · Website · Digital launch system"],["Role","Brand · Copy · Structure · Design · Launch"]],
+    shots:[
+      {image:"images/fishbein/2-fpg-about.jpg",wide:true,fit:"contain",background:"#030303",aspect:"1467/1015",caption:"Brand system: Logo, typography, color, and visual direction for Fishbein Performance Group."},
+      {image:"images/fishbein/3-fpg-groups.jpg",wide:true,fit:"contain",background:"#030303",aspect:"1497/1182",caption:"Homepage detail: Above-the-fold layout with clear positioning and contact path."},
+      {image:"images/fishbein/5-fpg-team.jpg",wide:true,fit:"contain",background:"#030303",aspect:"1468/1232",caption:"Services page: Service structure for sport psychology, clinical psychology, student-athlete advising, and nutrition counseling."},
+      {image:"images/fishbein/4-fpg-clients.jpg",wide:true,fit:"contain",background:"#f4f4f4",aspect:"1498/1176",caption:"Clients page: Audience-based page structure for athletes, teams, performers, business clients, aspiring collegiate athletes, individuals, and families."},
+      {image:"images/fishbein/6-fpg-success.jpg",wide:true,fit:"contain",background:"#030303",aspect:"1460/912",caption:"Testimonials page: Proof-focused page design built around athlete and performer success stories."}
+    ]
+  },
+  {
     slug:"redwood-logistics",
     title:"Redwood Logistics",
     category:"Brand System",
