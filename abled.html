@@ -104,11 +104,10 @@
   .facts .row b{color:var(--ink);font-weight:500;text-align:right;}
   .facts .row a{color:var(--ink);font-weight:500;text-align:right;border-bottom:1px solid var(--line);transition:border-color .3s;}
   .facts .row a:hover{border-color:var(--ink);}
-  .case-cta{display:inline-flex;align-items:center;gap:12px;margin-top:30px;font-family:var(--mono);font-size:12px;
+  .case-actions{display:flex;flex-wrap:wrap;align-items:flex-start;gap:14px 12px;margin-top:30px;}
+  .case-cta{display:inline-flex;align-items:center;gap:12px;font-family:var(--mono);font-size:12px;
     letter-spacing:.14em;border:1px solid var(--line);border-radius:60px;padding:15px 26px;transition:background-color .5s,color .5s,border-color .5s;}
-  .case-cta + .case-cta{margin-left:12px;}
   .case-cta:hover{background:var(--ink);color:var(--bg);border-color:var(--ink);}
-  @media(max-width:1100px){.case-cta + .case-cta{margin-left:0;margin-top:14px;}}
   @media(max-width:860px){.case-grid{grid-template-columns:1fr;gap:48px;}}
 
   .case-shots{padding-bottom:clamp(80px,12vh,140px);scroll-margin-top:110px;}
@@ -205,11 +204,11 @@
 </footer>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-<script src="projects-data.js?v=20260623-fishbein-link"></script>
+<script src="projects-data.js?v=20260623-fishbein-buttons"></script>
 <script>
 
 /* ----- resolve which project ----- */
-const PROJECT_PAGE_VERSION='20260623-fishbein-link';
+const PROJECT_PAGE_VERSION='20260623-fishbein-buttons';
 const params=new URLSearchParams(location.search);
 const fileSlug=location.pathname.split('/').pop().replace(/\.html$/,'');
 const id=document.body.dataset.project || params.get('id') || (fileSlug!=='project' ? fileSlug : '');
@@ -336,8 +335,10 @@ function render(p){
         <div class="case-text reveal">${body}</div>
         <aside class="case-details reveal">
           <div class="facts">${details}</div>
-          ${siteCta}
-          <a class="case-cta" href="index.html#contact" data-cursor>Start a project ↗</a>
+          <div class="case-actions">
+            ${siteCta}
+            <a class="case-cta" href="index.html#contact" data-cursor>Start a project ↗</a>
+          </div>
         </aside>
       </div>
     </section>
