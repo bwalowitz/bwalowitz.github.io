@@ -1,4 +1,4 @@
-# Brandon Walowitz — Art &amp; Science
+# Brandon Walowitz | Art &amp; Science
 
 Personal portfolio site. A single, self-contained `index.html` with a live WebGL
 shader background, a custom-GLSL morphing 3D object, a cinematic HUD overlay, and
@@ -24,7 +24,7 @@ python3 -m http.server 8000
 
 ## Put it on GitHub + go live (GitHub Pages)
 
-### Option A — No terminal (easiest)
+### Option A: No terminal (easiest)
 
 1. On GitHub, click **New repository**. Name it (e.g. `art-and-science`). Create it.
 2. On the empty repo page, click **uploading an existing file**.
@@ -34,7 +34,7 @@ python3 -m http.server 8000
 5. Wait ~1 minute. Your site is live at
    `https://YOUR-USERNAME.github.io/art-and-science/`.
 
-### Option B — Terminal (git history already initialized in this folder)
+### Option B: Terminal (git history already initialized in this folder)
 
 ```bash
 # from inside this folder
@@ -76,7 +76,7 @@ The gallery under the client scroll and every individual project page are driven
 one array called `PROJECTS` in `projects-data.js`.
 
 **To add or edit a project:** copy one `{ ... }` block in `projects-data.js` and
-change its fields. Keep each `slug` unique — it becomes the page filename
+change its fields. Keep each `slug` unique, because it becomes the page filename
 (`your-slug.html`). Then regenerate the standalone pages:
 
 ```bash
@@ -107,7 +107,7 @@ you decide to cut a project.
 
 ### Shader / 3D tuning (for the curious)
 
-- Background field: `bgFrag` GLSL — palette + domain-warp amounts.
+- Background field: `bgFrag` GLSL: palette + domain-warp amounts.
 - 3D object: `blobVert` controls displacement (`disp`), `blobFrag` controls the
   iridescent fresnel coloring. Mesh detail auto-lowers on mobile in `initGL()`.
 
@@ -120,4 +120,4 @@ you decide to cut a project.
 - Graceful fallback to a gradient background if WebGL is unavailable
 - Respects `prefers-reduced-motion`; pauses rendering when the tab is hidden
 
-Built in-house. © Brandon Walowitz — Art &amp; Science.
+Built in-house. © Brandon Walowitz, Art &amp; Science.

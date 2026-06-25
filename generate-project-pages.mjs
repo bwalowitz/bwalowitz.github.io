@@ -20,7 +20,7 @@ const escapeHtml = value => String(value).replace(/[&<>"]/g, character => ({
 
 for (const project of PROJECTS) {
   const page = template
-    .replace('<title>Project — Art &amp; Science</title>', `<title>${escapeHtml(project.title)} — Art &amp; Science</title>`)
+    .replace('<title>Project | Art &amp; Science</title>', `<title>${escapeHtml(project.title)} | Art &amp; Science</title>`)
     .replace('<body data-project="">', `<body data-project="${project.slug}">`);
 
   await writeFile(new URL(`./${project.slug}.html`, import.meta.url), page);

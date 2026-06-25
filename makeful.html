@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Makeful — Art &amp; Science</title>
+<title>Makeful | Art &amp; Science</title>
 <meta name="theme-color" content="#08080b">
 <meta name="author" content="Brandon Walowitz">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%2308080b'/%3E%3Ccircle cx='16' cy='16' r='5.5' fill='%23e8c170'/%3E%3C/svg%3E">
@@ -271,7 +271,7 @@ function renderBody(p){
 }
 
 function render(p){
-  document.title=`${p.title} — Art & Science`;
+  document.title=`${p.title} | Art & Science`;
   document.getElementById('hudFile').textContent=`CASE FILE · ${p.slug.toUpperCase()}`;
   const next=PROJECTS[(PROJECTS.indexOf(p)+1)%PROJECTS.length];
   const coverFit = p.coverFit ? `background-size:${p.coverFit};background-repeat:no-repeat;` : '';
@@ -355,7 +355,7 @@ function render(p){
 }
 
 function renderNotFound(){
-  document.title='Project not found — Art & Science';
+  document.title='Project not found | Art & Science';
   main.innerHTML=`<section class="notfound">
       <p class="label">404</p>
       <h1>That project isn't here.</h1>

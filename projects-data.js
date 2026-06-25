@@ -359,7 +359,7 @@ const PROJECTS = [
     details:[["Client","Mr. Kate"],["Scope","Lifestyle Video Series"],["Role","Video Producer"]],
     shots:[
       {video:"7BcNeFmdkQw",title:"Liza Koshy's Urban Outdoor Oasis Makeover! | OMG We're Coming Over",wide:true},
-      {video:"R5P5N7jlPFg",title:"Design Vs. Design — Room Makeover Competition!",wide:true},
+      {video:"R5P5N7jlPFg",title:"Design Vs. Design: Room Makeover Competition!",wide:true},
       {video:"EDZrHpKpmCs",title:"Colleen Ballinger's Nursery Makeover!",wide:true},
       {video:"PV_GHHXy7Po",title:"Joey Graceffa's Enchanted Gaming Room Makeover! | OMG We're Coming Over",wide:true},
       {video:"rsSCMAPD0Fg",title:"Interior Design For A Blind Person? Ft. Molly Burke x OMG We’re Coming Over",wide:true},
@@ -403,8 +403,8 @@ const PROJECTS = [
     caseCover:false,
     intro:"Turning a local home-care franchise into a measurable, repeatable growth machine.",
     body:[
-      "SYNERGY HomeCare needed more than impressions — it needed booked consultations. The work began with the funnel: who is searching, what matters most to them, and what helps them feel ready to call.",
-      "From there it became a tight loop — paid-search structure, landing pages written for intent, and creative that gives families clarity when they need it. Every dollar mapped to an outcome.",
+      "SYNERGY HomeCare needed more than impressions; it needed booked consultations. The work began with the funnel: who is searching, what matters most to them, and what helps them feel ready to call.",
+      "From there it became a tight loop: paid-search structure, landing pages written for intent, and creative that gives families clarity when they need it. Every dollar mapped to an outcome.",
       "The result is a system the owner can run and trust, and a template that scales to the next franchise, and the next."
     ],
     details:[["Client","SYNERGY HomeCare"],["Year","2025"],["Scope","Paid Search · Landing Pages · Creative"],["Role","Strategy · Creative Direction"]]
