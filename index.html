@@ -371,8 +371,11 @@ PROJECTS.forEach((project, index) => {
   link.className = 'project reveal';
   link.href = projectHref(project);
   const fit = project.coverFit || 'cover';
+  const thumbPadding = project.coverPadding
+    ? `padding:${project.coverPadding};background-origin:content-box;`
+    : '';
   const thumbStyle = project.cover
-    ? `background-image:url('${project.cover}');background-size:${fit};background-color:${project.coverBackground || '#FFFFFF'};`
+    ? `background-image:url('${project.cover}');background-size:${fit};background-color:${project.coverBackground || '#FFFFFF'};${thumbPadding}`
     : `background:linear-gradient(140deg,${project.accent?.[0] || '#1A38F5'},${project.accent?.[1] || '#E24B26'});`;
   const secondary = detailValue(project, 'Role') || detailValue(project, 'Scope') || project.year || 'Project';
   link.innerHTML = `
