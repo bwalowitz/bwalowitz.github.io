@@ -282,7 +282,10 @@ const PROJECTS = [
     summary:"A produced educational video series featuring Sarah Silverman.",
     accent:["#d7936a","#f4c979"],
     cover:"images/sarahsilverman-2.png",
-    coverPosition:"center top",
+    coverFit:"contain",
+    coverPosition:"center center",
+    thumbFit:"cover",
+    thumbPosition:"center top",
     intro:"A multi-episode educational series shaped for clear, direct delivery on camera.",
     body:[
       "Produced as a six-episode educational series, Voices of Learning pairs Sarah Silverman's direct on-camera presence with concise, accessible storytelling.",
