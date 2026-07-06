@@ -79,9 +79,9 @@ nav a:hover::after{width:100%}
 
 /* ---------- hero ---------- */
 .hero{
-  min-height:100svh;
-  display:flex;flex-direction:column;justify-content:flex-end;
-  padding:130px 32px 40px;
+  min-height:auto;
+  display:flex;flex-direction:column;justify-content:flex-start;
+  padding:104px 32px 56px;
   position:relative;
 }
 .hero-meta{
@@ -129,9 +129,6 @@ nav a:hover::after{width:100%}
   .hero-sub p{max-width:100%;font-size:16px;overflow-wrap:break-word}
   .chip{font-size:10px;padding:7px 12px}
 }
-.coords{position:absolute;top:110px;right:32px;text-align:right;color:var(--ink-soft);line-height:1.9}
-@media(max-width:760px){.coords{display:none}}
-
 /* ---------- marquee ---------- */
 .marquee{
   border-top:1px solid var(--line);border-bottom:1px solid var(--line);
@@ -272,7 +269,6 @@ footer a:hover{color:var(--ink)}
 </header>
 
 <section class="hero" id="top">
-  <div class="coords mono">N 45.5871°<br>W 122.4021°<br>Camas, WA</div>
   <div class="hero-meta mono">
     <span>Multidisciplinary Creative · Est. 2001</span>
     <span>Ledger № 01, 2026</span>
