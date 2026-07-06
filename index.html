@@ -355,7 +355,7 @@ footer a:hover{color:var(--ink)}
   <span>Designed &amp; built in-house</span>
 </footer>
 
-<script src="projects-data.js?v=20260623-fishbein-buttons"></script>
+<script src="projects-data.js?v=20260706-logo-thumb-padding"></script>
 <script>
 const PROJECT_PAGE_VERSION = '20260623-fishbein-buttons';
 const projectList = document.getElementById('projectList');
@@ -371,8 +371,9 @@ PROJECTS.forEach((project, index) => {
   link.className = 'project reveal';
   link.href = projectHref(project);
   const fit = project.coverFit || 'cover';
-  const thumbPadding = project.coverPadding
-    ? `padding:${project.coverPadding};background-origin:content-box;`
+  const thumbPaddingValue = project.thumbPadding || project.coverPadding;
+  const thumbPadding = thumbPaddingValue
+    ? `padding:${thumbPaddingValue};background-origin:content-box;`
     : '';
   const thumbStyle = project.cover
     ? `background-image:url('${project.cover}');background-size:${fit};background-color:${project.coverBackground || '#FFFFFF'};${thumbPadding}`
