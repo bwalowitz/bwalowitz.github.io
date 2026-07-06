@@ -131,16 +131,35 @@ nav a:hover::after{width:100%}
 /* ---------- marquee ---------- */
 .marquee{
   border-top:1px solid var(--line);border-bottom:1px solid var(--line);
-  overflow:hidden;padding:20px 0;background:var(--paper-2);
-  white-space:nowrap;
+  overflow:hidden;padding:26px 0;background:var(--paper-2);
 }
-.marquee-track{display:inline-flex;gap:64px;animation:scroll 28s linear infinite}
-.marquee-track span{
-  font-family:var(--font-display);font-style:italic;font-weight:300;
-  font-size:22px;color:var(--ink-soft);
+.marquee-track{display:flex;width:max-content;animation:scroll 30s linear infinite}
+.logo-set{display:flex;align-items:center;gap:64px;padding-right:64px}
+.client-logo{
+  flex:0 0 auto;display:block;
+  width:var(--logo-w);height:var(--logo-h,34px);
+  background:#76766E;opacity:.78;
+  -webkit-mask-image:var(--logo);
+  -webkit-mask-repeat:no-repeat;
+  -webkit-mask-position:center;
+  -webkit-mask-size:contain;
+  mask-image:var(--logo);
+  mask-repeat:no-repeat;
+  mask-position:center;
+  mask-size:contain;
 }
-.marquee-track b{font-family:var(--font-mono);font-size:10px;color:var(--accent-warm);align-self:center;font-weight:500}
+.logo-netflix{--logo-w:126px}
+.logo-amazon{--logo-w:114px}
+.logo-nbc{--logo-w:104px}
+.logo-msn{--logo-w:88px}
+.logo-reelz{--logo-w:154px;--logo-h:30px}
+.logo-redwood{--logo-w:190px;--logo-h:27px}
 @keyframes scroll{to{transform:translateX(-50%)}}
+@media(max-width:700px){
+  .marquee{padding:22px 0}
+  .logo-set{gap:46px;padding-right:46px}
+  .client-logo{transform:scale(.9)}
+}
 
 /* ---------- sections ---------- */
 section{padding:110px 32px}
@@ -290,10 +309,24 @@ footer a:hover{color:var(--ink)}
   </div>
 </section>
 
-<div class="marquee" aria-hidden="true">
+<div class="marquee" aria-label="Selected client logos">
   <div class="marquee-track">
-    <span>Netflix</span><b>✳</b><span>Amazon</span><b>✳</b><span>NBC</span><b>✳</b><span>MSN</span><b>✳</b><span>Reelz</span><b>✳</b><span>Redwood Logistics</span><b>✳</b>
-    <span>Netflix</span><b>✳</b><span>Amazon</span><b>✳</b><span>NBC</span><b>✳</b><span>MSN</span><b>✳</b><span>Reelz</span><b>✳</b><span>Redwood Logistics</span><b>✳</b>
+    <div class="logo-set">
+      <span class="client-logo logo-netflix" style="--logo:url('images/client-logos/Netflix-logo.svg')" role="img" aria-label="Netflix"></span>
+      <span class="client-logo logo-amazon" style="--logo:url('images/client-logos/Amazon-logo.svg')" role="img" aria-label="Amazon"></span>
+      <span class="client-logo logo-nbc" style="--logo:url('images/client-logos/NBC-logo.svg')" role="img" aria-label="NBC"></span>
+      <span class="client-logo logo-msn" style="--logo:url('images/client-logos/msn-logo.svg')" role="img" aria-label="MSN"></span>
+      <span class="client-logo logo-reelz" style="--logo:url('images/client-logos/reelz-logo.svg')" role="img" aria-label="Reelz"></span>
+      <span class="client-logo logo-redwood" style="--logo:url('images/client-logos/redwood-logo.svg')" role="img" aria-label="Redwood Logistics"></span>
+    </div>
+    <div class="logo-set" aria-hidden="true">
+      <span class="client-logo logo-netflix" style="--logo:url('images/client-logos/Netflix-logo.svg')"></span>
+      <span class="client-logo logo-amazon" style="--logo:url('images/client-logos/Amazon-logo.svg')"></span>
+      <span class="client-logo logo-nbc" style="--logo:url('images/client-logos/NBC-logo.svg')"></span>
+      <span class="client-logo logo-msn" style="--logo:url('images/client-logos/msn-logo.svg')"></span>
+      <span class="client-logo logo-reelz" style="--logo:url('images/client-logos/reelz-logo.svg')"></span>
+      <span class="client-logo logo-redwood" style="--logo:url('images/client-logos/redwood-logo.svg')"></span>
+    </div>
   </div>
 </div>
 
