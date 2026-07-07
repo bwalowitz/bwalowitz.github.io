@@ -131,13 +131,13 @@ nav a:hover::after{width:100%}
 /* ---------- marquee ---------- */
 .marquee{
   border-top:1px solid var(--line);border-bottom:1px solid var(--line);
-  overflow:hidden;padding:26px 0;background:var(--paper-2);
+  overflow:hidden;padding:36px 0;background:var(--paper-2);
 }
-.marquee-track{display:flex;width:max-content;animation:scroll 30s linear infinite}
-.logo-set{display:flex;align-items:center;gap:78px;padding-right:78px}
+.marquee-track{display:flex;width:max-content;animation:scroll 38s linear infinite}
+.logo-set{display:flex;align-items:center;gap:96px;padding-right:96px}
 .client-logo{
   flex:0 0 auto;display:block;
-  width:var(--logo-w);height:var(--logo-h,31px);
+  width:var(--logo-w);height:var(--logo-h,26px);
   background:#76766E;opacity:.78;
   -webkit-mask-image:var(--logo);
   -webkit-mask-repeat:no-repeat;
@@ -148,17 +148,17 @@ nav a:hover::after{width:100%}
   mask-position:center;
   mask-size:contain;
 }
-.logo-netflix{--logo-w:116px}
-.logo-amazon{--logo-w:105px}
-.logo-nbc{--logo-w:96px}
-.logo-msn{--logo-w:81px}
-.logo-reelz{--logo-w:142px;--logo-h:28px}
-.logo-redwood{--logo-w:176px;--logo-h:25px}
-@keyframes scroll{to{transform:translateX(-50%)}}
+.logo-netflix{--logo-w:98px}
+.logo-amazon{--logo-w:90px}
+.logo-nbc{--logo-w:82px}
+.logo-msn{--logo-w:70px}
+.logo-reelz{--logo-w:122px;--logo-h:24px}
+.logo-redwood{--logo-w:150px;--logo-h:22px}
+@keyframes scroll{to{transform:translateX(-25%)}}
 @media(max-width:700px){
-  .marquee{padding:22px 0}
-  .logo-set{gap:54px;padding-right:54px}
-  .client-logo{transform:scale(.88)}
+  .marquee{padding:30px 0}
+  .logo-set{gap:66px;padding-right:66px}
+  .client-logo{transform:scale(.86)}
 }
 
 /* ---------- sections ---------- */
@@ -318,6 +318,22 @@ footer a:hover{color:var(--ink)}
       <span class="client-logo logo-msn" style="--logo:url('images/client-logos/msn-logo.svg')" role="img" aria-label="MSN"></span>
       <span class="client-logo logo-reelz" style="--logo:url('images/client-logos/reelz-logo.svg')" role="img" aria-label="Reelz"></span>
       <span class="client-logo logo-redwood" style="--logo:url('images/client-logos/redwood-logo.svg')" role="img" aria-label="Redwood Logistics"></span>
+    </div>
+    <div class="logo-set" aria-hidden="true">
+      <span class="client-logo logo-netflix" style="--logo:url('images/client-logos/Netflix-logo.svg')"></span>
+      <span class="client-logo logo-amazon" style="--logo:url('images/client-logos/Amazon-logo.svg')"></span>
+      <span class="client-logo logo-nbc" style="--logo:url('images/client-logos/NBC-logo.svg')"></span>
+      <span class="client-logo logo-msn" style="--logo:url('images/client-logos/msn-logo.svg')"></span>
+      <span class="client-logo logo-reelz" style="--logo:url('images/client-logos/reelz-logo.svg')"></span>
+      <span class="client-logo logo-redwood" style="--logo:url('images/client-logos/redwood-logo.svg')"></span>
+    </div>
+    <div class="logo-set" aria-hidden="true">
+      <span class="client-logo logo-netflix" style="--logo:url('images/client-logos/Netflix-logo.svg')"></span>
+      <span class="client-logo logo-amazon" style="--logo:url('images/client-logos/Amazon-logo.svg')"></span>
+      <span class="client-logo logo-nbc" style="--logo:url('images/client-logos/NBC-logo.svg')"></span>
+      <span class="client-logo logo-msn" style="--logo:url('images/client-logos/msn-logo.svg')"></span>
+      <span class="client-logo logo-reelz" style="--logo:url('images/client-logos/reelz-logo.svg')"></span>
+      <span class="client-logo logo-redwood" style="--logo:url('images/client-logos/redwood-logo.svg')"></span>
     </div>
     <div class="logo-set" aria-hidden="true">
       <span class="client-logo logo-netflix" style="--logo:url('images/client-logos/Netflix-logo.svg')"></span>
