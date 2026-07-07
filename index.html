@@ -147,18 +147,19 @@ nav a:hover::after{width:100%}
   mask-repeat:no-repeat;
   mask-position:center;
   mask-size:contain;
+  transform:translateY(var(--logo-y,0)) scale(var(--logo-scale,1));
 }
 .logo-netflix{--logo-w:98px}
-.logo-amazon{--logo-w:90px}
+.logo-amazon{--logo-w:90px;--logo-y:3px}
 .logo-nbc{--logo-w:82px}
-.logo-msn{--logo-w:70px}
+.logo-msn{--logo-w:82px;--logo-h:30px}
 .logo-reelz{--logo-w:122px;--logo-h:24px}
 .logo-redwood{--logo-w:150px;--logo-h:22px}
 @keyframes scroll{to{transform:translateX(-25%)}}
 @media(max-width:700px){
   .marquee{padding:30px 0}
   .logo-set{gap:66px;padding-right:66px}
-  .client-logo{transform:scale(.86)}
+  .client-logo{--logo-scale:.86}
 }
 
 /* ---------- sections ---------- */
