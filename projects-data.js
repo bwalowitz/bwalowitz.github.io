@@ -292,7 +292,7 @@ const PROJECTS = [
       "Each installment uses a consistent format and production approach, giving the series continuity while allowing every topic to stand on its own.",
       "The result is an approachable body of educational content built for clarity, personality, and repeat viewing."
     ],
-    details:[["Project","Voices of Learning"],["Scope","Educational Video Series"],["Role","Video Producer"]],
+    details:[["Project","Voices of Learning"],["Scope","Educational Video Series"],["Role","Producer / Editor"]],
     shots:[
       {video:"7O56hYuq7w4",title:"Sarah Silverman's Voices of Learning: Episode 1",wide:true},
       {video:"feD2OYZnzfw",title:"Sarah Silverman's Voices of Learning: Episode 2",wide:true},
@@ -331,11 +331,11 @@ const PROJECTS = [
     cover:"images/makeful-1.png",
     intro:"A collection of approachable craft programming designed for repeatable digital viewing.",
     body:[
-      "As Director of Programming and Writer, I developed approachable craft and lifestyle formats designed for clear, repeatable digital viewing.",
+      "As Producer / Editor, I developed approachable craft and lifestyle formats designed for clear, repeatable digital viewing.",
       "The work spans quick DIY projects, practical tips, and host-led creative instruction, with each format built around an immediate, achievable idea.",
       "A concise structure and friendly editorial voice keep the projects accessible while giving the series a consistent Makeful personality."
     ],
-    details:[["Client","Makeful"],["Scope","Programming · Writing · Video"],["Role","Director of Programming · Writer"]],
+    details:[["Client","Makeful"],["Scope","Programming · Writing · Video"],["Role","Producer / Editor"]],
     shots:[
       {video:"UrrY814gYQk",title:"DIY Pom Pom Lamp Shade | 3 Minute DIY with Jeanine Amapola",wide:true},
       {video:"ZaoSsVsl6YE",title:"Mason Jar Candle Holders | 3 Minute DIY with Jeanine Amapola",wide:true},
@@ -355,11 +355,11 @@ const PROJECTS = [
     cover:"images/mrkate-1.png",
     intro:"Energetic lifestyle production built around personality, transformation, and reveal.",
     body:[
-      "As Video Producer, I helped shape a lifestyle series centered on room transformations, creator personalities, and the emotional payoff of a strong reveal.",
+      "As Producer / Editor, I helped shape a lifestyle series centered on room transformations, creator personalities, and the emotional payoff of a strong reveal.",
       "Each episode turns an interior-design challenge into a clear narrative, moving from the client's needs through creative decisions, installation, and final reaction.",
       "The work ranges from celebrity collaborations and makeover competitions to personal, budget-conscious spaces, while maintaining the energetic voice of the Mr. Kate brand."
     ],
-    details:[["Client","Mr. Kate"],["Scope","Lifestyle Video Series"],["Role","Video Producer"]],
+    details:[["Client","Mr. Kate"],["Scope","Lifestyle Video Series"],["Role","Producer / Editor"]],
     shots:[
       {video:"7BcNeFmdkQw",title:"Liza Koshy's Urban Outdoor Oasis Makeover! | OMG We're Coming Over",wide:true},
       {video:"R5P5N7jlPFg",title:"Design Vs. Design: Room Makeover Competition!",wide:true},
