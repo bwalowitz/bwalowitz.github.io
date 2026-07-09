@@ -110,11 +110,13 @@ nav a:hover::after{width:100%}
 .hero-sub p strong{color:var(--ink);font-weight:600}
 .disciplines{display:flex;flex-wrap:wrap;gap:8px;justify-content:flex-end}
 .chip{
+  display:inline-flex;align-items:center;
   font-family:var(--font-mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;
   border:1px solid var(--line);border-radius:999px;padding:7px 14px;
   transition:all .25s;
 }
 .chip:hover{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.chip:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
 @media(max-width:760px){.hero-sub{grid-template-columns:1fr}.disciplines{justify-content:flex-start}}
 .hero-sub > *, .disciplines{min-width:0}
 @media(max-width:760px){
@@ -164,6 +166,7 @@ nav a:hover::after{width:100%}
 
 /* ---------- sections ---------- */
 section{padding:110px 32px}
+section[id]{scroll-margin-top:72px}
 .sec-head{
   display:flex;align-items:baseline;justify-content:space-between;
   border-bottom:1px solid var(--ink);padding-bottom:16px;margin-bottom:56px;
@@ -300,12 +303,12 @@ footer a:hover{color:var(--ink)}
   <div class="hero-sub">
     <p>Creative direction at the intersection of <strong>art &amp; science</strong>, where craft, narrative, and technology converge into work that moves.</p>
     <div class="disciplines">
-      <span class="chip">Brand Strategy</span>
-      <span class="chip">Motion</span>
-      <span class="chip">Film</span>
-      <span class="chip">Design</span>
-      <span class="chip">Code</span>
-      <span class="chip">Direction</span>
+      <a class="chip" href="#practice">Brand Strategy</a>
+      <a class="chip" href="#practice">Motion</a>
+      <a class="chip" href="#practice">Film</a>
+      <a class="chip" href="#practice">Design</a>
+      <a class="chip" href="#practice">Code</a>
+      <a class="chip" href="#practice">Direction</a>
     </div>
   </div>
 </section>
